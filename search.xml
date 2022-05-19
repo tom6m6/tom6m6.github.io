@@ -1,6 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>hello_world</title>
+    <url>/2022/05/19/hello-world/</url>
+    <content><![CDATA[<p>Hello World<br>2018年2月4日，我创建的博客上如是说…<br>Blog<br>博客（Blog）是一种由个人管理、张贴新的文章、图片或视频的网站或在线日记，用来纪录、抒发情感或分享信息。博客上的文章通常根据张贴时间，以倒序方式由新到旧排列。</p>
+<p>博客，显然已经成为了新时代的“老古董”。繁琐的操作注定与这个时代脱轨。但是，对于知识的传播，信息交流和思想表达，这显然是一个完美的平台。</p>
+<p>Aim<br>本博客旨在让有效信息更快传播，让交流更为容易。</p>
+<p>Principle<br>简洁是核心思想。这可以使我们更高效地交流，也可以使行动更容易</p>
+<p>Content<br>本博客以技术内容为主，但会涉及政治，历史及其他领域。</p>
+<p>Other<br>1.鉴于博主是一名学生，学业负担大，可能长期不维护博客;</p>
+<p>2.发表的内容如果涉及看法，纯属个人见解，如有冒犯，请勿介意。</p>
+]]></content>
+      <categories>
+        <category>life</category>
+      </categories>
+      <tags>
+        <tag>insight</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>markdown指南1</title>
     <url>/2018/02/25/markdown1/</url>
     <content><![CDATA[<p>本文章包含一些简单的markdown语法</p>
@@ -57,23 +75,11 @@
 <p>![][1]<br>[1]: [<a href="http://latex.codecogs.com/gif.latex?%5Cprod%20%5C(n_%7Bi%7D%5C)+1%5D">http://latex.codecogs.com/gif.latex?\prod%20\(n_{i}\)+1]</a>(<a href="http://latex.codecogs.com/gif.latex?%5Cprod">http://latex.codecogs.com/gif.latex?\prod</a> (n_{i})+1)</p>
 <p>空格+空格+回车换行</p>
 ]]></content>
+      <categories>
+        <category>software</category>
+      </categories>
       <tags>
         <tag>skills</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>hello_world</title>
-    <url>/2022/05/19/hello-world/</url>
-    <content><![CDATA[<p>Hello World<br>2018年2月4日，我创建的博客上如是说…<br>Blog<br>博客（Blog）是一种由个人管理、张贴新的文章、图片或视频的网站或在线日记，用来纪录、抒发情感或分享信息。博客上的文章通常根据张贴时间，以倒序方式由新到旧排列。</p>
-<p>博客，显然已经成为了新时代的“老古董”。繁琐的操作注定与这个时代脱轨。但是，对于知识的传播，信息交流和思想表达，这显然是一个完美的平台。</p>
-<p>Aim<br>本博客旨在让有效信息更快传播，让交流更为容易。</p>
-<p>Principle<br>简洁是核心思想。这可以使我们更高效地交流，也可以使行动更容易</p>
-<p>Content<br>本博客以技术内容为主，但会涉及政治，历史及其他领域。</p>
-<p>Other<br>1.鉴于博主是一名学生，学业负担大，可能长期不维护博客;</p>
-<p>2.发表的内容如果涉及看法，纯属个人见解，如有冒犯，请勿介意。</p>
-]]></content>
-      <tags>
-        <tag>life</tag>
       </tags>
   </entry>
   <entry>
@@ -91,7 +97,7 @@
 <p>出现 Hi tom6m6! You’ve successfully authenticated, but GitHub does not provide shell access.表示成功</p>
 <h3 id="nodejs"><a href="#nodejs" class="headerlink" title="nodejs"></a>nodejs</h3><p>node.js是能够在服务器端运行javascript的开源跨平台执行环境<br><a href="https://nodejs.org/zh-cn/download/">nodejs官方下载</a><br>安装还是一路next 中间有个过程可能会选择是否 ADD TO PATH 这个就是在看是否要添加环境变量，此处一定要选<br>安装成功之后cmd中输入 node -v和 npm-v都正常<br>之后建议别乱改默认的环境变量设置，否则之后会出很多问题，本人就在这被坑了呜呜呜</p>
 <h2 id="主要"><a href="#主要" class="headerlink" title="主要"></a>主要</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo就是我们需要的博客框架</span><br><span class="line">先建立一个自己博客文件夹，然后在此开git bash</span><br><span class="line">npm install -g hexo-cli 安装</span><br><span class="line">之后输入hexo -v看看是否成功安装</span><br><span class="line">hexo init blog 初始化到blog文件夹</span><br><span class="line">然后进入blog文件夹</span><br><span class="line">hexo new test</span><br><span class="line">hexo g </span><br><span class="line">hexo s</span><br><span class="line">之后在本地的 localhost:4000可以加载预览</span><br></pre></td></tr></table></figure>
-<h3 id="部署与流程"><a href="#部署与流程" class="headerlink" title="部署与流程"></a>部署与流程</h3><p>有两个_config.yml 一个在最外层blog的目录下，一个在themes文件夹中<br>前者是站点配置，后者是主题配置<br>关联hexo与github<br>进入站点配置<br>找到deploy:以下改为(以本人为例)<br>deploy:<br>type: git<br>repo: <a href="mailto:&#x67;&#105;&#116;&#64;&#x67;&#x69;&#x74;&#104;&#x75;&#98;&#46;&#99;&#x6f;&#x6d;">&#x67;&#105;&#116;&#64;&#x67;&#x69;&#x74;&#104;&#x75;&#98;&#46;&#99;&#x6f;&#x6d;</a>:tom6m6/tom6m6.github.io<br>branch: master<br>注意此处repo后一定是 <a href="mailto:&#x67;&#x69;&#116;&#64;&#x67;&#105;&#x74;&#104;&#117;&#x62;&#x2e;&#99;&#x6f;&#109;">&#x67;&#x69;&#116;&#64;&#x67;&#105;&#x74;&#104;&#117;&#x62;&#x2e;&#99;&#x6f;&#109;</a>:tom6m6/tom6m6.github.io<br>而不是某些博客写的<a href="https://github.com/tom6m6/tom6m6.github.io.git">https://github.com/tom6m6/tom6m6.github.io.git</a><br>而且选项冒号之后一定要有空格<br>完成这个操作之后<br>到github上那个仓库的设置部分里的github pages，把source改为master而不是 main<br>安装部署插件</p>
+<h3 id="部署与流程"><a href="#部署与流程" class="headerlink" title="部署与流程"></a>部署与流程</h3><p>有两个_config.yml 一个在最外层blog的目录下，一个在themes文件夹中<br>前者是站点配置，后者是主题配置<br>关联hexo与github<br>进入站点配置<br>找到deploy:以下改为(以本人为例)<br>deploy:<br>type: git<br>repo: <a href="mailto:&#103;&#105;&#x74;&#64;&#103;&#105;&#x74;&#x68;&#x75;&#x62;&#46;&#99;&#x6f;&#x6d;">&#103;&#105;&#x74;&#64;&#103;&#105;&#x74;&#x68;&#x75;&#x62;&#46;&#99;&#x6f;&#x6d;</a>:tom6m6/tom6m6.github.io<br>branch: master<br>注意此处repo后一定是 <a href="mailto:&#103;&#x69;&#116;&#64;&#x67;&#105;&#x74;&#x68;&#x75;&#x62;&#46;&#x63;&#x6f;&#x6d;">&#103;&#x69;&#116;&#64;&#x67;&#105;&#x74;&#x68;&#x75;&#x62;&#46;&#x63;&#x6f;&#x6d;</a>:tom6m6/tom6m6.github.io<br>而不是某些博客写的<a href="https://github.com/tom6m6/tom6m6.github.io.git">https://github.com/tom6m6/tom6m6.github.io.git</a><br>而且选项冒号之后一定要有空格<br>完成这个操作之后<br>到github上那个仓库的设置部分里的github pages，把source改为master而不是 main<br>安装部署插件</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
 <p>测试上述过程git bash中输入<br>hexo clean &amp; hexo g &amp; hexo d</p>
 <h3 id="更改主题"><a href="#更改主题" class="headerlink" title="更改主题"></a>更改主题</h3><p>说实话，内置的landscape主题挺丑的，本博客采用next主题，感觉这个十分简洁<br>当然，你也可以在 <a href="https://hexo.io/themes/index.html">这里</a> 挑选自己喜欢的<br>以安装next为例<br>先下载 git clone <a href="https://github.com/next-theme/hexo-theme-next">https://github.com/next-theme/hexo-theme-next</a> themes/next<br>然后在站点配置文件中找到theme 改为 theme: next<br>在主题配置中，各选项根据实际需求更改，只要删掉注释，然后为默认的加上#就行</p>
@@ -126,6 +132,9 @@
 <p>注意你的博客目录下应该有两个 node_modules 文件夹，例如我的是 E:\BLOG\<a href="http://www.itrhx.com/node_modules/.bin">www.itrhx.com\node_modules\.bin</a> 和 E:\BLOG\<a href="http://www.itrhx.com/Hexo/node_modules/.bin">www.itrhx.com\Hexo\node_modules\.bin</a></p>
 <p>要添加到 Path 里面的是与 _config.yml 在同一个目录的 node_modules 文件夹！</p>
 ]]></content>
+      <categories>
+        <category>software</category>
+      </categories>
       <tags>
         <tag>skills</tag>
       </tags>
