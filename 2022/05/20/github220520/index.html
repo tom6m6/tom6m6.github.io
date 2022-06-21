@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 5.4.2">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" integrity="sha256-DfWjNxDkM94fVBWx1H5BMMp0Zq7luBlV8QRcSES7s+0=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.11.1","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+
+    <meta name="description" content="每天肉眼可见的进步，真的是充实生活的最好背景呢&#x2F;微笑  在领略到github的高端后，我打算深入的学习一下github，而不是仅仅只会clone commit push等简单操作。当然，今天的文章必然是不全面的，很多重要的点难免会有疏漏，但是希望我能开个好头吧:)本文围绕  GitHub入门与实践 (大塚弘记) 展开 GitHub 是为开发者提供 Git 仓库的托管服务。这是一个让开发者与朋友、">
+<meta property="og:type" content="article">
+<meta property="og:title" content="学习github">
+<meta property="og:url" content="http://example.com/2022/05/20/github220520/index.html">
+<meta property="og:site_name" content="tommy&#39;s">
+<meta property="og:description" content="每天肉眼可见的进步，真的是充实生活的最好背景呢&#x2F;微笑  在领略到github的高端后，我打算深入的学习一下github，而不是仅仅只会clone commit push等简单操作。当然，今天的文章必然是不全面的，很多重要的点难免会有疏漏，但是希望我能开个好头吧:)本文围绕  GitHub入门与实践 (大塚弘记) 展开 GitHub 是为开发者提供 Git 仓库的托管服务。这是一个让开发者与朋友、">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-05-20T11:48:34.000Z">
+<meta property="article:modified_time" content="2022-05-20T11:48:34.000Z">
+<meta property="article:author" content="tommy">
+<meta property="article:tag" content="skills">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://example.com/2022/05/20/github220520/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2022/05/20/github220520/","path":"2022/05/20/github220520/","title":"学习github"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>学习github | tommy's</title>
+  
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">tommy's</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#git%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C"><span class="nav-number">1.</span> <span class="nav-text">git基本操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#git%E7%9A%84%E5%88%9D%E5%A7%8B%E8%AE%BE%E7%BD%AE"><span class="nav-number">1.1.</span> <span class="nav-text">git的初始设置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A6%82%E8%A7%88"><span class="nav-number">1.2.</span> <span class="nav-text">概览</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%BB%E8%A6%81%E5%86%85%E5%AE%B9"><span class="nav-number">1.3.</span> <span class="nav-text">主要内容</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#git-status%E2%80%94%E2%80%94%E6%9F%A5%E7%9C%8B%E4%BB%93%E5%BA%93%E7%9A%84%E7%8A%B6%E6%80%81"><span class="nav-number">1.3.1.</span> <span class="nav-text">git status——查看仓库的状态</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#git-add%E2%80%94%E2%80%94%E5%90%91%E6%9A%82%E5%AD%98%E5%8C%BA%E4%B8%AD%E6%B7%BB%E5%8A%A0%E6%96%87%E4%BB%B6"><span class="nav-number">1.3.2.</span> <span class="nav-text">git add——向暂存区中添加文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#git-commit-%E4%BF%9D%E5%AD%98%E4%BB%93%E5%BA%93%E7%9A%84%E5%8E%86%E5%8F%B2%E8%AE%B0%E5%BD%95"><span class="nav-number">1.3.3.</span> <span class="nav-text">git commit 保存仓库的历史记录</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#git-log%E6%9F%A5%E7%9C%8B%E6%8F%90%E4%BA%A4%E6%97%A5%E5%BF%97"><span class="nav-number">1.3.4.</span> <span class="nav-text">git log查看提交日志</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%86%E6%94%AF"><span class="nav-number">1.3.5.</span> <span class="nav-text">分支</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%8E%A8%E9%80%81"><span class="nav-number">1.3.6.</span> <span class="nav-text">推送</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%85%B6%E4%BB%96%E6%B7%B1%E5%85%A5%E4%BA%86%E8%A7%A3github%E7%9A%84%E8%B5%84%E6%96%99"><span class="nav-number">1.3.7.</span> <span class="nav-text">其他深入了解github的资料</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#github%E7%9A%84%E4%B8%AD%E7%AD%89%E6%B0%B4%E5%B9%B3%E5%8A%9F%E8%83%BD"><span class="nav-number">1.4.</span> <span class="nav-text">github的中等水平功能</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="tommy"
+      src="https://s6.jpg.cm/2022/05/19/LOTE1r.jpg">
+  <p class="site-author-name" itemprop="name">tommy</p>
+  <div class="site-description" itemprop="description">知行合一</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">20</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/05/20/github220520/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://s6.jpg.cm/2022/05/19/LOTE1r.jpg">
+      <meta itemprop="name" content="tommy">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="tommy's">
+      <meta itemprop="description" content="知行合一">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="学习github | tommy's">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          学习github
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2022-05-20 19:48:34" itemprop="dateCreated datePublished" datetime="2022-05-20T19:48:34+08:00">2022-05-20</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/learn/" itemprop="url" rel="index"><span itemprop="name">learn</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <blockquote>
+<p>每天肉眼可见的进步，真的是充实生活的最好背景呢/微笑</p>
+</blockquote>
+<p>在领略到github的高端后，我打算深入的学习一下github，而不是仅仅只会clone commit push等简单操作。当然，今天的文章必然是不全面的，很多重要的点难免会有疏漏，但是希望我能开个好头吧:)<br>本文围绕  GitHub入门与实践 (大塚弘记) 展开</p>
+<p>GitHub 是为开发者提供 Git 仓库的托管服务。这是一个让开发者与朋友、同事、同学及陌生人共享代码的完美场所。GitHub 除提供 Git 仓库的托管服务外，还为开发者或团队提供了一系列功能，帮助其高效率、高品质地进行代码编写。</p>
+<p>在 Git 中，开发者将源代码存入名叫“Git 仓库”的资料库中并加以使用。而 GitHub 则是在网络上提供 Git 仓库的一项服务。也就是说，GitHub 上公开的软件源代码全都由 Git 进行管理。理解 Git，是熟练运用 GitHub 的关键所在。</p>
+<p>Pull Request 是指开发者在本地对源代码进行更改后，向 GitHub 中托管的 Git 仓库请求合并的功能。开发者可以在 Pull Request 上通过评论交流，例如“修正了 BUG，可以合并一下吗？”以及“我试着做了这样一个新功能，可以合并一下吗？”等。通过这个功能，开发者可以轻松更改源代码，并公开更改的细节，然后向仓库提交合并请求。</p>
+<p>GitHub 的 Pull Request 不但能轻松查看源代码的前后差别，还可以对指定的一行代码进行评论</p>
+<p>在软件开发行业中，Web 业界的变化尤其激烈，能实际编写源代码的程序员大受青睐。<br>在过去，程序员只需有简单的编程经验，用人单位更重视其人品、协调性、管理能力。但如今，能踏踏实实编写出代码的职业程序员反而更受欢迎。这是由于近年来随着技术的不断发展，开发一项服务需要用到多种编程语言和技术，以求兼容多种硬件设备。在这种背景下，判断一个求职者能否编写项目所需的源代码，最切实可行的办法就是看他实际写出的东西</p>
+<p>今后，进行社会化编程的程序员会越来越多，从而成为一种普遍现象。在不远的将来，应聘的成功与否将取决于您曾经编写过的代码。因此，面向全世界的代码公开必将越发重要。以编写代码为生的职业程序员们，更应该进行社会化编程。</p>
+<h2 id="git基本操作"><a href="#git基本操作" class="headerlink" title="git基本操作"></a>git基本操作</h2><p>Git 仓库管理功能是 GitHub 的核心。因此，使用 GitHub 之前必须先掌握 Git 的相关知识，同时本地的设备还要安装 Git 的环境。</p>
+<p>Git 属于分散型版本管理系统，是为版本管理而设计的软件。集中型将所有数据集中存放在服务器当中，有便于管理的优点。但是一旦开发者所处的环境不能连接服务器，就无法获取最新的源代码，开发也就几乎无法进行。服务器宕机时也是同样的道理，而且万一服务器故障导致数据消失，恐怕开发者就再也见不到最新的源代码了。</p>
+<p>GitHub 将仓库 Fork 给了每一个用户。Fork 就是将 GitHub 的某个特定仓库复制到自己的账户下。Fork 出的仓库与原仓库是两个不同的仓库，开发者可以随意编辑。</p>
+<p>git的安装过程略</p>
+<h3 id="git的初始设置"><a href="#git的初始设置" class="headerlink" title="git的初始设置"></a>git的初始设置</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">打开git bash</span><br><span class="line">git config --global user.name &quot;username&quot; 设置姓名</span><br><span class="line">git config --global user.email &quot;mailaddress&quot; 设置邮箱地址</span><br><span class="line">姓名和邮箱会在git提交日志中出现</span><br><span class="line">git config --global color.ui auto 各种命令都有颜色易于分辨</span><br></pre></td></tr></table></figure>
+<h3 id="概览"><a href="#概览" class="headerlink" title="概览"></a>概览</h3><p>github账户创建skip</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -c &quot;mail_address&quot; 创建本地ssh key</span><br><span class="line">创建之后在c盘user文件夹的 id_rsa就是私有密钥 id_ras.pub是公钥</span><br><span class="line">公钥添加到github参考博客创建历程</span><br><span class="line">添加之后看看成功了没有 shh -T git@github.com</span><br><span class="line">成功了会显示 You&#x27;ve successfully authenticated, but GitHub does not provide shell access.</span><br></pre></td></tr></table></figure>
+<p>以下的命令们好似一个概览</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">clone已有的仓库，就是指将代码拷贝下来</span><br><span class="line">比如 git clone git@github.com:hirocastest/Hello-World.git</span><br><span class="line">git ststus显示本地仓库的一些状态</span><br><span class="line">git add 文件名 将该目录下的某文件提交至暂存区（本地的啊）</span><br><span class="line">git commit -m &quot;xxxxxxx&quot; 添加注释xxxxxxx</span><br><span class="line">git log显示日志</span><br><span class="line">git push 之后只要执行 push，GitHub 上的仓库就会被更新。</span><br></pre></td></tr></table></figure>
+<h3 id="主要内容"><a href="#主要内容" class="headerlink" title="主要内容"></a>主要内容</h3><p>要使用git进行版本管理，必须先初始化仓库</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">可以在git bash中通过mkdir新建目录</span><br><span class="line">进入目标目录，然后 git init进行初始化</span><br></pre></td></tr></table></figure>
+<p>初始化成功，执行了 git init命令的目录下就会生成 .git 目录。这个 .git 目录里存储着管理当前目录内容所需的仓库数据。<br>在 Git 中，我们将这个目录的内容称为“附属于该仓库的工作树”。</p>
+<h4 id="git-status——查看仓库的状态"><a href="#git-status——查看仓库的状态" class="headerlink" title="git status——查看仓库的状态"></a>git status——查看仓库的状态</h4><p>所谓提交（Commit），是指“记录工作树中所有文件的当前状态”。<br>尚没有可提交的内容，就是说当前我们建立的这个仓库中还没有记录任何文件的任何状态。<br>如果文件新加了，但是没有添加到仓库中，就会显示Untracked files<br>可以看到在 Untracked files 中显示了 README.md 文件。类似地，<br>只要对 Git 的工作树或仓库进行操作，git status命令的显示结果就<br>会发生变化。</p>
+<h4 id="git-add——向暂存区中添加文件"><a href="#git-add——向暂存区中添加文件" class="headerlink" title="git add——向暂存区中添加文件"></a>git add——向暂存区中添加文件</h4><p>如果只是用 Git 仓库的工作树创建了文件，那么该文件并不会被记入 Git 仓库的版本管理对象当中。因此我们用 git status命令查看README.md 文件时，它会显示在 Untracked files 里。要想让文件成为 Git 仓库的管理对象，就需要用 git add命令将其加入暂存区（Stage 或者 Index）中。暂存区是提交之前的一个临时区域。<br>在加入暂存区后可以看到，README.md 文件显示在 Changes to be committed 中了。</p>
+<h4 id="git-commit-保存仓库的历史记录"><a href="#git-commit-保存仓库的历史记录" class="headerlink" title="git commit 保存仓库的历史记录"></a>git commit 保存仓库的历史记录</h4><p>git commit命令可以将当前暂存区中的文件实际保存到仓库的历史记录中。通过这些记录，我们就可以在工作树中复原文件。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"> git commit -m &quot;First commit&quot;</span><br><span class="line">-m 参数后的 &quot;First commit&quot;称作提交信息，是对这个提交的概述。</span><br><span class="line">刚才我们只简洁地记述了一行提交信息，如果想要记述得更加详</span><br><span class="line">细，请不加 - m，直接执行 g i t c o m m i t命令。执行后编辑器就会启</span><br><span class="line">动，并显示如下结果。</span><br><span class="line">如果想中止提交，在编辑器打开之后信息留空然后退出就可以</span><br></pre></td></tr></table></figure>
+<h4 id="git-log查看提交日志"><a href="#git-log查看提交日志" class="headerlink" title="git log查看提交日志"></a>git log查看提交日志</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">git log</span><br><span class="line">git log --pretty=short 只显示提交信息的第一行</span><br><span class="line">git log readme.md 只显示指定的目录，文件</span><br><span class="line">git log -p 查看提交带来的改动 文件前后的差别就能看得到</span><br><span class="line">git diff 查看工作树与暂存区前后的差别 这个是内容的差别，比如第一行多了一句话这样子的</span><br><span class="line">git diff HEAD 查看工作树与最新提交的差别</span><br></pre></td></tr></table></figure>
+<h4 id="分支"><a href="#分支" class="headerlink" title="分支"></a>分支</h4><p>在进行多个并行作业时，我们会用到分支<br>不同分支中，可以同时进行完全不同的作业。等该分支的作业完成之后再与 master 分支合并。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">git branch 显示分支一览表</span><br><span class="line">可以看到 master 分支左侧标有“*”（星号），表示这是我们当前所在的分支。</span><br><span class="line"></span><br><span class="line">git checkout -b 创建切换分支</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"> git checkout -b feature-A切换到 feature-A 分支并进行提交</span><br><span class="line">实际上，连续执行下面两条命令也能收到同样效果。（创建 feature-A 分支，并将当前分支切换为 feature-A 分支。）</span><br><span class="line"> git branch feature-A</span><br><span class="line">git checkout feature-A</span><br><span class="line">只要创建多个分支，就可以在不互相影响的情况下同时进行多个功能的开发。</span><br><span class="line">git checkout - 切换回上一个分支</span><br><span class="line">特性分支顾名思义，是集中实现单一特性（主题），除此之外不进行任何作业的分支。在日常开发中，往往会创建数个特性分支，同时在此之外再保留一个随时可以发布软件的稳定分支。稳定分支的角色通常由 master 分支担当</span><br><span class="line">主干分支是刚才我们讲解的特性分支的原点，同时也是合并的终点。</span><br><span class="line">git merge——合并分支</span><br><span class="line">接下来，我们假设 feature-A 已经实现完毕，想要将它合并到主干分支 master 中。首先切换到 master 分支。</span><br><span class="line">然后合并 feature-A 分支。为了在历史记录中明确记录下本次分支合并，我们需要创建合并提交。因此，在合并时加上 --no-ff参数。</span><br><span class="line"> git merge --no-ff feature-A</span><br><span class="line">随后编辑器会启动，用于录入合并提交的信息。</span><br><span class="line"> git log --graph——以图表形式查看分支</span><br><span class="line">git reset——回溯历史版本</span><br><span class="line">Git 的另一特征便是可以灵活操作历史版本。借助分散仓库的优势，可以在不影响其他仓库的前提下对历史版本进行操作。</span><br><span class="line">要让仓库的 HEAD、暂存区、当前工作树回溯到指定状态，需要用到 git rest --hard命令。只要提供目标时间点的哈希值</span><br><span class="line">g i t  l o g命令只能查看以当前状态为终点的历史日志。所以这里要使用 git reflog命令，查看当前仓库的操作日志。</span><br><span class="line">在日志中找出回溯历史之前的哈希值，通过 git reset --hard命令恢复到回溯历史前的状态。</span><br><span class="line">首先执行 git reflog 命令，查看当前仓库执行过的操作的日志。</span><br><span class="line">然后根据前面的那个hash值进行跳转</span><br><span class="line">CONFLICT (content): Merge conflict in README.md</span><br><span class="line">系统在合并 README.md 文件时，feature-A 分支更改的部分与本次想要合并的 fix-B 分支更改的部分发生了冲突。</span><br><span class="line">git commit --amend——修改提交信息</span><br><span class="line">感觉commit的内容有所不妥，要加以更改</span><br><span class="line">git rebase -i——压缩历史</span><br><span class="line">在合并特性分支之前，如果发现已提交的内容中有些许拼写错误等，不妨提交一个修改，然后将这个修改包含到前一个提交之中，压缩成一个历史记录。</span><br><span class="line">没必要先执行 git add命令 再执行 git commit命令了，我们用 git commit -am命令来一次完成这两步操作。</span><br><span class="line">ps.此处那个分支的实例我是真得不是很明白，日后再仔细看一下吧</span><br></pre></td></tr></table></figure>
+<h4 id="推送"><a href="#推送" class="headerlink" title="推送"></a>推送</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">在 GitHub 上创建的仓库路径为“git@github.com:用户名 /git-tutorial.git”。</span><br><span class="line"> git remote add origin git@github.com:github-book/git-tutorial.git</span><br><span class="line">按照上述格式执行 g i t r e m o t e a d d命令之后，Git 会自动将git@github.com:github-book/git-tutorial.git远程仓库的名称设置为 origin（标识符）。</span><br><span class="line">git push——推送至远程仓库</span><br><span class="line">现在假定我们在 master 分支下进行操作。</span><br><span class="line"> git push -u origin master</span><br><span class="line">像这样执行 git push命令，当前分支的内容就会被推送给远程仓库origin 的 master 分支。</span><br><span class="line">-u参数可以在推送的同时，将 origin 仓库的 master 分支设置为本地仓库当前分支的 upstream（上游）。添加了这个参数，将来运行 git pull命令从远程仓库获取内容时，本地仓库的这个分支就可以直接从 origin 的 master 分支获取内容，省去了另外添加参数的麻烦。</span><br><span class="line">git clone——获取远程仓库</span><br><span class="line"> git clone git@github.com:github-book/git-tutorial.git</span><br><span class="line">执行 git clone命令后我们会默认处于 master 分支下，同时系统会自动将 origin 设置成该远程仓库的标识符。也就是说，当前本地仓库的 master 分支与 GitHub 端远程仓库（origin）的 master 分支在内容上是完全相同的。</span><br><span class="line">git branch -a 结果中显示了 remotes/origin/feature-D，证明我们的远程仓库中已经有了 feature-D 分支。</span><br><span class="line">我们试着将 feature-D 分支获取至本地仓库。</span><br><span class="line"> git checkout -b feature-D origin/feature-D</span><br><span class="line">- b 参数的后面是本地仓库中新建分支的名称。</span><br><span class="line"></span><br><span class="line">git pull——获取最新的远程仓库分支</span><br><span class="line">将本地的 feature-D 分支更新到最新状态。</span><br><span class="line">git pull origin feature-D</span><br></pre></td></tr></table></figure>
+<h4 id="其他深入了解github的资料"><a href="#其他深入了解github的资料" class="headerlink" title="其他深入了解github的资料"></a>其他深入了解github的资料</h4><p>Pro GitA 由就职于 GitHub 公司的 Scott ChaconB 执笔，是一部零基础的 Git 学习资料。<br> <a target="_blank" rel="noopener" href="http://git-scm.com/book/zh/v1">http://git-scm.com/book/zh/v1</a><br>LearnGitBranchingA 是学习 Git 基本操作的网站（图 4.9）。注重树形结构的学习方式非常适合初学者使用，点击右下角的地球标志还可切换各种语言进行学习。<br> <a target="_blank" rel="noopener" href="http://pcottle.github.io/learnGitBranching/">http://pcottle.github.io/learnGitBranching/</a></p>
+<h3 id="github的中等水平功能"><a href="#github的中等水平功能" class="headerlink" title="github的中等水平功能"></a>github的中等水平功能</h3><p>github页面略<br>Gist 功能主要用于管理及发布一些没必要保存在仓库中的代码，比如小的代码片段等。<br>News Feed显示当前已 Follow 的用户和已 Watch 的项目的活动信息，用户可以在这里查看最新动向。<br>Pull Requests显示用户已进行过的 Pull Request。通过这里，开发者可以很方便地追踪 Pull Request 的后续情况。<br>github个性功能之后再写</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/skills/" rel="tag"># skills</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2022/05/19/blogsetup220518/" rel="prev" title="创建github+hexo个人博客">
+                  <i class="fa fa-chevron-left"></i> 创建github+hexo个人博客
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">tommy</span>
+</div>
+
+<!--
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>-->
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+<script src="https://cdn.jsdelivr.net/npm/hexo-generator-searchdb@1.4.0/dist/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>
