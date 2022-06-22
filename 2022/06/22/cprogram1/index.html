@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 5.4.2">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" integrity="sha256-DfWjNxDkM94fVBWx1H5BMMp0Zq7luBlV8QRcSES7s+0=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.11.1","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+
+    <meta name="description" content="前言Hello there!好久不见，这是暑假以来自己重拾博客的第一篇技术笔记。由于下学期学习计算机系统（csapp）之必要，重学c语言，打下一个坚实的基础显得尤为必要。我在正式开始预习乃至学习这么大课之前，也希望自己去突破一些自己之前不曾注意的重要问题。好了，就让我们开始吧。《C程序设计语言》by 布莱恩W克尼汉&amp; 丹尼斯M里奇就是那本薄黑书:) 类型运算符和表达式 变量名是字母和数字组">
+<meta property="og:type" content="article">
+<meta property="og:title" content="C语言学习笔记1">
+<meta property="og:url" content="http://example.com/2022/06/22/cprogram1/index.html">
+<meta property="og:site_name" content="tommy&#39;s blog">
+<meta property="og:description" content="前言Hello there!好久不见，这是暑假以来自己重拾博客的第一篇技术笔记。由于下学期学习计算机系统（csapp）之必要，重学c语言，打下一个坚实的基础显得尤为必要。我在正式开始预习乃至学习这么大课之前，也希望自己去突破一些自己之前不曾注意的重要问题。好了，就让我们开始吧。《C程序设计语言》by 布莱恩W克尼汉&amp; 丹尼斯M里奇就是那本薄黑书:) 类型运算符和表达式 变量名是字母和数字组">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-06-22T09:29:12.000Z">
+<meta property="article:modified_time" content="2022-06-22T12:46:32.175Z">
+<meta property="article:author" content="tommy">
+<meta property="article:tag" content="programming">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://example.com/2022/06/22/cprogram1/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2022/06/22/cprogram1/","path":"2022/06/22/cprogram1/","title":"C语言学习笔记1"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>C语言学习笔记1 | tommy's blog</title>
+  
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">tommy's blog</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B1%BB%E5%9E%8B%E8%BF%90%E7%AE%97%E7%AC%A6%E5%92%8C%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="nav-number">2.</span> <span class="nav-text">类型运算符和表达式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8E%A7%E5%88%B6%E6%B5%81"><span class="nav-number">3.</span> <span class="nav-text">控制流</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%87%BD%E6%95%B0%E4%B8%8E%E7%A8%8B%E5%BA%8F%E7%BB%93%E6%9E%84"><span class="nav-number">4.</span> <span class="nav-text">函数与程序结构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E7%9F%A5%E8%AF%86"><span class="nav-number">4.1.</span> <span class="nav-text">基本知识</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%9C%E7%94%A8%E5%9F%9F%E7%9B%B8%E5%85%B3"><span class="nav-number">4.2.</span> <span class="nav-text">作用域相关</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A2%84%E5%A4%84%E7%90%86"><span class="nav-number">5.</span> <span class="nav-text">预处理</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="tommy"
+      src="https://s6.jpg.cm/2022/05/19/LOTE1r.jpg">
+  <p class="site-author-name" itemprop="name">tommy</p>
+  <div class="site-description" itemprop="description">知行合一</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">25</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/06/22/cprogram1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://s6.jpg.cm/2022/05/19/LOTE1r.jpg">
+      <meta itemprop="name" content="tommy">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="tommy's blog">
+      <meta itemprop="description" content="知行合一">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="C语言学习笔记1 | tommy's blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          C语言学习笔记1
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2022-06-22 17:29:12 / 修改时间：20:46:32" itemprop="dateCreated datePublished" datetime="2022-06-22T17:29:12+08:00">2022-06-22</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/study/" itemprop="url" rel="index"><span itemprop="name">study</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>Hello there!<br>好久不见，这是暑假以来自己重拾博客的第一篇技术笔记。<br>由于下学期学习计算机系统（csapp）之必要，重学c语言，打下一个坚实的基础显得尤为必要。我在正式开始预习乃至学习这么大课之前，也希望自己去突破一些自己之前不曾注意的重要问题。<br>好了，就让我们开始吧。<br>《C程序设计语言》by 布莱恩W克尼汉&amp; 丹尼斯M里奇<br>就是那本薄黑书:)</p>
+<h2 id="类型运算符和表达式"><a href="#类型运算符和表达式" class="headerlink" title="类型运算符和表达式"></a>类型运算符和表达式</h2><ol>
+<li>变量名是字母和数字组成的序列，第一个字符一定是字母。(此处下划线认为是字母且大小写字母有区分)</li>
+<li>目前的编译器支持最大的变量名称长度为31</li>
+<li>各个基本类型的字节数 1字节&#x3D;8位 可以用sizeof()查询<br> char 1 short 2 int 4(旧编译器是2) long 4 float 4 double 8<br> long double 16<br> 两种形式 unsigned signed 前者不带负数可以扩大正数的范围</li>
+<li>unsigned&#x2F;signed 可用于限定整形和char. unsigned总是正值或0且遵守算数模2^n定律.unsigned char的范围是0-255 signed char 为-128-127 不注明的char看机器，但是可打印字符总是正值</li>
+<li>long类型常量以l或L结尾如12345678L 无符号常量以u或U结尾 两者结合，就是ul或UL结尾</li>
+<li>没有后缀的浮点数常量为double类型，后缀f&#x2F;F表示float类型</li>
+<li>前缀为0的整数常量表示八进制 前缀0x或0X表示十六进制。十进制37八进制037十六进制0x1F</li>
+<li>一个字符常量是一个整数,放在单引号里面。比如’0’对应了整数48</li>
+<li>转义字符 \a响铃 \b回退符 \f换页 \n换行 \t横向制表 \v纵向制表 \r回车 \反斜杠 ?问号 &#39;单引号 &#39;‘双引号 \ooo八进制 \xhh十六进制 ‘\0’表示值为0的字符即null</li>
+<li>#define常量表达式在编译时求值而不是运行时，可以出现在常量可能出现的任何位置。其实常数表达式也是编译时求值,比如1+1</li>
+<li>一个说明双引号不是字符串的例子 char c[]&#x3D;”456” “123”;等价于c[]&#x3D;”456123” 要想在字符串中表示双引号，加个\转义即可</li>
+<li>虽然看不见，字符串的内部以’\0’空字符结尾，因此字符串的存储空间比括在双引号之中的字符长度多1</li>
+<li>enum枚举类型是一个常数整型值的列表 enum test {a&#x3D;0,b&#x3D;1,c,d};其中c d的值分别为2 3自动生成了 enum和#define很相似但是优点在于可自动生成</li>
+<li>所有变量必须先声明后使用，一个声明指定了一种变量类型。int a&#x3D;3,b; 声明 初始化一起干 const char msg[]&#x3D;”warning”;加上const限定符后该变量或数组的值不能修改啦 如果这样f(const msg[])表示f函数无法修改msg数组元素的值</li>
+<li>运算符的优先级(这个上网查比较全，%和* &#x2F; 一个优先级；位运算优先级不如+- )取模运算符不能用于浮点型 </li>
+<li>EOF是文件结尾的标志，即整个文件或标准输入的结尾 而’\0’是字符串的结尾</li>
+<li>类型转换之自动转换 将范围小的转换为范围大的 比如a+b其中a是整数b是浮点数 然后a的值会被转换为浮点数才与b的值相加.强制类型转换比如转化为int类型 (int)b; 大范围到小范围的会把超出的位舍弃</li>
+<li>++n 和 n++效果不同前者是先+1后使用，后者是先使用后+1</li>
+<li>位运算符 &amp;按位与 |按位或 ^按位异或 &lt;&lt;左移 &gt;&gt;右移 <del>按位取反 比如</del>360 按位与常用于屏蔽某些二进制位 x&lt;&lt;2 x左移2位</li>
+<li><code>x*=y+1的含义是x*(y+1)而不是x*y+1</code> a op b的含义是 (a)op (b)</li>
+<li>赋值语句具有值,这个值就是被赋的值。 比如while((c&#x3D;getchar())!&#x3D;EOF )……</li>
+<li>条件表达式 (条件) ? a: b 条件成立则返回a 否则用b</li>
+</ol>
+<h2 id="控制流"><a href="#控制流" class="headerlink" title="控制流"></a>控制流</h2><ol start="23">
+<li>在某个表达式后面加一个分号，就变成了语句。把一堆语句放在{}之间构成了程序块</li>
+<li>if-else else-if语句中要用好{}消除歧义</li>
+<li>switch语句<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">c=getchar();</span><br><span class="line">switch(c)&#123;</span><br><span class="line">	case &#x27;0&#x27;:case &#x27;1&#x27;:case &#x27;2&#x27;:</span><br><span class="line">		return true;</span><br><span class="line">	case &#x27;3&#x27;:</span><br><span class="line">		return false;</span><br><span class="line">	default:</span><br><span class="line">		return false;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>while在运行循环的语句之前先要查询以下是否满足条件，不满足则不执行。for语句怎么使用说了800年了。’,’逗号运算符是C语言中优先级最低的，可以在for循环中用到它比如 for(a&#x3D;0,b&#x3D;len-1;a&lt;b;a++,b–)……</li>
+<li>do-while语句先执行一次，再跳回到while循环<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">do&#123;</span><br><span class="line">......</span><br><span class="line">&#125;while(条件);</span><br></pre></td></tr></table></figure></li>
+<li>break continue的具体用法不赘述。一次跳出两层或多层循环用goto语句.实际过程防止goto滥用且用好if-else也可以生成需求代码<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line">goto error;</span><br><span class="line">.....</span><br><span class="line">error:</span><br><span class="line">...</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h2 id="函数与程序结构"><a href="#函数与程序结构" class="headerlink" title="函数与程序结构"></a>函数与程序结构</h2><h3 id="基本知识"><a href="#基本知识" class="headerlink" title="基本知识"></a>基本知识</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">C语言不允许在一个函数中定义其他函数</span><br><span class="line">C语言程序一般由许多小的函数组成而不是少量大的函数组成。</span><br><span class="line">一个程序可以保存在一个或多个源文件中，各个文件单独编译，并可以与库中已经编译的函数一起加载。</span><br><span class="line">在main()之前定义函数</span><br><span class="line">int getL(char line[],int maxx);</span><br><span class="line">也可以写成int getL(char,int);</span><br><span class="line">然后 main()或者 int main()&#123;</span><br><span class="line">...</span><br><span class="line">&#125;</span><br><span class="line">int getL(char s[],int lim)&#123; /*注意此处的参数表与最开始的可以不完全相同*/</span><br><span class="line">......</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="作用域相关"><a href="#作用域相关" class="headerlink" title="作用域相关"></a>作用域相关</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">外部变量是在函数外定义的变量，因此可以在许多函数中使用</span><br><span class="line">外部变量比内部变量有更大的作用域(从声明到整个文件的末尾)和生存期(整个程序结束后才消失)。</span><br><span class="line">内部变量作用域是声明该变量名的函数，生存期到该函数运行完了而寿终正寝</span><br><span class="line">要在外部变量的定义之前使用它们，或者外部变量的定义和使用不在一个源文件中，则使用extern方法</span><br><span class="line">比如 main()&#123;...&#125;</span><br><span class="line">extern int a;</span><br><span class="line">int f(int g)&#123;...&#125;</span><br><span class="line">这样main()也可以使用a了</span><br><span class="line"></span><br><span class="line">外部变量的声明和定义要分清</span><br><span class="line">1.变量的定义：变量的定义用于为变量分配存储空间，还可以为变量指定初始值。在一个程序中，变量有且仅有一个定义。</span><br><span class="line">2.变量的声明：用于向程序表明变量的类型和名字。程序中变量可以声明多次，但只能定义一次。</span><br><span class="line">3.两者联系与区别：</span><br><span class="line">（1）定义也是声明，因为当定义变量时我们也向程序表明了它的类型和名字；</span><br><span class="line">（2）但声明不是定义，可以通过使用extern关键字声明变量而不定义它。不定义变量的声明包括对象名、对象类型和对象类型前的关键字extern；</span><br><span class="line">extern int i；//声明但不定义</span><br><span class="line">int i;//声明也定义</span><br><span class="line">extern可以不指明数组的大小 比如 extern int a[];</span><br><span class="line">外部变量的初始化只能出现在其定义中</span><br><span class="line">其他文件要访问或修改extern声明的变量，直接调用即可</span><br><span class="line">子程序 xxx.c使用为主，功能是核心</span><br><span class="line">头文件xxx.h主要关注各个子程序的重叠功能部分</span><br><span class="line">子程序 #include 调用</span><br><span class="line"></span><br><span class="line">静态变量 </span><br><span class="line">正常的声明之前加上static作为前缀</span><br><span class="line">static功能</span><br><span class="line">1static 修饰全局变量的时候，这个全局变量只能在本源文件中访问，不能在其它文件中访问，即便是 extern 外部声明也不可以。</span><br><span class="line">static 修饰一个函数，则这个函数的只能在本文件中调用，不能被其他文件调用。这样就可以避免名称冲突。</span><br><span class="line">2 static类型的内部变量是只能在特定函数中使用但是一直占据存储空间的变量。比如再次调用该函数时，直接使用上次遗留下来的数据，不初始化了(有初始化也会被忽略)。</span><br><span class="line"></span><br><span class="line">寄存器变量</span><br><span class="line">register int x;</span><br><span class="line">将变量放到寄存器中，可以使程序运行的更快，但是可能编译器忽略这个。</span><br><span class="line"></span><br><span class="line">递归 自己调用自己时每次都会得到不一样的内部变量集合(即使声明时的名称是一样的)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h2 id="预处理"><a href="#预处理" class="headerlink" title="预处理"></a>预处理</h2><p>预处理器是编译过程中单独执行的第一个步骤<br>两个最常用的预处理命令 #include(把指定文件内容包含进当前文件夹) #define(任意字符序列替代一个标记)<br>文件包含 #include “文件名”或 #include &lt;文件名&gt;<br>前者是在源文件所在位置查询文件 后者是根据相应的规则找文件<br>宏定义 #define 名字 替换名 后续所有名字出现的地方都会被替换成替换名<br>替换文本可以任意 比如 #define forever for(; ;)</p>
+<p>替换文本可以带参数 比如 #define max(a,b)  ((a)&gt;(b)?(a):(b))<br>这样的话表达式就不能存在副作用了(比如自增自减)</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">#define sq(x) x*x 不对 </span><br><span class="line">#define sq(x) ((x)* (x))对</span><br><span class="line">#undef sq(x) 取消宏定义</span><br><span class="line">宏定义中的 ##提供了一种连接实际参数的手段。如果替换文本中的参数与##相邻，则该参数将被实际参数替代，##前后的空白会被删除</span><br><span class="line">#define paste(front,back) front ## back</span><br><span class="line">调用 paste(name,1)将创建name1</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>条件包含<br>#if对后面的常量整形表达式求值，值为1才搞替换<br>然后往后面走，直到遇到了 #endif #elif(相当于 else if) #else<br>defined(x) x只要被定义了，值为1否则为0<br>以下程序保证hdr.h文件的内容只被包含一次<br>比如 #if !defined(HDR)<br>#define HDR<br>&#x2F;hdr.h文件放在这里<br>#endif<br>#ifdef用来测试某个名字是否已经定义</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">#if SYSTEM == BSD</span><br><span class="line">	#define HDR &quot;bsd.h&quot;</span><br><span class="line">#elif SYSTEM == LINUX</span><br><span class="line">	#define HDR &quot;linux.h&quot;</span><br><span class="line">#else</span><br><span class="line">	#define HDR &quot;unix.h&quot;</span><br><span class="line">#endif</span><br><span class="line">#include HDR</span><br></pre></td></tr></table></figure>
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/programming/" rel="tag"># programming</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2022/06/21/test/" rel="prev" title="test">
+                  <i class="fa fa-chevron-left"></i> test
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">tommy</span>
+</div>
+
+<!--
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>-->
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+<script src="https://cdn.jsdelivr.net/npm/hexo-generator-searchdb@1.4.0/dist/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>
