@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 5.4.2">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" integrity="sha256-DfWjNxDkM94fVBWx1H5BMMp0Zq7luBlV8QRcSES7s+0=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.11.1","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+
+    <meta name="description" content="作业要求课程作业: 基于已完成的练习，实现一个图片颜色的可视化页面，基本功能要求如下：  对图片中的像素颜色进行聚类，类的数量K可在代码中指定（聚类算法可使用k-means等，聚类算法尽可能自己实现）； 须可视化的信息包含2个维度：（1）聚类中心的颜色或类里像素颜色的均值；（2）某类里颜色的数量。 选择一种EChart可视化样式对聚类结果进行展示，可使用柱状图、饼图等。进阶功能（不强制要求）: 可">
+<meta property="og:type" content="article">
+<meta property="og:title" content="信息可视化图像聚类大作业">
+<meta property="og:url" content="http://example.com/2022/07/08/infovis2/index.html">
+<meta property="og:site_name" content="tommy&#39;s blog">
+<meta property="og:description" content="作业要求课程作业: 基于已完成的练习，实现一个图片颜色的可视化页面，基本功能要求如下：  对图片中的像素颜色进行聚类，类的数量K可在代码中指定（聚类算法可使用k-means等，聚类算法尽可能自己实现）； 须可视化的信息包含2个维度：（1）聚类中心的颜色或类里像素颜色的均值；（2）某类里颜色的数量。 选择一种EChart可视化样式对聚类结果进行展示，可使用柱状图、饼图等。进阶功能（不强制要求）: 可">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-07-08T10:44:20.000Z">
+<meta property="article:modified_time" content="2022-07-08T10:44:20.000Z">
+<meta property="article:author" content="tommy">
+<meta property="article:tag" content="infovis">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://example.com/2022/07/08/infovis2/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2022/07/08/infovis2/","path":"2022/07/08/infovis2/","title":"信息可视化图像聚类大作业"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>信息可视化图像聚类大作业 | tommy's blog</title>
+  
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">tommy's blog</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%9C%E4%B8%9A%E8%A6%81%E6%B1%82"><span class="nav-number">1.</span> <span class="nav-text">作业要求</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%8C%E6%88%90%E8%BF%87%E7%A8%8B"><span class="nav-number">2.</span> <span class="nav-text">完成过程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%80%E7%BB%88%E4%BB%A3%E7%A0%81"><span class="nav-number">2.1.</span> <span class="nav-text">最终代码</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="tommy"
+      src="https://s6.jpg.cm/2022/05/19/LOTE1r.jpg">
+  <p class="site-author-name" itemprop="name">tommy</p>
+  <div class="site-description" itemprop="description">知行合一</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">30</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/07/08/infovis2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://s6.jpg.cm/2022/05/19/LOTE1r.jpg">
+      <meta itemprop="name" content="tommy">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="tommy's blog">
+      <meta itemprop="description" content="知行合一">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="信息可视化图像聚类大作业 | tommy's blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          信息可视化图像聚类大作业
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2022-07-08 18:44:20" itemprop="dateCreated datePublished" datetime="2022-07-08T18:44:20+08:00">2022-07-08</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h2 id="作业要求"><a href="#作业要求" class="headerlink" title="作业要求"></a>作业要求</h2><p>课程作业: 基于已完成的练习，实现一个图片颜色的可视化页面，基本功能<br>要求如下：</p>
+<ol>
+<li>对图片中的像素颜色进行聚类，类的数量K可在代码中指定（聚类算法可使用k-means<br>等，聚类算法尽可能自己实现）；</li>
+<li>须可视化的信息包含2个维度：（1）聚类中心的颜色或类里像素颜色的均值；（2）某<br>类里颜色的数量。</li>
+<li>选择一种EChart可视化样式对聚类结果进行展示，可使用柱状图、饼图等。<br>进阶功能（不强制要求）:</li>
+<li>可交互式选择不同的图片；</li>
+<li>可切换可视化样式（例如，可在饼图柱状图等图表间切换）；</li>
+<li>其他功能<br>作业请以“学号+姓名”命名，打包为zip文件（注意不是rar格式）<br>上传到超星泛雅平台课程作业栏目<br>作业提交截止时间为07月10日晚11:59</li>
+</ol>
+<h2 id="完成过程"><a href="#完成过程" class="headerlink" title="完成过程"></a>完成过程</h2><p>讲真，我感觉这个项目对于初学前端开发的我来说挺难的。一来是因为不太熟练js的异步操作，二来是希望加一些新的东西，但是这些新的东西也属于自己的未知领域，三来就是自己对kmeans掌握的并不是十分熟练。</p>
+<h3 id="最终代码"><a href="#最终代码" class="headerlink" title="最终代码"></a>最终代码</h3><p>infovis.html</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">	&lt;head&gt;</span><br><span class="line">		&lt;meta charset=&quot;UTF-8&quot;/&gt;</span><br><span class="line">		&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot; /&gt;</span><br><span class="line">		&lt;title&gt;infovis_kmeans&lt;/title&gt;</span><br><span class="line">		&lt;style&gt;</span><br><span class="line">			canvas &#123;border:4px solid #c3c3c3 &#125;</span><br><span class="line">		&lt;/style&gt;</span><br><span class="line">	&lt;/head&gt;</span><br><span class="line">	&lt;body&gt;</span><br><span class="line">		&lt;h1&gt;GET_PIXEL_KMEANS&lt;/h1&gt;</span><br><span class="line">		&lt;h6&gt;利用kmeans对指定图片和指定k值实现了聚类,并获得了各聚类的中心颜色与像素数量&lt;/h6&gt;</span><br><span class="line">		&lt;h6&gt;可以选择显示的样式;并且可交互式选择不同图片（利用html5的FileReader特性）&lt;/h6&gt;</span><br><span class="line">		&lt;h6&gt;图片的显示是自动的，但是由于浏览器缩放限制可能无法显示完全，但保证每一个像素点都得到了扫描&lt;/h6&gt;</span><br><span class="line">		&lt;canvas&gt;&lt;/canvas&gt;</span><br><span class="line">		&lt;section&gt;</span><br><span class="line">			&lt;input id=&quot;UPLOAD&quot; type=&quot;file&quot; /&gt;</span><br><span class="line">			&lt;input class=&quot;k&quot; type=&quot;number&quot; placeholder=&quot;PLEASE ENTER K&quot; /&gt;</span><br><span class="line">			&lt;button class=&quot;start&quot;&gt;START&lt;/button&gt;</span><br><span class="line">			&lt;form action=&quot;&quot;&gt;</span><br><span class="line">				&lt;input type=&quot;radio&quot; name=&quot;r&quot; id=&quot;r1&quot; value=&quot;1&quot;&gt;柱状图&lt;br&gt;</span><br><span class="line">				&lt;input type=&quot;radio&quot; name=&quot;r&quot; id=&quot;r2&quot; value=&quot;2&quot;&gt;饼状图&lt;br&gt;</span><br><span class="line">			&lt;/form&gt;</span><br><span class="line">			&lt;div&gt;宽度&lt;/div&gt; &lt;div id=&quot;wid&quot;&gt;&lt;/div&gt;</span><br><span class="line">			&lt;div&gt;高度&lt;/div&gt; &lt;div id=&quot;hei&quot;&gt;&lt;/div&gt;</span><br><span class="line">		&lt;/section&gt;</span><br><span class="line">		&lt;div id=&quot;container1&quot; style=&quot;height:600%&quot;&gt;&lt;/div&gt;</span><br><span class="line">	&lt;/body&gt;</span><br><span class="line">	&lt;script type=&quot;text/javascript&quot; src=&quot;echarts.min.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">	&lt;script src=&quot;kmeans.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">	&lt;script&gt;</span><br><span class="line">		let file=null;</span><br><span class="line">		let canvas=document.querySelector(&quot;canvas&quot;);</span><br><span class="line">		let image=new Image();</span><br><span class="line">		let reader=new FileReader();</span><br><span class="line">		let hh,ww;</span><br><span class="line">		image.onload=function()&#123;</span><br><span class="line">			let context=canvas.getContext(&quot;2d&quot;);</span><br><span class="line">			ww=image.width;hh=image.height;</span><br><span class="line">			canvas.width=ww;canvas.height=hh;</span><br><span class="line">			context.drawImage(image,0,0,ww,hh);//画图</span><br><span class="line">			document.getElementById(&quot;wid&quot;).innerHTML=ww;</span><br><span class="line">			document.getElementById(&quot;hei&quot;).innerHTML=hh;</span><br><span class="line">		&#125;;</span><br><span class="line">		reader.onload=function(e)&#123; image.src=e.target.result;&#125;;//将图片导入image </span><br><span class="line">		document.querySelector(&quot;#UPLOAD&quot;).onchange=function(e)&#123;</span><br><span class="line">			file = event.target.files[0];</span><br><span class="line">			if(file.type.indexOf(&quot;image&quot;)==0)&#123;reader.readAsDataURL(file);&#125;</span><br><span class="line">		&#125;;</span><br><span class="line">		document.querySelector(&quot;button.start&quot;).onclick=function()&#123;</span><br><span class="line">			let context=canvas.getContext(&quot;2d&quot;);</span><br><span class="line">			let K=parseInt(document.querySelector(&quot;input.k&quot;).value);</span><br><span class="line">			if(K&lt;=0)&#123;alert(&quot;PLEASE ENTER RIGHT K&quot;);return;&#125;</span><br><span class="line">			//由于rgb空间中点的坐标都是整数，所以最小误差定为一个小的整数即可，这里取6</span><br><span class="line">			if(document.getElementById(&quot;r1&quot;).checked)&#123; //柱状图</span><br><span class="line">				work(context,&#123;height:hh,width:ww&#125;,K,6,0);</span><br><span class="line">			&#125;else&#123;									//饼状图</span><br><span class="line">				work(context,&#123;height:hh,width:ww&#125;,K,6,1);</span><br><span class="line">			&#125;</span><br><span class="line">			</span><br><span class="line">		&#125;;</span><br><span class="line">	&lt;/script&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+<p>kmeans.js</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br><span class="line">246</span><br><span class="line">247</span><br><span class="line">248</span><br><span class="line">249</span><br><span class="line">250</span><br><span class="line">251</span><br><span class="line">252</span><br><span class="line">253</span><br><span class="line">254</span><br><span class="line">255</span><br></pre></td><td class="code"><pre><span class="line">class pixel&#123; //存储每个像素的rgb值,所属簇的中心_boss和距离_dist</span><br><span class="line">	constructor(r,g,b,id,boss,dist)&#123;</span><br><span class="line">		this._id=id;</span><br><span class="line">		this._r=r;</span><br><span class="line">		this._g=g;</span><br><span class="line">		this._b=b;</span><br><span class="line">		this._boss=boss;//_boss可能是一个不存在于像素点集的点,记索引值</span><br><span class="line">		this._dist=dist;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">var cnt=[];</span><br><span class="line">var colordata=[];</span><br><span class="line">var center=[];</span><br><span class="line">var sum1,sum3;</span><br><span class="line">var space=[];</span><br><span class="line">function deepcopy(obj)&#123;  //定义一个空的对象或者是数组</span><br><span class="line">//如果当前要复制的是数组就用一个空数组，或者用一个空对象。</span><br><span class="line">	var tempObj=Array.isArray(obj) ? [] : &#123;&#125;;</span><br><span class="line"> 	var tempObj=&#123;&#125;</span><br><span class="line"> 	if(Array.isArray(obj)) &#123;</span><br><span class="line">       tempObj=[];</span><br><span class="line">   	&#125;</span><br><span class="line">   for(var key in obj) &#123;</span><br><span class="line">        var t=obj[key];</span><br><span class="line">        // 当要拷贝的内容还是一个对象或者是数组</span><br><span class="line">       if(Array.isArray(t) || typeof t === &quot;object&quot;) &#123;</span><br><span class="line">           tempObj[key] = deepcopy(obj[key])</span><br><span class="line">       &#125;</span><br><span class="line">       else &#123;// 当要拷贝的内容只是一个基本类型的数据</span><br><span class="line">           tempObj[key]=t</span><br><span class="line">       &#125;</span><br><span class="line">   	&#125;</span><br><span class="line">   	return tempObj;</span><br><span class="line">&#125;</span><br><span class="line">function rando(minn,maxx)&#123;</span><br><span class="line">	return Math.floor(Math.random()*(maxx-minn))+minn;</span><br><span class="line">&#125;</span><br><span class="line">function work(context,img,K,delta,show)&#123; //context背景 img图片 delta允许的误差值 show展现类型</span><br><span class="line">	var data1=context.getImageData(0,0,img.width,img.height).data;</span><br><span class="line">	sum1=(img.width)*(img.height);</span><br><span class="line">	sum3=(img.width)*(img.height);</span><br><span class="line">	for(var i=0;i&lt;img.height;i++)&#123;</span><br><span class="line">		for(var j=0;j&lt;img.width;j++)&#123;</span><br><span class="line">			let r=data1[(img.width*i+j)*4];</span><br><span class="line">			let g=data1[(img.width*i+j)*4+1];</span><br><span class="line">			let b=data1[(img.width*i+j)*4+2];</span><br><span class="line">			space.push(new pixel(r,g,b,(img.width*i+j),0,6666666));</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	//随机生成点</span><br><span class="line">	for(let i=0;i&lt;K;i++)&#123;</span><br><span class="line">		center[i]=[];</span><br><span class="line">		var exist=1;</span><br><span class="line">		while(exist)&#123;</span><br><span class="line">			var tmp=rando(0,sum1-1);</span><br><span class="line">			var tmp1=1; </span><br><span class="line">			for(let j=0;j&lt;i;j++)if(space[tmp]._id==center[j]._id)&#123;tmp1=0;break;&#125;</span><br><span class="line">			if(tmp1==1)&#123;</span><br><span class="line">				exist=0;</span><br><span class="line">				center[i]=space[tmp];</span><br><span class="line">				space[tmp]._boss=tmp;</span><br><span class="line">				space[tmp]._dist=0;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		cnt[i]=0;</span><br><span class="line">	&#125;</span><br><span class="line">	for(let i=0;i&lt;sum1;i++)&#123;</span><br><span class="line">		var mindist=6666666;</span><br><span class="line">		var minindex=-1;</span><br><span class="line">		var minindexx=-1;</span><br><span class="line">		for(let j=0;j&lt;K;j++)&#123;</span><br><span class="line">			var tmpdist=Math.sqrt(Math.pow(space[i]._r-center[j]._r,2)+Math.pow(space[i]._g-center[j]._g,2)+Math.pow(space[i]._b-center[j]._b,2));</span><br><span class="line">			if(mindist&gt;tmpdist)&#123;</span><br><span class="line">				mindist=tmpdist;</span><br><span class="line">				minindex=center[j]._id;</span><br><span class="line">				minindexx=j;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		if(minindex!=-1)&#123;</span><br><span class="line">			cnt[minindexx]++;</span><br><span class="line">			space[i]._boss=minindex;</span><br><span class="line">			space[i]._dist=mindist;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	var temp=0;</span><br><span class="line">	while(true)&#123;</span><br><span class="line">		temp=0;</span><br><span class="line">		//更新</span><br><span class="line">		var oldcenter=[];</span><br><span class="line">		var oldcnt=[];</span><br><span class="line">		oldcenter=deepcopy(center);</span><br><span class="line">		oldcnt=deepcopy(cnt);</span><br><span class="line">		//更新簇</span><br><span class="line">		var sum2=[];</span><br><span class="line">		for(let i=0;i&lt;K;i++)&#123;</span><br><span class="line">			sum2[i]=[];</span><br><span class="line">			sum2[i][0]=0;sum2[i][1]=0;sum2[i][2]=0;</span><br><span class="line">			cnt[i]=0;</span><br><span class="line">		&#125;</span><br><span class="line">		for(let i=0;i&lt;sum1;i++)&#123;</span><br><span class="line">			for(let j=0;j&lt;K;j++)&#123;</span><br><span class="line">				if(space[i]._boss==center[j]._id)&#123;</span><br><span class="line">					cnt[j]++;</span><br><span class="line">					sum2[j][0]+=space[i]._r;</span><br><span class="line">					sum2[j][1]+=space[i]._g;</span><br><span class="line">					sum2[j][2]+=space[i]._b;</span><br><span class="line">					break;</span><br><span class="line">				&#125;</span><br><span class="line">				if(space[i]._r==center[j]._r&amp;&amp;space[i]._g==center[j]._g&amp;&amp;space[i]._b==center[j]._b)&#123;</span><br><span class="line">					cnt[j]++;</span><br><span class="line">					sum2[j][0]+=space[i]._r;</span><br><span class="line">					sum2[j][1]+=space[i]._g;</span><br><span class="line">					sum2[j][2]+=space[i]._b;</span><br><span class="line">					break;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		for(let i=0;i&lt;K;i++)&#123; //由于r,g,b值皆为整数，故应该取整</span><br><span class="line">			if(cnt[i]!=0)&#123;</span><br><span class="line">				center[i]._r=Math.floor(sum2[i][0]/cnt[i]);</span><br><span class="line">				center[i]._g=Math.floor(sum2[i][1]/cnt[i]);</span><br><span class="line">				center[i]._b=Math.floor(sum2[i][2]/cnt[i]);</span><br><span class="line">				center[i]._id=sum3++;</span><br><span class="line">			&#125;</span><br><span class="line">			else&#123;</span><br><span class="line">				center[i]._r=1;</span><br><span class="line">				center[i]._g=1;</span><br><span class="line">				center[i]._b=1;</span><br><span class="line">				center[i]._id=sum3++;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		for(let i=0;i&lt;sum1;i++)&#123;</span><br><span class="line">			var mindist=666666666;</span><br><span class="line">			var minindex=-1;</span><br><span class="line">			for(let j=0;j&lt;K;j++)&#123;</span><br><span class="line">				var tmpdist=Math.sqrt(Math.pow(space[i]._r-center[j]._r,2)+Math.pow(space[i]._g-center[j]._g,2)+Math.pow(space[i]._b-center[j]._b,2));</span><br><span class="line">				if(mindist&gt;tmpdist)&#123;</span><br><span class="line">					mindist=tmpdist;</span><br><span class="line">					minindex=center[j]._id;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">			space[i]._boss=minindex;</span><br><span class="line">			space[i]._dist=mindist;</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		for(let i=0;i&lt;K;i++)&#123;temp+=Math.sqrt((center[i]._r-oldcenter[i]._r)**2+(center[i]._g-oldcenter[i]._g)**2+(center[i]._b-oldcenter[i]._b)**2);&#125;</span><br><span class="line">		if(temp&lt;=delta)&#123;</span><br><span class="line">			for(let i=0;i&lt;K;i++)&#123;</span><br><span class="line">				cnt[i]=oldcnt[i];</span><br><span class="line">			&#125;</span><br><span class="line">			break;</span><br><span class="line">			</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	for(let i=0;i&lt;K;i++)&#123;</span><br><span class="line">		colordata[i]=&#x27;rgb(&#x27;+center[i]._r+&#x27;,&#x27;+center[i]._g+&#x27;,&#x27;+center[i]._b+&#x27;)&#x27;;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	if(show==0)&#123;//柱状图</span><br><span class="line">		var dom=document.getElementById(&quot;container1&quot;);</span><br><span class="line">		var myChart = echarts.init(dom);</span><br><span class="line">		var app = &#123;&#125;;</span><br><span class="line">		var option;</span><br><span class="line">		option=&#123;</span><br><span class="line">			tooltip: &#123;</span><br><span class="line">				trigger: &#x27;axis&#x27;,</span><br><span class="line">				axisPointer: &#123;</span><br><span class="line">					type: &#x27;shadow&#x27;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;,</span><br><span class="line">			xAxis: [&#123;</span><br><span class="line">				type: &#x27;category&#x27;,</span><br><span class="line">				data: colordata,</span><br><span class="line">				show:true,</span><br><span class="line">				axisTick: &#123;</span><br><span class="line">					alignWithLabel: true</span><br><span class="line">				&#125;,</span><br><span class="line">				axisLabel:&#123;</span><br><span class="line">					interval:(index,value) =&gt;&#123;return false&#125;//设置X轴数据不显示</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;],</span><br><span class="line">			yAxis: [&#123;</span><br><span class="line">				type: &#x27;value&#x27;,</span><br><span class="line">				show:true</span><br><span class="line">			&#125;],</span><br><span class="line">			grid:&#123;</span><br><span class="line">				containLabel:true</span><br><span class="line">			&#125;,</span><br><span class="line">			</span><br><span class="line">			series: [&#123;</span><br><span class="line">				name: &quot;Total&quot;,</span><br><span class="line">				data: cnt,</span><br><span class="line">				type: &#x27;bar&#x27;,</span><br><span class="line">				barWidth: &#x27;50%&#x27;,</span><br><span class="line">				itemStyle: &#123;   </span><br><span class="line">	　　　　　  //每个柱子的颜色即为colordata数组里的每一项</span><br><span class="line">					color: function (params)&#123;</span><br><span class="line">						//console.log(params.dataIndex);</span><br><span class="line">						//console.log(colorList[params.dataIndex]);</span><br><span class="line">						return colordata[params.dataIndex];</span><br><span class="line">					&#125;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;]</span><br><span class="line">		&#125;;</span><br><span class="line">		if (option&amp;&amp;typeof option===&#x27;object&#x27;) &#123;</span><br><span class="line">			myChart.setOption(option);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;else</span><br><span class="line">	&#123;</span><br><span class="line">		var dom = document.getElementById(&quot;container1&quot;);</span><br><span class="line">		var myChart=echarts.init(dom);</span><br><span class="line">		var app=&#123;&#125;;</span><br><span class="line">		var piedata=new Array();</span><br><span class="line">		for(var i=0;i&lt;K;i++)&#123;</span><br><span class="line">			piedata.push(&#123;value:cnt[i],name:colordata[i],itemStyle:&#123;color:colordata[i]&#125;&#125;);</span><br><span class="line">		&#125;</span><br><span class="line">		var option;</span><br><span class="line">		option=&#123;</span><br><span class="line">		tooltip: &#123;</span><br><span class="line">			trigger: &#x27;item&#x27;</span><br><span class="line">		&#125;,</span><br><span class="line">		legend: &#123;</span><br><span class="line">			top: &#x27;5%&#x27;,</span><br><span class="line">			left: &#x27;center&#x27;</span><br><span class="line">		&#125;,</span><br><span class="line">		series:[&#123;</span><br><span class="line">			name: &#x27;Access From&#x27;,</span><br><span class="line">			type: &#x27;pie&#x27;,</span><br><span class="line">			radius: [&#x27;30%&#x27;,&#x27;70%&#x27;],</span><br><span class="line">			avoidLabelOverlap: false,</span><br><span class="line">			label: &#123;</span><br><span class="line">				show: false,</span><br><span class="line">				position: &#x27;center&#x27;</span><br><span class="line">			&#125;,</span><br><span class="line">			emphasis: &#123;</span><br><span class="line">				label: &#123;</span><br><span class="line">					show: true,</span><br><span class="line">					fontSize: &#x27;40&#x27;,</span><br><span class="line">					fontWeight: &#x27;bold&#x27;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;,</span><br><span class="line">			labelLine: &#123;</span><br><span class="line">				show: false</span><br><span class="line">			&#125;,</span><br><span class="line">			data:piedata</span><br><span class="line">			&#125;</span><br><span class="line">		]&#125;;</span><br><span class="line">		</span><br><span class="line">		if (option &amp;&amp; typeof option === &#x27;object&#x27;) &#123;</span><br><span class="line">			myChart.setOption(option);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/infovis/" rel="tag"># infovis</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2022/07/04/infovis1/" rel="prev" title="信息可视化1">
+                  <i class="fa fa-chevron-left"></i> 信息可视化1
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2022/09/05/csapp1/" rel="next" title="csapp1">
+                  csapp1 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">tommy</span>
+</div>
+
+<!--
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>-->
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+<script src="https://cdn.jsdelivr.net/npm/hexo-generator-searchdb@1.4.0/dist/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>
