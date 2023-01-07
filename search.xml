@@ -2618,4 +2618,79 @@
         <tag>secret</tag>
       </tags>
   </entry>
+  <entry>
+    <title>华东师范大学《线性代数A》2021-2022学年第2学期C卷</title>
+    <url>/2023/01/07/ecnulinearalgebrafinal2022-1C/</url>
+    <content><![CDATA[<p>嘻嘻嘻</p>
+<p>这张卷纸为什么是C卷？因为2021-2022-2学期因为上海疫情学校封校封寝，正考(A卷)和补考(B卷)都放到了2022-2023-1学期初。</p>
+<p>这套卷纸在2022年6月初考的，只有准毕业生能参加。整体来说难度不大，放在这里大家可以参考一下。</p>
+<p>注：以下试题中，$E$表示单位矩阵，$M^{-1}$表示$M$的逆矩阵，$M^{T}$表示$M$的转置矩阵，$Tr(M)$表示$M$的迹。所有题目要有一定的解题步骤。</p>
+<h2 id="一-15分"><a href="#一-15分" class="headerlink" title="一(15分)"></a>一(15分)</h2><p>(1)(7分)</p>
+<p>设四阶行列式$D_4&#x3D;$$$<br>\left|\begin {array}{c}<br>1&amp;-1&amp;3&amp;1 \<br>0&amp;1&amp;0&amp;2 \<br>1&amp;3&amp;-1&amp;4 \<br>2&amp;5&amp;3&amp;1<br>\end{array}\right|<br>$$ $A_{4i}(i&#x3D;1,2,3,4)$分别为该行列式的第四行元素的代数余子式，求$A_{41}+2A_{42}-A_{43}+2A_{44}$的值</p>
+<p>(2)(8分)设$A$是3阶实对称矩阵，向量$\alpha&#x3D;$ $$\left[ \begin{matrix}<br>m\ -m\1\end{matrix} \right]  $$,$\beta&#x3D;$ $$\left[ \begin{matrix}<br>m\ 1\1-m\end{matrix} \right]  $$分别是齐次线性方程组$A\mathbf{x}&#x3D;0和(A+E)\mathbf{x}&#x3D;0$的解，求m的值</p>
+<h2 id="二-15分"><a href="#二-15分" class="headerlink" title="二(15分)"></a>二(15分)</h2><p>设n阶矩阵$A$的n个特征值为$1,2,…n$,n阶矩阵$B$满足$E-B&#x3D;AB$</p>
+<p>(1)(6分)证明:$B$是可逆的</p>
+<p>(2)(9分)求$|B^{-1}|$</p>
+<h2 id="三-10分"><a href="#三-10分" class="headerlink" title="三(10分)"></a>三(10分)</h2><p>设数域$P$上的线性空间$V$中的三个向量$\alpha,\beta,\gamma$是线性无关的，若要使得$V$中的向量$\alpha+2\beta,2\beta+k\gamma,3\gamma+\beta$是线性相关的，求k的值</p>
+<h2 id="四-10分"><a href="#四-10分" class="headerlink" title="四(10分)"></a>四(10分)</h2><p>如果三阶矩阵$A&#x3D;$ $$\left[ \begin{matrix}<br>2&amp;0&amp;0\ 0&amp;a&amp;2\0&amp;2&amp;1\end{matrix} \right]  $$和$B&#x3D;$$$\left[ \begin{matrix}<br>-1&amp;0&amp;0\ -4&amp;t&amp;0\6&amp;0&amp;3\end{matrix} \right]  $$是相似的，求$a,t$的值</p>
+<h2 id="五-10分"><a href="#五-10分" class="headerlink" title="五(10分)"></a>五(10分)</h2><p>$a$取何值时矩阵$A &#x3D;$$$\left[ \begin{matrix}<br>2&amp;1&amp;4\ 0&amp;3&amp;a\0&amp;0&amp;3\end{matrix} \right]  $$共有两个线性无关的特征向量？试说明理由.</p>
+<h2 id="六-15分"><a href="#六-15分" class="headerlink" title="六(15分)"></a>六(15分)</h2><p>试用正交线性变换$X&#x3D;PY$($P$是正交矩阵)将二次型$f&#x3D;x_{1}^2+4x_{2}^2+4x_{3}^2-4x_{1}x_{2}+4x_{1}x_{3}-8x_{2}x_{3}$化为标准型，并求出它的秩</p>
+<h2 id="七-15分"><a href="#七-15分" class="headerlink" title="七(15分)"></a>七(15分)</h2><p>命题:设$A$是n阶实的反对称矩阵($A^{T}&#x3D;-A$)则对任意的向量$\alpha \in{\mathbb{R}^{n}}$,$\alpha \bot A\alpha $,且$A-E$可逆</p>
+<p>你认为这个命题正确吗？如果正确请给出证明。如果不正确，请给出反例。</p>
+<h2 id="八-10分"><a href="#八-10分" class="headerlink" title="八(10分)"></a>八(10分)</h2><p>设三阶矩阵$A,B$满足$2A^{-1}B&#x3D;2B+E$,如果令矩阵$B&#x3D;\frac{1}{2}$ $$\left[ \begin{matrix}<br>0&amp;-1&amp;0\ 1&amp;-1&amp;0\0&amp;0&amp;-3\end{matrix} \right]  $$请求出$A-E$的第二行的元素。</p>
+]]></content>
+      <tags>
+        <tag>linear_algebra</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>华东师范大学《线性代数》2013-2014学年第二学期期末考试A卷</title>
+    <url>/2023/01/07/ecnulinearalgebrafinal2014/</url>
+    <content><![CDATA[<p>这张卷纸其实出得挺好的，自己在当时考线代前两天才做此卷，有些晚了&#x2F;捂脸</p>
+<p>在该试题中,$E$表示单位矩阵</p>
+<h2 id="单项选择题"><a href="#单项选择题" class="headerlink" title="单项选择题"></a>单项选择题</h2><p>(共15分，每小题3分)</p>
+<p>1 设$A,B$是n阶方阵，满足$AB&#x3D;O$,则必有( )</p>
+<p>(A) $A&#x3D;B&#x3D;O$ (B) $A+B&#x3D;O$</p>
+<p>(C) $|A|&#x3D;0或|B|&#x3D;0$ (D) $|A|+|B|&#x3D;0$</p>
+<p>2 下列说法中不正确的是( )</p>
+<p>(A) 若m × n 矩阵$A与B$等价，则它们的秩相同</p>
+<p>(B) 若m × n 矩阵$A与B$秩相同，则它们的等价</p>
+<p>(C) 若n维向量组 $\alpha_{1},\alpha_{2}…\alpha_{s}$与 $\beta_{1},\beta_{2}…\beta_{t}$等价，则它们的秩相同</p>
+<p>(D) 若n维向量组 $\alpha_{1},\alpha_{2}…\alpha_{s}$与 $\beta_{1},\beta_{2}…\beta_{t}$的秩相同，则它们等价</p>
+<p>3 设 $A$是m × n 矩阵，$B$是n × m 矩阵，则线性方程组$(AB)\mathbf{x}&#x3D;\mathbf{0}$</p>
+<p>(A) 当n&gt;m时仅有零解</p>
+<p>(B) 当n&gt;m时必有非零解</p>
+<p>(C) 当m&gt;n时仅有零解</p>
+<p>(D) 当m&gt;n时必有非零解</p>
+<p>4 若n阶方阵$A与B$相似，则</p>
+<p>(A)$A与B$合同</p>
+<p>(B)$A与B$特征方程相同</p>
+<p>(C)$A与B$相似于同一对角矩阵</p>
+<p>(D)存在正交矩阵$Q$使得$B&#x3D;Q^{-1}AQ$</p>
+<p>5 设$A&#x3D;$ $$\left[ \begin{matrix} 1 &amp; 1 &amp; 1\ 1 &amp; 1 &amp; 1 \ 1 &amp; 1 &amp; 1 \end{matrix} \right]  $$ $B&#x3D;$ $$\left[ \begin{matrix} 3 &amp; 0 &amp; 0\ 0 &amp; 0 &amp; 0 \ 0 &amp; 0 &amp; 0 \end{matrix} \right]  $$ 则$A与B$ </p>
+<p>(A) 合同且相似</p>
+<p>(B) 合同但不相似</p>
+<p>(C) 不合同但相似</p>
+<p>(D) 不合同且不相似</p>
+<h2 id="填空题"><a href="#填空题" class="headerlink" title="填空题"></a>填空题</h2><p>(共25分，每小题5分)</p>
+<p>6 已知3阶方阵$A$的3个特征值时1,2,3,则$|A^{-1}+A^{*}|&#x3D;?$</p>
+<p>7 设矩阵$A&#x3D;$ $$\left[ \begin{matrix} 1 &amp; 1 &amp; 1\ 0 &amp; 2 &amp; 2 \ 0 &amp; 0 &amp; 3 \end{matrix} \right]  $$则$(A^{*})^{-1}&#x3D;?$</p>
+<p>8 若n为向量组$\alpha_{1},\alpha_{2},\alpha_{3},\alpha_{4}(n\geq4)$线性无关，则向量组$\alpha_{1}+\alpha_{2},\alpha_{2}+\alpha_{3},\alpha_{3}+\alpha_{4},\alpha_{4}+\alpha_{1}$的关系是?(填”线性相关”或”线性无关”)</p>
+<p>9 若$\alpha,\beta,\gamma$是规范正交向量组，则$||\alpha+\beta+\gamma||&#x3D;?$</p>
+<p>10 若$A&#x3D;$ $$\left[ \begin{matrix} k &amp; k \ k &amp; -2 \end{matrix} \right]  $$是负定矩阵，那么$k$满足的条件是什么?</p>
+<h2 id="计算及证明题"><a href="#计算及证明题" class="headerlink" title="计算及证明题"></a>计算及证明题</h2><p>(共60分，要求写出具体过程)</p>
+<p>11(10分)设n阶方阵$A&#x3D;(\alpha_{1},\alpha_{2},…,\alpha_{n})$,$B&#x3D;(\alpha_{1}+\alpha_{2},\alpha_{2}+\alpha_{3},…,\alpha_{n}+\alpha_{1})$,其中$\alpha_{1},\alpha_{2},…,\alpha_{n}$为n维向量$n\geq2$.已知$|A|&#x3D;a (a&#x3D;0)$,求$|B|$的值</p>
+<p>12(10分)设4维向量组$\alpha_1&#x3D;$$\left[ \begin{matrix}<br>a \ 1 \1 \1 \end{matrix} \right]  $ $\alpha_2&#x3D;$$\left[ \begin{matrix}<br>1 \ a \1 \1 \end{matrix} \right]  $ $\alpha_3&#x3D;$$\left[ \begin{matrix}<br>1 \ 1 \a \1 \end{matrix} \right]  $ $\alpha_4&#x3D;$ $\left[ \begin{matrix}<br>1 \ 1 \1 \a \end{matrix} \right]  $问当$a$为何值时$\alpha_{1},\alpha_{2},\alpha_{3},\alpha_{4}$的秩为3？$\alpha_{1},\alpha_{2},\alpha_{3},\alpha_{4}$的秩为3时，求其一个极大无关组，并将其余向量用该极大无关组线性表示.</p>
+<p>13(10分)已知$A&#x3D;$ $$\left[ \begin{matrix} 4 &amp; -3 &amp; 3\ 5 &amp; -4 &amp; 5 \ 0 &amp; 0 &amp; 1 \end{matrix} \right]  $$,求可逆矩阵$P$使得$P^{-1}AP$为对角矩阵，并求$A^{2015}$</p>
+<p>14(10分) 用配方法化二次型$f&#x3D;-4x_{1}x_{2}+2x_{1}x_{3}+2x_{2}x_{3}$为标准型,并写出对应的可你线性变换矩阵.</p>
+<p>15(10分) 设$A$为n阶方阵，$\mathbf{x}$为n维向量$n\geq2$,证明:</p>
+<p>(1)若存在非负整数k使得$A^{k}\mathbf{x}&#x3D;\mathbf{0}且A^{k+1}\mathbf{x}&#x3D;\mathbf{0}$则$\mathbf{x},\mathbf{Ax},…,\mathbf{A^{k}x}$线性无关</p>
+<p>(2)$r(A^{n})&#x3D;r(A^{n+1})$</p>
+<p>16(10分) (1)试构造一个4阶实正交矩阵，使得它的16个元素的绝对值都相同</p>
+<p>(2)能否构造一个6阶实正交矩阵，使得它的所有36个元素的绝对值都相同？如果能，试构造出。若不能，说明理由。</p>
+]]></content>
+      <tags>
+        <tag>linear_algebra</tag>
+      </tags>
+  </entry>
 </search>
