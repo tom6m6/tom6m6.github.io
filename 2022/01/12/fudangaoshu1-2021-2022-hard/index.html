@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 5.4.2">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" integrity="sha256-DfWjNxDkM94fVBWx1H5BMMp0Zq7luBlV8QRcSES7s+0=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.11.1","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+
+    <meta name="description" content="这个题反正我不是很会做，倒是会猜测得出答案。 转载自https:&#x2F;&#x2F;zhuanlan.zhihu.com&#x2F;p&#x2F;454773051 今天这个主要也是在训练自己使用Markdown来书写公式 题目已知定义在$\mathbb{R}$上的实函数$f(x)$具有连续的导函数，且满足$f(0)&#x3D;\frac{4{\pi}}{3}$以及$f’(x)&#x3D;\frac{sin f(x)}{\sqrt">
+<meta property="og:type" content="article">
+<meta property="og:title" content="复旦大学2021-2022秋季学期高数A（上）压轴题">
+<meta property="og:url" content="http://example.com/2022/01/12/fudangaoshu1-2021-2022-hard/index.html">
+<meta property="og:site_name" content="tommy&#39;s blog">
+<meta property="og:description" content="这个题反正我不是很会做，倒是会猜测得出答案。 转载自https:&#x2F;&#x2F;zhuanlan.zhihu.com&#x2F;p&#x2F;454773051 今天这个主要也是在训练自己使用Markdown来书写公式 题目已知定义在$\mathbb{R}$上的实函数$f(x)$具有连续的导函数，且满足$f(0)&#x3D;\frac{4{\pi}}{3}$以及$f’(x)&#x3D;\frac{sin f(x)}{\sqrt">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-01-12T03:38:17.000Z">
+<meta property="article:modified_time" content="2023-01-07T05:22:56.701Z">
+<meta property="article:author" content="tommy">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://example.com/2022/01/12/fudangaoshu1-2021-2022-hard/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2022/01/12/fudangaoshu1-2021-2022-hard/","path":"2022/01/12/fudangaoshu1-2021-2022-hard/","title":"复旦大学2021-2022秋季学期高数A（上）压轴题"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>复旦大学2021-2022秋季学期高数A（上）压轴题 | tommy's blog</title>
+  
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">tommy's blog</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A2%98%E7%9B%AE"><span class="nav-number">1.</span> <span class="nav-text">题目</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A7%A3%E7%AD%94"><span class="nav-number">2.</span> <span class="nav-text">解答</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="tommy"
+      src="https://s6.jpg.cm/2022/05/19/LOTE1r.jpg">
+  <p class="site-author-name" itemprop="name">tommy</p>
+  <div class="site-description" itemprop="description">知行合一</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">52</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">16</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/01/12/fudangaoshu1-2021-2022-hard/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://s6.jpg.cm/2022/05/19/LOTE1r.jpg">
+      <meta itemprop="name" content="tommy">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="tommy's blog">
+      <meta itemprop="description" content="知行合一">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="复旦大学2021-2022秋季学期高数A（上）压轴题 | tommy's blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          复旦大学2021-2022秋季学期高数A（上）压轴题
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2022-01-12 11:38:17" itemprop="dateCreated datePublished" datetime="2022-01-12T11:38:17+08:00">2022-01-12</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2023-01-07 13:22:56" itemprop="dateModified" datetime="2023-01-07T13:22:56+08:00">2023-01-07</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p> 这个题反正我不是很会做，倒是会猜测得出答案。</p>
+<p>转载自<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/454773051">https://zhuanlan.zhihu.com/p/454773051</a></p>
+<p>今天这个主要也是在训练自己使用Markdown来书写公式</p>
+<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>已知定义在$\mathbb{R}$上的实函数$f(x)$具有连续的导函数，且满足$f(0)&#x3D;\frac{4{\pi}}{3}$以及$f’(x)&#x3D;\frac{sin f(x)}{\sqrt{1+f^2(x)}}$ 记$a_n&#x3D;\int_{-n}^{n} \frac{sin^2 f(x)}{1+f^2(x)}, dx$ 试判断$(a_n)_{n\in{\mathbb{N^+}}}$</p>
+<p>的敛散性。并求出$f(x)$的单调区间，并求$\lim_{n \to +\infty}f(x)$和$\lim_{n \to -\infty}f(x)$</p>
+<h2 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h2><p>我们先证明$f(x)$在$\mathbb{R}$上单调递减。</p>
+<p>反设$f(x)$不单调递减，由于$f(x)$具有连续的导函数，存在$x’ \in{\mathbb{R}}$使得$f’(x’)&gt;0$,由于$f’(0)&lt;0,x’\not&#x3D;0$</p>
+<p>先设$x’&gt;0$ 由$f’(x)$连续和介值定理知$X&#x3D;{x&gt;0|sinf(x)&#x3D;0}$不为空集</p>
+<p>从而 $inf{X}$ 存在且非负。由$sinf(x)$的连续性知$sinf(inf{X})&#x3D;0$ 从而$inf{X}&gt;0$</p>
+<p>记$x_0&#x3D;inf{X}$则对$\forall{x\in{(0,x_0)}},sinf(x)&lt;0$从而$f(x)$在$[0,x_0]$单调递减。由$sinf(x_0)&#x3D;0$知存在唯一的$k\in{\mathbb{Z}}$使得$f(x_0)&#x3D;k\pi$，由单调性知$k\leq{1}$</p>
+<p>若$k\leq{0}$ ，则由连续性和介值定理知存在$x’_0$使得$f(x’_0)&#x3D;\pi$从而$x’_0&lt;x_0 且 x’_0 \in{X}$矛盾，即$f(x_0)&#x3D;\pi$</p>
+<p>进一步，由于$f(x)$在$[0,x_0 ]$连续单调递减，所以$f(x)$在$[0,x_0 ]$上的值域为$[\pi,\frac{4\pi}{3}]$从而对一切整数$n\geq{4}$存在唯一的$x_n \in(0,x_0)$使得$f(x_n)&#x3D;\frac{(n+1)\pi}{n}$</p>
+<p>再进一步，显然$(x_n)<em>{n\geq{4}}$ 严格单调递增，且有上界$x_0$ 我们下面证明$\lim</em>{n \to +\infty}x_n&#x3D;+\infty$,从而导出矛盾。</p>
+<p>注意到对一切$t\in[x_n,x_{n+1}]$总有$0&gt;sinf(t)\geq{sin \frac{(n+1)\pi}{n}}&#x3D;-sin{\frac{\pi}{n}}\geq{\frac{-\pi}{n}}$</p>
+<p>及$\sqrt{1+f^2(t)}\geq{1}&gt;0$</p>
+<p>从而$f’(t)&#x3D;\frac{sin f(t)}{\sqrt{1+f^2(t)}}\geq{\frac{-\pi}{n}}$</p>
+<p>从而$\frac{-\pi}{n^2+n}&#x3D;\frac{(n+2)\pi}{n+1}-\frac{(n+1)\pi}{n}&#x3D;f(x_{n+1})-f(x_n)&#x3D;\int_{x_n}^{x_{n+1}} f’(t), dt \geq{\int_{x_n}^{x_{n+1}} \frac{-\pi}{n}, dt}&#x3D;\frac{-(x_{n+1}-x_n)\pi}{n}$</p>
+<p>即$\frac{1}{n+1}\leq{x_{n+1}-x_n}$这样$\lim_{n \to +\infty}x_n&#x3D;+\infty$，矛盾</p>
+<p>同理可以否定$x’&lt;0$的情况，这证明了$f(x)$在$\mathbb{R}$上单调递减</p>
+<p>进一步，我们断言$f(x)$在$\mathbb{R}$上严格单调递减，否则由Rolle中值定理，$f’(x)$有零点，即$sinf(x)$ 有零点，类似上面的证明可知断言成立。进一步，我们断言$f(\mathbb{R})\subseteq(\pi,2\pi)$否则$sinf(x)$有零点，类似上面的证明可知断言成立。</p>
+<p>下面证明$\lim_{n \to +\infty}f(x)&#x3D;\pi$</p>
+<p>反设$\lim_{n \to +\infty}f(x)&#x3D;k\not&#x3D;\pi$，则有对任意$x \in{ \mathbb{R^+}}$有$\pi&lt;k&lt;f(x)&lt;\frac{4\pi}{3}$</p>
+<p>从而对任意$t \in(0,+\infty)$有</p>
+<p>$f’(t)&#x3D;\frac{sin f(t)}{\sqrt{1+f^2(t)}}\leq{\frac{sin k}{\sqrt{1+(\frac{4\pi}{3})^2}}}\leq{\frac{-sin(k-\pi)}{2\pi}}$</p>
+<p>从而对任意$x \in{ \mathbb{R^+}}$有</p>
+<p>$k-\frac{4\pi}{3}&lt;f(x)-f(0)&#x3D;\int_{0}^{x} f’(t), dt&#x3D;\int_{0}^{x} \frac{-sin(k-\pi)}{2\pi}, dt&#x3D;\frac{-sin(k-\pi) x}{2\pi}$</p>
+<p>化简后$x&lt;\frac{2\pi(\frac{4\pi}{3}-k)}{sin(k-\pi)}$根据对$x$选择的任意性知矛盾</p>
+<p>同理可证$\lim_{n \to -\infty}f(x)&#x3D;2\pi$至此我们完成了对第二问的解答。</p>
+<p>为解答第一问，我们注意到$a_n$非负且单调递增，只需证明$a_n$有上界。注意到</p>
+<p>$a_n&#x3D;\int_{-n}^{n} \frac{sin^2f(x)}{1+f^2(x)}, dx\leq{\int_{-\infty}^{+\infty} \frac{sin^2f(x)}{1+f^2(x)}, dx}&#x3D;\int_{-\infty}^{+\infty} \frac{sin f(x)}{\sqrt{1+f^2(x)}}f’(x), dx$$令t&#x3D;f(x)$$\int_{2\pi}^{\pi} \frac{sint}{\sqrt{1+t^2}}, dt&#x3D;\int_{\pi}^{2\pi} \frac{-sint}{\sqrt{1+t^2}}, dt\leq{\int_{\pi}^{2\pi} 1, dt}&#x3D;\pi$</p>
+<p>以上的变量代换利用了$f(x)$的单调性。这证明了$a_n$有上界，从而收敛。这完成了对第一问的证明。至此我们完成了解答。</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021/06/19/20212to7qzone/" rel="prev" title="2021年2月至6月我的qq空间">
+                  <i class="fa fa-chevron-left"></i> 2021年2月至6月我的qq空间
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2022/04/20/afterchangepity/" rel="next" title="转专业成功之后在学校论坛的话">
+                  转专业成功之后在学校论坛的话 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">tommy</span>
+</div>
+
+<!--
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>-->
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+<script src="https://cdn.jsdelivr.net/npm/hexo-generator-searchdb@1.4.0/dist/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>
