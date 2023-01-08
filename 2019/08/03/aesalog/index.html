@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 5.4.2">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" integrity="sha256-DfWjNxDkM94fVBWx1H5BMMp0Zq7luBlV8QRcSES7s+0=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.11.1","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+
+    <meta name="description" content="AES简介AES加密算法即密码学中的高级加密标准（Advanced Encryption Standard，AES），又称Rijndael加密法，是美国联邦政府采用的一种区块加密标准。这个标准用来替代原先的DES，已经被多方分析且广为全世界所使用。经过五年的甄选流程，高级加密标准由美国国家标准与技术研究院 （NIST）于2001年11月26日发布于FIPS PUB 197，并在2002年5月26日">
+<meta property="og:type" content="article">
+<meta property="og:title" content="AES算法">
+<meta property="og:url" content="http://example.com/2019/08/03/aesalog/index.html">
+<meta property="og:site_name" content="tommy&#39;s blog">
+<meta property="og:description" content="AES简介AES加密算法即密码学中的高级加密标准（Advanced Encryption Standard，AES），又称Rijndael加密法，是美国联邦政府采用的一种区块加密标准。这个标准用来替代原先的DES，已经被多方分析且广为全世界所使用。经过五年的甄选流程，高级加密标准由美国国家标准与技术研究院 （NIST）于2001年11月26日发布于FIPS PUB 197，并在2002年5月26日">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/2019/08/03/aesalog/script_1464105526264.png">
+<meta property="og:image" content="http://example.com/2019/08/03/aesalog/script_1464105614954.png">
+<meta property="og:image" content="http://example.com/2019/08/03/aesalog/script_1464139741913.png">
+<meta property="og:image" content="http://example.com/2019/08/03/aesalog/script_1464139781469.png">
+<meta property="og:image" content="http://example.com/2019/08/03/aesalog/script_1464139837001.png">
+<meta property="og:image" content="http://example.com/2019/08/03/aesalog/script_1464105742351.png">
+<meta property="og:image" content="http://example.com/2019/08/03/aesalog/script_1464139933244.png">
+<meta property="og:image" content="http://example.com/2019/08/03/aesalog/script_1464105885821.png">
+<meta property="og:image" content="http://example.com/2019/08/03/aesalog/script_1464105904485.png">
+<meta property="og:image" content="http://example.com/2019/08/03/aesalog/script_1464140268239.png">
+<meta property="og:image" content="http://example.com/2019/08/03/aesalog/script_1464106070075.png">
+<meta property="og:image" content="http://example.com/2019/08/03/aesalog/script_1464106089844.png">
+<meta property="article:published_time" content="2019-08-03T04:55:36.000Z">
+<meta property="article:modified_time" content="2023-01-08T15:43:56.101Z">
+<meta property="article:author" content="tommy">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2019/08/03/aesalog/script_1464105526264.png">
+
+
+<link rel="canonical" href="http://example.com/2019/08/03/aesalog/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2019/08/03/aesalog/","path":"2019/08/03/aesalog/","title":"AES算法"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>AES算法 | tommy's blog</title>
+  
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">tommy's blog</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#AES%E7%AE%80%E4%BB%8B"><span class="nav-number">1.</span> <span class="nav-text">AES简介</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#AES%E7%AE%97%E6%B3%95%E6%A6%82%E8%BF%B0"><span class="nav-number">2.</span> <span class="nav-text">AES算法概述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#AES%E7%AE%97%E6%B3%95%E8%AF%A6%E8%A7%A3"><span class="nav-number">3.</span> <span class="nav-text">AES算法详解</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#ByteSubstitution-%E5%AD%97%E8%8A%82%E6%9B%BF%E4%BB%A3"><span class="nav-number">3.1.</span> <span class="nav-text">ByteSubstitution(字节替代)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ShiftRows-%E8%A1%8C%E7%A7%BB%E4%BD%8D%E5%8F%98%E6%8D%A2"><span class="nav-number">3.2.</span> <span class="nav-text">ShiftRows(行移位变换)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#MixColumns-%E5%88%97%E6%B7%B7%E6%B7%86%E5%8F%98%E6%8D%A2"><span class="nav-number">3.3.</span> <span class="nav-text">MixColumns(列混淆变换)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#AddRoundKey-%E8%BD%AE%E5%AF%86%E9%92%A5%E5%8A%A0%E5%8F%98%E6%8D%A2"><span class="nav-number">3.4.</span> <span class="nav-text">AddRoundKey(轮密钥加变换)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#KeyExpansion-%E5%AF%86%E9%92%A5%E6%89%A9%E5%B1%95"><span class="nav-number">3.5.</span> <span class="nav-text">KeyExpansion(密钥扩展)</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A7%A3%E5%AF%86%E7%9A%84%E5%9F%BA%E6%9C%AC%E8%BF%90%E7%AE%97"><span class="nav-number">4.</span> <span class="nav-text">解密的基本运算</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="tommy"
+      src="https://raw.githubusercontent.com/tom6m6/files_upload_blog/main/csman.jpg">
+  <p class="site-author-name" itemprop="name">tommy</p>
+  <div class="site-description" itemprop="description">知行合一</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">54</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">18</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2019/08/03/aesalog/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://raw.githubusercontent.com/tom6m6/files_upload_blog/main/csman.jpg">
+      <meta itemprop="name" content="tommy">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="tommy's blog">
+      <meta itemprop="description" content="知行合一">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="AES算法 | tommy's blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          AES算法
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2019-08-03 12:55:36" itemprop="dateCreated datePublished" datetime="2019-08-03T12:55:36+08:00">2019-08-03</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2023-01-08 23:43:56" itemprop="dateModified" datetime="2023-01-08T23:43:56+08:00">2023-01-08</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h3 id="AES简介"><a href="#AES简介" class="headerlink" title="AES简介"></a>AES简介</h3><p>AES加密算法即密码学中的高级加密标准（Advanced Encryption Standard，AES），又称Rijndael加密法，是美国联邦政府采用的一种区块加密标准。这个标准用来替代原先的DES，已经被多方分析且广为全世界所使用。经过五年的甄选流程，高级加密标准由美国国家标准与技术研究院 （NIST）于2001年11月26日发布于FIPS PUB 197，并在2002年5月26日成为有效的标准。</p>
+<p>AES算法本质上是一种对称分组密码体制，采用代替&#x2F;置换网络，每轮由三层组成：线性混合层确保多轮之上的高度扩散，非线性层由16个S盒并置起到混淆的作用，密钥加密层将子密钥异或到中间状态。AES是一个迭代分组密码，其分组长度和密钥长度都是可变的，只是为了满足AES的要求才限定处理的分组大小为128位，而密钥长度为128位、192位或256位，相应的迭代轮数N，为10轮、12轮、14轮。AES汇聚了安全性能、效率、可实现性、灵活性等优点。最大的优点是可以给出算法的最佳查分特征的概率，并分析算法抵抗查分密码分析及线性密码分析的能力。</p>
+<h3 id="AES算法概述"><a href="#AES算法概述" class="headerlink" title="AES算法概述"></a>AES算法概述</h3><p>AES算法，基本变换包括SubBytes（字节替代）、ShiftRows（行移位）、MixColumns（列混淆）、AddRoundKey(轮密钥加）KeyExtension（密钥扩展）</p>
+<p><img src="/2019/08/03/aesalog/script_1464105526264.png"></p>
+<p>AES算法中的加密、解密过程要经过多次数据变换操作，每一次变换操作会产生一个中间结果，称为状态(State)，算法的执行过程如下：</p>
+<p>①：给定一个明文M，将State初始化为M，并进行AddRoundKey操作，将轮密钥与State异或。</p>
+<p>②：对前Nr-1轮中的每一轮，用S盒进行一次SubBytes代替变换，对State做一次ShiftRows行移位操作，再对State做一次MixColumns列混淆操作，然后进行AddRoundKey操作。</p>
+<p>③：按照顺序分别进行SubBytes、ShiftRows、AddRoundKey操作。</p>
+<p>④：将最后的State中的内容定义为密文C。</p>
+<p>AES的解密算法于加密不同，基本运算中除轮密钥加(AddRoundKey)不变之外，其余操作如SubBytes、ShiftRows、MixColumns都要求进行求逆变换。</p>
+<h3 id="AES算法详解"><a href="#AES算法详解" class="headerlink" title="AES算法详解"></a>AES算法详解</h3><p>明文及密钥的组织排列方式(以明文分组为128bits为例组成的阵列)：</p>
+<p><img src="/2019/08/03/aesalog/script_1464105614954.png"></p>
+<p>以明文分组（或密钥）为128bits、192bits 、256bits为例组成的阵列：</p>
+<p><img src="/2019/08/03/aesalog/script_1464139741913.png"></p>
+<p>一些相关的的术语定义和表示：</p>
+<ul>
+<li>状态（State）：密码运算的中间结果称为状态。</li>
+<li>State的表示：状态用以字节为基本构成元素的矩阵阵列来表示，该阵列有4行，列数记为Nb。 Nb&#x3D;分组长度（bits）÷ 32 Nb可以取的值为4，6，8，对应的分组长度为128， 192， 256 bits。</li>
+<li>密码密钥（Cipher Key）的表示： Cipher Key类似地用一个4行的矩阵阵列来表示，列数记为Nk。 Nk&#x3D;密钥长度（bits）÷32 Nk可以取的值为4，6，8，对应的密钥长度为128， 192， 256 bits。</li>
+</ul>
+<p>轮数（Round）的不同取值：</p>
+<p><img src="/2019/08/03/aesalog/script_1464139781469.png"></p>
+<h4 id="ByteSubstitution-字节替代"><a href="#ByteSubstitution-字节替代" class="headerlink" title="ByteSubstitution(字节替代)"></a>ByteSubstitution(字节替代)</h4><p>非线性的字节替代，单独处理每个字节：</p>
+<p>求该字节在有限域GF(2^8)上的乘法逆，”0”被映射为自身，即对于α∈GF(2^8)，求β∈GF(2^8)，</p>
+<p>使得 α·β&#x3D;β·α&#x3D;1mod(x^8+x^4+x^2+x+1)。</p>
+<p>对上一步求得的乘法逆作仿射变换</p>
+<p>yi&#x3D;xi + x(i+4)mod8 + x(i+6)mod8 + x(i+7)mod8 + ci</p>
+<p>(其中ci是63<sub>10</sub>即01100011<sub>2</sub>的第i位），用矩阵表示为：</p>
+<p><img src="/2019/08/03/aesalog/script_1464139837001.png"></p>
+<p>下面直接利用置换表完成替换：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">void AES::SubBytes(unsigned char state[][4])</span><br><span class="line">&#123;</span><br><span class="line">    int r,c;</span><br><span class="line">    for(r=0; r&lt;4; r++)</span><br><span class="line">    &#123;</span><br><span class="line">        for(c=0; c&lt;4; c++)</span><br><span class="line">        &#123;</span><br><span class="line">            state[r][c] = Sbox[state[r][c]];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="ShiftRows-行移位变换"><a href="#ShiftRows-行移位变换" class="headerlink" title="ShiftRows(行移位变换)"></a>ShiftRows(行移位变换)</h4><p>行移位变换完成基于行的循环位移操作，变换方法：</p>
+<p><img src="/2019/08/03/aesalog/script_1464105742351.png"></p>
+<p>在ByteRotation变换中，状态阵列的后3行循环移位不同的偏移量。移位变换作用于行上，第0行不变，第1行循环移位C1字节，第2行循环移位C2字节，第3行循环移位C3字节。</p>
+<p>偏移量C1、C2、C3与分组长度Nb有关，如下表所示：</p>
+<p><img src="/2019/08/03/aesalog/script_1464139933244.png"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">void AES::ShiftRows(unsigned char state[][4])</span><br><span class="line">&#123;</span><br><span class="line">    unsigned char t[4];</span><br><span class="line">    int r,c;</span><br><span class="line">    for(r=1; r&lt;4; r++)</span><br><span class="line">    &#123;</span><br><span class="line">        for(c=0; c&lt;4; c++)</span><br><span class="line">        &#123;</span><br><span class="line">            t[c] = state[r][(c+r)%4];</span><br><span class="line">        &#125;</span><br><span class="line">        for(c=0; c&lt;4; c++)</span><br><span class="line">        &#123;</span><br><span class="line">            state[r][c] = t[c];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="MixColumns-列混淆变换"><a href="#MixColumns-列混淆变换" class="headerlink" title="MixColumns(列混淆变换)"></a>MixColumns(列混淆变换)</h4><p>将状态的列看作是有限域GF(2^8)上的多项式a(x)，与多项式c(x)&#x3D;(03·x^3 + 01·x^2 + 01·x + 02) · mod(x^4 + 1)。</p>
+<p>逐列混合，方法：</p>
+<p>b(x) &#x3D; (03·x^3 + 01·x^2 + 01·x + 02) · a(x) mod(x^4 + 1)</p>
+<p><img src="/2019/08/03/aesalog/script_1464105885821.png"></p>
+<p>矩阵表示形式：</p>
+<p><img src="/2019/08/03/aesalog/script_1464105904485.png"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">void AES::MixColumns(unsigned char state[][4])</span><br><span class="line">&#123;</span><br><span class="line">    unsigned char t[4];</span><br><span class="line">    int r,c;</span><br><span class="line">    for(c=0; c&lt; 4; c++)</span><br><span class="line">    &#123;</span><br><span class="line">        for(r=0; r&lt;4; r++)</span><br><span class="line">        &#123;</span><br><span class="line">            t[r] = state[r][c];</span><br><span class="line">        &#125;</span><br><span class="line">        for(r=0; r&lt;4; r++)</span><br><span class="line">        &#123;</span><br><span class="line">            state[r][c] = FFmul(0x02, t[r])</span><br><span class="line">                        ^ FFmul(0x03, t[(r+1)%4])</span><br><span class="line">                        ^ FFmul(0x01, t[(r+2)%4])</span><br><span class="line">                        ^ FFmul(0x01, t[(r+3)%4]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line">unsigned char AES::FFmul(unsigned char a, unsigned char b)</span><br><span class="line">&#123;</span><br><span class="line">    unsigned char bw[4];</span><br><span class="line">    unsigned char res=0;</span><br><span class="line">    int i;</span><br><span class="line">    bw[0] = b;</span><br><span class="line">    for(i=1; i&lt;4; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        bw[i] = bw[i-1]&lt;&lt;1;</span><br><span class="line">        if(bw[i-1]&amp;0x80)</span><br><span class="line">        &#123;</span><br><span class="line">            bw[i]^=0x1b;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    for(i=0; i&lt;4; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        if((a&gt;&gt;i)&amp;0x01)</span><br><span class="line">        &#123;</span><br><span class="line">            res ^= bw[i];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>其中FFmul为有限域GF(28)上的乘法，标准算法应该是循环8次（b与a的每一位相乘，结果相加），但这里只用到最低2位，解密时用到的逆列混淆也只用了低4位，所以在这里高4位的运算是多余的，只计算低4位。</p>
+<p><strong>数学基础</strong></p>
+<p>AES的基础域是有限域 GF(2^8)：<br>一个GF(2)上的8次既约多项式可生成一个 GF(2^8)<br>GF(2^8)的全体元素构成加法交换群，线性空间。<br>GF(2^8)的非零元素构成乘法循环群。<br>GF(2^8)中的元素有多种表示：<br>字节： GF（2^8）&#x3D;{a7,a6,…a1,a0}<br>多项式形式： GF（2^8）&#x3D;{a7x7+a6x6+…+a1x+a0}<br>指数形式：GF(2^8)<em>&#x3D;{0, 1… 254}对数形式：GF(2^8)</em>&#x3D;{0, 1… 254}</p>
+<p>GF(2^8)的特征为 2 。</p>
+<p>AES的GF(2^8)表示：<br>AES采用的既约模多项式：<br>m(x)&#x3D;x^8+x^4+x^3+x+1<br>AES采用GF(28)的多项式元素表示。<br>字节B＝b7b6b5b4b3b2b1b0可表示成GF(2)上的多项式：<br>b7x7+b6x6+b5x5+b4x4+b3x3+b2x2+b1x1+b0<br>例：字节57＝01010111的多项式表示：<br>01010111 x^6+x^4+x^2+x+1</p>
+<p>加法：两元素多项式的系数按位模 2加<br>例2：57＋83＝D4<br>(x6+x4+x2+x+1)⊕(x7+x+1)&#x3D; x7+x6+x4+x2<br>乘法：两元素多项式相乘，模 m(x)<br>例3：57×83＝C1<br>(x6+x4+x2+x+1)×(x7+x+1)&#x3D;x7+x6+1 mod m(x)<br>乘法单位元：字节01 多项式 1<br>乘法逆元：<br>设a(x)的逆元为b(x)，则 a(x)b(x)&#x3D;1 mod m(x) 。<br>根据Euclid算法求出。</p>
+<p><img src="/2019/08/03/aesalog/script_1464140268239.png"></p>
+<h4 id="AddRoundKey-轮密钥加变换"><a href="#AddRoundKey-轮密钥加变换" class="headerlink" title="AddRoundKey(轮密钥加变换)"></a>AddRoundKey(轮密钥加变换)</h4><p>简单来说就是逐字节相加，有限域GF(2^8)上的加法是模2加法，即异或：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">void AES::AddRoundKey(unsigned char state[][4], unsigned char k[][4])</span><br><span class="line">&#123;</span><br><span class="line">    int r,c;</span><br><span class="line">    for(c=0; c&lt;4; c++)</span><br><span class="line">    &#123;</span><br><span class="line">        for(r=0; r&lt;4; r++)</span><br><span class="line">        &#123;</span><br><span class="line">            state[r][c] ^= k[r][c];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="KeyExpansion-密钥扩展"><a href="#KeyExpansion-密钥扩展" class="headerlink" title="KeyExpansion(密钥扩展)"></a>KeyExpansion(密钥扩展)</h4><p>密钥bit的总数＝分组长度×（轮数Round＋1）例如当分组长度为128bits和轮数Round为10时，轮密钥长度为128×(10＋1)＝1408bits。<br>将密码密钥扩展成一个扩展密钥。<br>从扩展密钥中取出轮密钥：第一个轮密钥由扩展密钥的第一个Nb个4字节字，第二个轮密钥由接下来的Nb个4字节字组成，以此类推。</p>
+<p>将输入的密钥扩展为11组128位密钥组，其中第0组为输入密钥本身</p>
+<p>其后第n组第i列 为 第n-1组第i列 与 第n组第i-1列之和（模2加法，1&lt;&#x3D; i &lt;&#x3D;3）</p>
+<p><img src="/2019/08/03/aesalog/script_1464106070075.png"></p>
+<p>对于每一组 第一列即i&#x3D;0，有特殊的处理：</p>
+<p><img src="/2019/08/03/aesalog/script_1464106089844.png"></p>
+<p>将前一列即第n-1组第3列的4个字节循环左移1个字节，<br>并对每个字节进行字节替代变换SubBytes<br>将第一行（即第一个字节）与轮常量rc[n]相加<br>最后再与前一组该列相加。</p>
+<p><strong>加密过程</strong></p>
+<p>先将输入的明文按列序组合成4*4的矩阵，直接与第0组密钥（即输入的密钥）相加（异或），作为轮加密的输入。</p>
+<p>然后循环10次进行SubBytes、ShiftRows、MixColumns、AddRoundKey运算，最后恢复原序列。</p>
+<p>需要注意的是最后一轮并不进行MixColumns（列混淆变换）</p>
+<h3 id="解密的基本运算"><a href="#解密的基本运算" class="headerlink" title="解密的基本运算"></a>解密的基本运算</h3><p>AES解密算法与加密不同，基本运算中除了AddRoundKey（轮密钥加）不变外，其余的都需要进行逆变换，即</p>
+<p>InvSubBytes（逆字节替代）、InvShiftRows（逆行移位）、InvMixColumns（逆列混淆）。</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2019/06/17/kmp2019/" rel="prev" title="KMP字符串匹配">
+                  <i class="fa fa-chevron-left"></i> KMP字符串匹配
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2021/06/19/20212to7qzone/" rel="next" title="2021年2月至6月我的qq空间">
+                  2021年2月至6月我的qq空间 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">tommy</span>
+</div>
+
+<!--
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>-->
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+<script src="https://cdn.jsdelivr.net/npm/hexo-generator-searchdb@1.4.0/dist/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdn.jsdelivr.net/npm/mathjax@3.2.0/es5/tex-mml-chtml.js","integrity":"sha256-r+3itOMtGGjap0x+10hu6jW/gZCzxHsoKrOd7gyRSGY="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+
+</body>
+</html>

@@ -113,11 +113,11 @@
   </entry>
   <entry>
     <title>AES算法</title>
-    <url>/2018/08/03/aesalog/</url>
+    <url>/2019/08/03/aesalog/</url>
     <content><![CDATA[<h3 id="AES简介"><a href="#AES简介" class="headerlink" title="AES简介"></a>AES简介</h3><p>AES加密算法即密码学中的高级加密标准（Advanced Encryption Standard，AES），又称Rijndael加密法，是美国联邦政府采用的一种区块加密标准。这个标准用来替代原先的DES，已经被多方分析且广为全世界所使用。经过五年的甄选流程，高级加密标准由美国国家标准与技术研究院 （NIST）于2001年11月26日发布于FIPS PUB 197，并在2002年5月26日成为有效的标准。</p>
 <p>AES算法本质上是一种对称分组密码体制，采用代替&#x2F;置换网络，每轮由三层组成：线性混合层确保多轮之上的高度扩散，非线性层由16个S盒并置起到混淆的作用，密钥加密层将子密钥异或到中间状态。AES是一个迭代分组密码，其分组长度和密钥长度都是可变的，只是为了满足AES的要求才限定处理的分组大小为128位，而密钥长度为128位、192位或256位，相应的迭代轮数N，为10轮、12轮、14轮。AES汇聚了安全性能、效率、可实现性、灵活性等优点。最大的优点是可以给出算法的最佳查分特征的概率，并分析算法抵抗查分密码分析及线性密码分析的能力。</p>
 <h3 id="AES算法概述"><a href="#AES算法概述" class="headerlink" title="AES算法概述"></a>AES算法概述</h3><p>AES算法，基本变换包括SubBytes（字节替代）、ShiftRows（行移位）、MixColumns（列混淆）、AddRoundKey(轮密钥加）KeyExtension（密钥扩展）</p>
-<p><img src="/2018/08/03/aesalog/script_1464105526264.png"></p>
+<p><img src="/2019/08/03/aesalog/script_1464105526264.png"></p>
 <p>AES算法中的加密、解密过程要经过多次数据变换操作，每一次变换操作会产生一个中间结果，称为状态(State)，算法的执行过程如下：</p>
 <p>①：给定一个明文M，将State初始化为M，并进行AddRoundKey操作，将轮密钥与State异或。</p>
 <p>②：对前Nr-1轮中的每一轮，用S盒进行一次SubBytes代替变换，对State做一次ShiftRows行移位操作，再对State做一次MixColumns列混淆操作，然后进行AddRoundKey操作。</p>
@@ -125,9 +125,9 @@
 <p>④：将最后的State中的内容定义为密文C。</p>
 <p>AES的解密算法于加密不同，基本运算中除轮密钥加(AddRoundKey)不变之外，其余操作如SubBytes、ShiftRows、MixColumns都要求进行求逆变换。</p>
 <h3 id="AES算法详解"><a href="#AES算法详解" class="headerlink" title="AES算法详解"></a>AES算法详解</h3><p>明文及密钥的组织排列方式(以明文分组为128bits为例组成的阵列)：</p>
-<p><img src="/2018/08/03/aesalog/script_1464105614954.png"></p>
+<p><img src="/2019/08/03/aesalog/script_1464105614954.png"></p>
 <p>以明文分组（或密钥）为128bits、192bits 、256bits为例组成的阵列：</p>
-<p><img src="/2018/08/03/aesalog/script_1464139741913.png"></p>
+<p><img src="/2019/08/03/aesalog/script_1464139741913.png"></p>
 <p>一些相关的的术语定义和表示：</p>
 <ul>
 <li>状态（State）：密码运算的中间结果称为状态。</li>
@@ -135,30 +135,30 @@
 <li>密码密钥（Cipher Key）的表示： Cipher Key类似地用一个4行的矩阵阵列来表示，列数记为Nk。 Nk&#x3D;密钥长度（bits）÷32 Nk可以取的值为4，6，8，对应的密钥长度为128， 192， 256 bits。</li>
 </ul>
 <p>轮数（Round）的不同取值：</p>
-<p><img src="/2018/08/03/aesalog/script_1464139781469.png"></p>
+<p><img src="/2019/08/03/aesalog/script_1464139781469.png"></p>
 <h4 id="ByteSubstitution-字节替代"><a href="#ByteSubstitution-字节替代" class="headerlink" title="ByteSubstitution(字节替代)"></a>ByteSubstitution(字节替代)</h4><p>非线性的字节替代，单独处理每个字节：</p>
 <p>求该字节在有限域GF(2^8)上的乘法逆，”0”被映射为自身，即对于α∈GF(2^8)，求β∈GF(2^8)，</p>
 <p>使得 α·β&#x3D;β·α&#x3D;1mod(x^8+x^4+x^2+x+1)。</p>
 <p>对上一步求得的乘法逆作仿射变换</p>
 <p>yi&#x3D;xi + x(i+4)mod8 + x(i+6)mod8 + x(i+7)mod8 + ci</p>
 <p>(其中ci是63<sub>10</sub>即01100011<sub>2</sub>的第i位），用矩阵表示为：</p>
-<p><img src="/2018/08/03/aesalog/script_1464139837001.png"></p>
+<p><img src="/2019/08/03/aesalog/script_1464139837001.png"></p>
 <p>下面直接利用置换表完成替换：</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">void AES::SubBytes(unsigned char state[][4])</span><br><span class="line">&#123;</span><br><span class="line">    int r,c;</span><br><span class="line">    for(r=0; r&lt;4; r++)</span><br><span class="line">    &#123;</span><br><span class="line">        for(c=0; c&lt;4; c++)</span><br><span class="line">        &#123;</span><br><span class="line">            state[r][c] = Sbox[state[r][c]];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h4 id="ShiftRows-行移位变换"><a href="#ShiftRows-行移位变换" class="headerlink" title="ShiftRows(行移位变换)"></a>ShiftRows(行移位变换)</h4><p>行移位变换完成基于行的循环位移操作，变换方法：</p>
-<p><img src="/2018/08/03/aesalog/script_1464105742351.png"></p>
+<p><img src="/2019/08/03/aesalog/script_1464105742351.png"></p>
 <p>在ByteRotation变换中，状态阵列的后3行循环移位不同的偏移量。移位变换作用于行上，第0行不变，第1行循环移位C1字节，第2行循环移位C2字节，第3行循环移位C3字节。</p>
 <p>偏移量C1、C2、C3与分组长度Nb有关，如下表所示：</p>
-<p><img src="/2018/08/03/aesalog/script_1464139933244.png"></p>
+<p><img src="/2019/08/03/aesalog/script_1464139933244.png"></p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">void AES::ShiftRows(unsigned char state[][4])</span><br><span class="line">&#123;</span><br><span class="line">    unsigned char t[4];</span><br><span class="line">    int r,c;</span><br><span class="line">    for(r=1; r&lt;4; r++)</span><br><span class="line">    &#123;</span><br><span class="line">        for(c=0; c&lt;4; c++)</span><br><span class="line">        &#123;</span><br><span class="line">            t[c] = state[r][(c+r)%4];</span><br><span class="line">        &#125;</span><br><span class="line">        for(c=0; c&lt;4; c++)</span><br><span class="line">        &#123;</span><br><span class="line">            state[r][c] = t[c];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h4 id="MixColumns-列混淆变换"><a href="#MixColumns-列混淆变换" class="headerlink" title="MixColumns(列混淆变换)"></a>MixColumns(列混淆变换)</h4><p>将状态的列看作是有限域GF(2^8)上的多项式a(x)，与多项式c(x)&#x3D;(03·x^3 + 01·x^2 + 01·x + 02) · mod(x^4 + 1)。</p>
 <p>逐列混合，方法：</p>
 <p>b(x) &#x3D; (03·x^3 + 01·x^2 + 01·x + 02) · a(x) mod(x^4 + 1)</p>
-<p><img src="/2018/08/03/aesalog/script_1464105885821.png"></p>
+<p><img src="/2019/08/03/aesalog/script_1464105885821.png"></p>
 <p>矩阵表示形式：</p>
-<p><img src="/2018/08/03/aesalog/script_1464105904485.png"></p>
+<p><img src="/2019/08/03/aesalog/script_1464105904485.png"></p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">void AES::MixColumns(unsigned char state[][4])</span><br><span class="line">&#123;</span><br><span class="line">    unsigned char t[4];</span><br><span class="line">    int r,c;</span><br><span class="line">    for(c=0; c&lt; 4; c++)</span><br><span class="line">    &#123;</span><br><span class="line">        for(r=0; r&lt;4; r++)</span><br><span class="line">        &#123;</span><br><span class="line">            t[r] = state[r][c];</span><br><span class="line">        &#125;</span><br><span class="line">        for(r=0; r&lt;4; r++)</span><br><span class="line">        &#123;</span><br><span class="line">            state[r][c] = FFmul(0x02, t[r])</span><br><span class="line">                        ^ FFmul(0x03, t[(r+1)%4])</span><br><span class="line">                        ^ FFmul(0x01, t[(r+2)%4])</span><br><span class="line">                        ^ FFmul(0x01, t[(r+3)%4]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line">unsigned char AES::FFmul(unsigned char a, unsigned char b)</span><br><span class="line">&#123;</span><br><span class="line">    unsigned char bw[4];</span><br><span class="line">    unsigned char res=0;</span><br><span class="line">    int i;</span><br><span class="line">    bw[0] = b;</span><br><span class="line">    for(i=1; i&lt;4; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        bw[i] = bw[i-1]&lt;&lt;1;</span><br><span class="line">        if(bw[i-1]&amp;0x80)</span><br><span class="line">        &#123;</span><br><span class="line">            bw[i]^=0x1b;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    for(i=0; i&lt;4; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        if((a&gt;&gt;i)&amp;0x01)</span><br><span class="line">        &#123;</span><br><span class="line">            res ^= bw[i];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>其中FFmul为有限域GF(28)上的乘法，标准算法应该是循环8次（b与a的每一位相乘，结果相加），但这里只用到最低2位，解密时用到的逆列混淆也只用了低4位，所以在这里高4位的运算是多余的，只计算低4位。</p>
@@ -167,16 +167,16 @@
 <p>GF(2^8)的特征为 2 。</p>
 <p>AES的GF(2^8)表示：<br>AES采用的既约模多项式：<br>m(x)&#x3D;x^8+x^4+x^3+x+1<br>AES采用GF(28)的多项式元素表示。<br>字节B＝b7b6b5b4b3b2b1b0可表示成GF(2)上的多项式：<br>b7x7+b6x6+b5x5+b4x4+b3x3+b2x2+b1x1+b0<br>例：字节57＝01010111的多项式表示：<br>01010111 x^6+x^4+x^2+x+1</p>
 <p>加法：两元素多项式的系数按位模 2加<br>例2：57＋83＝D4<br>(x6+x4+x2+x+1)⊕(x7+x+1)&#x3D; x7+x6+x4+x2<br>乘法：两元素多项式相乘，模 m(x)<br>例3：57×83＝C1<br>(x6+x4+x2+x+1)×(x7+x+1)&#x3D;x7+x6+1 mod m(x)<br>乘法单位元：字节01 多项式 1<br>乘法逆元：<br>设a(x)的逆元为b(x)，则 a(x)b(x)&#x3D;1 mod m(x) 。<br>根据Euclid算法求出。</p>
-<p><img src="/2018/08/03/aesalog/script_1464140268239.png"></p>
+<p><img src="/2019/08/03/aesalog/script_1464140268239.png"></p>
 <h4 id="AddRoundKey-轮密钥加变换"><a href="#AddRoundKey-轮密钥加变换" class="headerlink" title="AddRoundKey(轮密钥加变换)"></a>AddRoundKey(轮密钥加变换)</h4><p>简单来说就是逐字节相加，有限域GF(2^8)上的加法是模2加法，即异或：</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">void AES::AddRoundKey(unsigned char state[][4], unsigned char k[][4])</span><br><span class="line">&#123;</span><br><span class="line">    int r,c;</span><br><span class="line">    for(c=0; c&lt;4; c++)</span><br><span class="line">    &#123;</span><br><span class="line">        for(r=0; r&lt;4; r++)</span><br><span class="line">        &#123;</span><br><span class="line">            state[r][c] ^= k[r][c];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h4 id="KeyExpansion-密钥扩展"><a href="#KeyExpansion-密钥扩展" class="headerlink" title="KeyExpansion(密钥扩展)"></a>KeyExpansion(密钥扩展)</h4><p>密钥bit的总数＝分组长度×（轮数Round＋1）例如当分组长度为128bits和轮数Round为10时，轮密钥长度为128×(10＋1)＝1408bits。<br>将密码密钥扩展成一个扩展密钥。<br>从扩展密钥中取出轮密钥：第一个轮密钥由扩展密钥的第一个Nb个4字节字，第二个轮密钥由接下来的Nb个4字节字组成，以此类推。</p>
 <p>将输入的密钥扩展为11组128位密钥组，其中第0组为输入密钥本身</p>
 <p>其后第n组第i列 为 第n-1组第i列 与 第n组第i-1列之和（模2加法，1&lt;&#x3D; i &lt;&#x3D;3）</p>
-<p><img src="/2018/08/03/aesalog/script_1464106070075.png"></p>
+<p><img src="/2019/08/03/aesalog/script_1464106070075.png"></p>
 <p>对于每一组 第一列即i&#x3D;0，有特殊的处理：</p>
-<p><img src="/2018/08/03/aesalog/script_1464106089844.png"></p>
+<p><img src="/2019/08/03/aesalog/script_1464106089844.png"></p>
 <p>将前一列即第n-1组第3列的4个字节循环左移1个字节，<br>并对每个字节进行字节替代变换SubBytes<br>将第一行（即第一个字节）与轮常量rc[n]相加<br>最后再与前一组该列相加。</p>
 <p><strong>加密过程</strong></p>
 <p>先将输入的明文按列序组合成4*4的矩阵，直接与第0组密钥（即输入的密钥）相加（异或），作为轮加密的输入。</p>
@@ -192,55 +192,6 @@
     <content><![CDATA[<p>America’s Real Dream Team   ————By THOMAS L. FRIEDMAN   Went to a big Washington dinner last week. You know the kind: Large hall; black ties; long dresses. But this was no ordinary dinner. There were 40 guests of honor. So here’s my Sunday news quiz: I’ll give you the names of most of the honorees, and you tell me what dinner I was at. Ready?   Linda Zhou, Alice Wei Zhao, Lori Ying, Angela Yu-Yun Yeung, Lynnelle Lin Ye, Kevin Young Xu, Benjamin Chang Sun, Jane Yoonhae Suh, Katheryn Cheng Shi, Sunanda Sharma, Sarine Gayaneh Shahmirian, Arjun Ranganath Puranik, Raman Venkat Nelakant, Akhil Mathew, Paul Masih Das, David Chienyun Liu, Elisa Bisi Lin, Yifan Li, Lanair Amaad Lett, Ruoyi Jiang, Otana Agape Jakpor, Peter Danming Hu, Yale Wang Fan, Yuval Yaacov Calev, Levent Alpoge, John Vincenzo Capodilupo and Namrata Anand.   No, sorry, it was not a dinner of the China-India Friendship League. Give up?   O.K. All these kids are American high school students. They were the majority of the 40 finalists in the 2010 Intel Science Talent Search, which, through a national contest, identifies and honors the top math and science high school students in America, based on their solutions to scientific problems. The awards dinner was Tuesday, and, as you can see from the above list, most finalists hailed from immigrant families, largely from Asia.   Indeed, if you need any more convincing about the virtues of immigration, just come to the Intel science finals. I am a pro-immigration fanatic. I think keeping a constant flow of legal immigrants into our country — whether they wear blue collars or lab coats — is the key to keeping us ahead of China. Because when you mix all of these energetic, high-aspiring people with a democratic system and free markets, magic happens. If we hope to keep that magic, we need immigration reform that guarantees that we will always attract and retain, in an orderly fashion, the world’s first-round aspirational and intellectual draft choices.   This isn’t complicated. In today’s wired world, the most important economic competition is no longer between countries or companies. The most important economic competition is actually between you and your own imagination. Because what your kids imagine, they can now act on farther, faster, cheaper than ever before — as individuals. Today, just about everything is becoming a commodity, except imagination, except the ability to spark new ideas.   If I just have the spark of an idea now, I can get a designer in Taiwan to design it. I can get a factory in China to produce a prototype. I can get a factory in Vietnam to mass manufacture it. I can use Amazon.com to handle fulfillment. I can use freelancer.com to find someone to do my logo and manage my backroom. And I can do all this at incredibly low prices. The one thing that is not a commodity and never will be is that spark of an idea. And this Intel dinner was all about our best sparklers.   Before the dinner started, each contestant stood by a storyboard explaining their specific project. Namrata Anand, a 17-year-old from the Harker School in California, patiently explained to me her research, which used spectral analysis and other data to expose information about the chemical enrichment history of “Andromeda Galaxy.” I did not understand a word she said, but I sure caught the gleam in her eye.   My favorite chat, though, was with Amanda Alonzo, a 30-year-old biology teacher at Lynbrook High School in San Jose, Calif. She had taught two of the finalists. When I asked her the secret, she said it was the resources provided by her school, extremely “supportive parents” and a grant from Intel that let her spend part of each day inspiring and preparing students to enter this contest. Then she told me this: Local San Jose realtors are running ads in newspapers in China and India telling potential immigrants to “buy a home” in her Lynbrook school district because it produced “two Intel science winners.”   Seriously, ESPN or MTV should broadcast the Intel finals live. All of the 40 finalists are introduced, with little stories about their lives and aspirations. Then the winners of the nine best projects are announced. And finally, with great drama, the overall winner of the $100,000 award for the best project of the 40 is identified. This year it was Erika Alden DeBenedictis of New Mexico for developing a software navigation system that would enable spacecraft to more efficiently “travel through the solar system.” After her name was called, she was swarmed by her fellow competitor-geeks.   Gotta say, it was the most inspiring evening I’ve had in D.C. in 20 years. It left me thinking, “If we can just get a few things right — immigration, education standards, bandwidth, fiscal policy — maybe we’ll be O.K.” It left me feeling that maybe Alice Wei Zhao of North High School in Sheboygan, Wis., chosen by her fellow finalists to be their spokeswoman, was right when she told the audience: “Don’t sweat about the problems our generation will have to deal with. Believe me, our future is in good hands.”   As long as we don’t shut our doors.   </p>
 <p>上周去参加华盛顿的晚宴，可想而知：华丽的礼堂，黑色的领结，长礼服。但这不是普通的晚宴，在场的有40位宾客。来一个星期天小测验：我告诉你们这些客人的名字，你们自己猜一猜这是什么样的晚宴。   ………………（名字，略）  对不起，这可不是中印友好联盟的晚宴，猜不出来了吧？   其实这些参加者都是美国高中生，他们是2010年因特尔科学智慧调查竞赛的40位决赛选手。基于他们对科学问题的正确解答，使得他们赢得了全国比赛，无比光荣的成为美国高中生中的顶尖科学人才。庆祝会在周二举行，正如你们从名单中看到的，这些选手大部分来自亚洲的移民家庭。   如果你还不那么确定移民孩子的优点，那就来英特尔科学智慧调查竞赛的决赛看一下。我是移民的狂热支持者，我认为合法移民持续不断的进入美国——不论他们是普通蓝领还是高级实验室人员——是我们领先中国的关键。因为把那些精力充沛、志向远大的人才和民主体制、自由市场结合在一起，就会有奇迹发生。如果希望这种奇迹延续下去，我们需要移民政策的改革以确保吸引并留住世界一流的、有抱负的、有智慧的人才。   这并不复杂，在今天这个世界，最重要的经济竞争已不再是国家和公司之间的竞争，而是你和你的创造力的竞争。你的孩子想到什么，他们自己就可以比以往任何时候更方便快速的立即行动。如今，一切都变成了商品，除了想象力和创新能力。   如果我现在有什么新点子，我可以找到一位台湾的设计师进行设计，找一家中国工厂制作出样本，在越南的工厂里大量生产，利用亚马逊处理订单，通过“自由记者”网站找人设计商标、安排幕后工作。所有这些都令人难以想象的廉价。这次因特尔晚宴就是关于我们杰出的创意。   在宴会开始前，参赛者们在故事板前一一介绍了自己所作的具体项目。来自加州harker中学的17岁的anand耐心的向我讲述她的研究，她运用光谱分析和其他资料揭示仙女座化学浓缩的历史信息。她说的我一点都不懂，但是却被她眼中的光芒打动。   我很喜欢和Alonzo之间的谈话，她是Lynbrook高中的生物老师，今年30岁。她教的两名学生进入了决赛，当我问她有什么诀窍时，她说多亏了学校的帮助，尤其是家长们的支持，此外还有因特尔公司的资助，让她可以每天抽出时间鼓励和帮助学生参加比赛。她还告诉我一件事：当地的房地产经纪正忙于在中国和印度的报纸上做广告，鼓动有移民倾向的人在Lynbrook中学附近购买房产，因为Lynbrook中学出了两位因特尔比赛优胜者。   ESPN和MTV应该对因特尔的比赛进行直播，首先40位决赛选手简短的介绍一下他们的生活和理想，然后宣布九位优秀项目的胜出者，最后才揭晓最后赢得10万美元的冠军。本届冠军是来自新墨西哥的Erika Alden DeBenedictis，她开发出一种导航系统软件，能够增强宇宙飞船穿越太阳系时的准确性。在她的名字被公布之后，参赛者们立刻拥向她。   不得不说，这真的是我在华盛顿20年来最令人激动的夜晚，这件事情引发了我的思考：如果我们能做好一些事情，比如移民措施、高水平教育、带宽、财政政策，我们会更好。被北部高中的同伴们选为发言人的Alice说“不必为我们这一代人必须要面对的问题悲伤，相信我，未来会更好。”这句话我深表赞同。   只要我们敞开大门。   </p>
 ]]></content>
-  </entry>
-  <entry>
-    <title>二分答案转化为判定</title>
-    <url>/2018/03/30/binaryconvert2018/</url>
-    <content><![CDATA[<p>一个最优化问题抽象为函数</p>
-<p>其定义域为该问题下的可行方案</p>
-<p>对这些方案的评估值就是值域 </p>
-<p>假设评分越高越优，若最优解的评分是S，显然对于所有&gt;S的值，都不存在一个合法方案达到该值，否则就与S的最优矛盾。而对于所有&lt;S的值，一定存在一个合法的方案达到或超过该评分</p>
-<p>这样问题就具有一种特殊的单调性</p>
-<p>在S的一侧合法，在另一侧不合法</p>
-<p>可以通过二分找到这个分界点S</p>
-<p>这样，我们就把一个求最优解的问题转化为给定一个值mid，判定是否存在一个可行方案评分达到mid</p>
-<h4 id="例1"><a href="#例1" class="headerlink" title="例1"></a>例1</h4><p>有N本书排成一行，已知第i本的厚度为Ai</p>
-<p>把它们分成连续的M组，使T最小化，其中T表示厚度之和最大的一组的厚度</p>
-<p>题中出现了 最大值最小 答案具有单调性，可以用二分法</p>
-<p>我们将 把书划为M组的方案作为定义域</p>
-<p>厚度之和最大一组的厚度作为值域</p>
-<p>假设最终答案为S，因为S的最优性，如果要求每组的厚度都&lt;S,那么这M组一定无法容纳全部的书，可能需要更多的组才能分完。如果每组的厚度可以&gt;S,那么一定存在一种分数方案使得组数不超过M</p>
-<p>意味着对于本题的限制条件不存在可行的分书方案</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">bool valid(int size)&#123;</span><br><span class="line">    int group=1,rest=size;</span><br><span class="line">    for(int i=1;i&lt;=n;++i)&#123;</span><br><span class="line">        if(rest&gt;=a[i])rest-=a[i];</span><br><span class="line">        else group++,rest=size-a[i];</span><br><span class="line">    &#125;</span><br><span class="line">    return group&lt;=m;</span><br><span class="line">&#125;</span><br><span class="line">int main()&#123;</span><br><span class="line">    int l=0,r=sum_of_ai;</span><br><span class="line">    while(l&lt;r)&#123;</span><br><span class="line">        int mid=(l+r)/2;</span><br><span class="line">        if(valid(mid))r=mid;</span><br><span class="line">        else l=mid+1;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="例2"><a href="#例2" class="headerlink" title="例2"></a>例2</h3><p>NOIP2015跳石头</p>
-<h4 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h4><p>这项比赛将在一条笔直的河道中进行，河道中分布着一些巨大岩石。组委会已经选择好了两块岩石作为比赛起点和终点。在起点和终点之间，有 N 块岩石（不含起点和终点的岩石）。在比赛过程中，选手们将从起点出发，每一步跳向相邻的岩石，直至到达终点。</p>
-<p>为了提高比赛难度，组委会计划移走一些岩石，使得选手们在比赛过程中的最短跳跃距离尽可能长。由于预算限制，组委会至多从起点和终点之间移走 M 块岩石（不能移走起点和终点的岩石）。</p>
-<h4 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h4><p>第一行包含三个整数 L,N,M，分别表示起点到终点的距离，起点和终点之间的岩石数，以及组委会至多移走的岩石数。保证 L≥1 且 N≥M≥0 。</p>
-<p>接下来 N 行，每行一个整数，第 i 行的整数 Di(0&lt;Di&lt;L) ， 表示第 i 块岩石与起点的距离。这些岩石按与起点距离从小到大的顺序给出，且不会有两个岩石出现在同一个位置。</p>
-<h4 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式"></a>输出格式</h4><p>一个整数，即最短跳跃距离的最大值。 </p>
-<h4 id="输入样例"><a href="#输入样例" class="headerlink" title="输入样例"></a>输入样例</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">25 5 2 </span><br><span class="line">2</span><br><span class="line">11</span><br><span class="line">14</span><br><span class="line">17 </span><br><span class="line">21</span><br></pre></td></tr></table></figure>
-
-<h4 id="输出样例"><a href="#输出样例" class="headerlink" title="输出样例"></a>输出样例</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">4</span><br></pre></td></tr></table></figure>
-
-<h4 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h4><p>输入输出样例 1 说明：</p>
-<p>将与起点距离为 2 和 14 的两个岩石移走后,最短的跳跃距离为 4 (从与起点距离 17 的岩石跳到距离 21的岩石,或者从距离 21 的岩石跳到终点)。</p>
-<p>另：对于 20% 的数据, 0≤M≤N≤10 。</p>
-<p>对于 50% 的数据, 0≤M≤N≤100 。</p>
-<p>对于 100% 的数据, 0≤M≤N≤50,000,1≤L≤1,000,000,000 。</p>
-<h4 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">我们二分跳跃距离，然后把这个跳跃距离“认为”是最短的跳跃距离，然后去以这个距离为标准移石头。使用一个judge判断这个解是不是可行解。如果这个解是可行解，那么有可能会有比这更优的解，那么我们就去它的右边二分。为什么去右边？答案是，这个区间是递增的 ，而我们求的是最短跳跃距离的最大值，显然再右边的值肯定比左边大，那么我们就有可能找到比这更优的解，直到找不到，那么最后找到的解就有理由认为是区间内最优解。反过来，如果二分到的这个解是一个非法解，我们就不可能再去右边找了。因为性质，右边的解一定全都是非法解。那么我们就应该去左边找解。整个过程看起来很像递归，实际上，这个过程可以递归写， 也可以写成非递归形式，我个人比较喜欢使用非递归形式。</span><br><span class="line"></span><br><span class="line">下一个问题，这个judge怎么实现呢？judge函数每个题有每个题的写法，但大体上的思想应该都是一样的——想办法检测这个解是不是合法。拿这个题来说，我们去判断如果以这个距离为最短跳跃距离需要移走多少块石头，先不必考虑限制移走多少块，等全部拿完再把拿走的数量和限制进行比对，如果超出限制，那么这就是一个非法解，反之就是一个合法解，很好理解吧。</span><br><span class="line"></span><br><span class="line">可以去模拟这个跳石头的过程。开始你在i(i=0)位置，我在跳下一步的时候去判断我这个当前跳跃的距离，如果这个跳跃距离比二分出来的mid小，那这就是一个不合法的石头，应该移走。为什么？我们二分的是最短跳跃距离，已经是最短了，如果跳跃距离比最短更短岂不是显然不合法，是这样的吧。移走之后要怎么做？先把计数器加上1，再考虑向前跳啊。去看移走之后的下一块石头，再次判断跳过去的距离，如果这次的跳跃距离比最短的长，那么这样跳是完全可以的，我们就跳过去，继续判断，如果跳过去的距离不合法就再拿走，这样不断进行这个操作，直到i = n+1，为啥是n+1？河中间有n块石头，显然终点在n+1处。（这里千万要注意不要把n认为是终点，实际上从n还要跳一步才能到终点）。</span><br><span class="line"></span><br><span class="line">模拟完这个过程，我们查看计数器的值，这个值代表的含义是我们以mid作为答案需要移走的石头数量，然后判断这个数量 是不是超了就行。如果超了就返回false，不超就返回true。</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &lt;cstdio&gt;</span><br><span class="line">#include &lt;cstring&gt;</span><br><span class="line">#include &lt;cctype&gt;</span><br><span class="line">#define maxn 500010</span><br><span class="line">using namespace std;</span><br><span class="line">int d,n,m;</span><br><span class="line">int a[maxn];</span><br><span class="line">int l,r,mid,ans;</span><br><span class="line">inline int read()&#123;//我喜欢快读</span><br><span class="line">    int num = 0;</span><br><span class="line">    char c;</span><br><span class="line">    bool flag = false;</span><br><span class="line">    while ((c = getchar()) == &#x27; &#x27; || c == &#x27;\n&#x27; || c == &#x27;\r&#x27;);</span><br><span class="line">        if (c == &#x27;-&#x27;) flag = true;</span><br><span class="line">    else</span><br><span class="line">        num = c - &#x27;0&#x27;;</span><br><span class="line">    while (isdigit(c = getchar()))</span><br><span class="line">    num = num * 10 + c - &#x27;0&#x27;;</span><br><span class="line">    return (flag ? -1 : 1) * num;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">bool judge(int x)&#123;//judge函数，x代表当前二分出来的答案</span><br><span class="line">    int tot = 0;//tot代表计数器，记录以当前答案需要移走的实际石头数</span><br><span class="line">    int i = 0;//i代表下一块石头的编号</span><br><span class="line">    int now = 0;//now代表模拟跳石头的人当前在什么位置</span><br><span class="line">    while (i &lt; n+1)&#123;//千万注意不是n，n不是终点，n+1才是</span><br><span class="line">        i++;</span><br><span class="line">        if (a[i] - a[now] &lt; x)//判断距离，看二者之间的距离算差值就好</span><br><span class="line">            tot++;//判定成功，把这块石头拿走，继续考虑下一块石头</span><br><span class="line">        else</span><br><span class="line">            now = i;//判定失败，这块石头不用拿走，我们就跳过去，再考虑下一块</span><br><span class="line">    &#125;</span><br><span class="line">    if (tot &gt; m)</span><br><span class="line">        return false;</span><br><span class="line">    else</span><br><span class="line">        return true;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main()&#123;</span><br><span class="line">    d = read();//d代表总长度，也就是右边界</span><br><span class="line">    n = read();//n块石头</span><br><span class="line">    m = read();//限制移走m块，思考的时候可别被这个m限制</span><br><span class="line">    for (int i=1;i&lt;=n;i++)</span><br><span class="line">        a[i] = read();</span><br><span class="line">    a[n+1] = d;//敲黑板划重点，再强调一遍，n不是终点</span><br><span class="line">    l = 1;//l和r分别代表二分的左边界和右边界</span><br><span class="line">    r = d;</span><br><span class="line">    while (l &lt;= r)&#123;//非递归式二分正常向写法，可理解为一般框架</span><br><span class="line">        mid = (l+r) / 2;//这再看不出是啥意思可以退群了</span><br><span class="line">        if (judge(mid))&#123;//带入judge函数判断当前解是不是可行解</span><br><span class="line">            ans = mid;</span><br><span class="line">            l = mid + 1;//走到这里，看来是可行解，我们尝试看看是不是有更好的可行解</span><br><span class="line">        &#125;</span><br><span class="line">        else</span><br><span class="line">            r = mid - 1;//噫，你找了个非法解，赶紧回到左半边看看有没有可行解</span><br><span class="line">    &#125;</span><br><span class="line">    cout &lt;&lt; ans &lt;&lt; endl;//最后的ans绝对是最优解</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>二分法判定有两个条件:有界和单调</p>
-<p>一般涉及 最大值最小 或 最小值最大的问题都可以用二分法判定来解</p>
-]]></content>
-      <tags>
-        <tag>problem</tag>
-        <tag>algorithm</tag>
-      </tags>
   </entry>
   <entry>
     <title>Git常用命令</title>
@@ -582,7 +533,9 @@
 <p>第九十六条　有关单位和个人对依照本法作出的行政处罚和行政强制措施决定不服的，可以依法申请行政复议或者提起行政诉讼。</p>
 <p>第十章　附则</p>
 <p>第九十七条　本法自2016年1月1日起施行。2011年10月29日第十一届全国人民代表大会常务委员会第二十三次会议通过的《全国人民代表大会常务委员会关于加强反恐怖工作有关问题的决定》同时废止。</p>
-<h3 id="观点"><a href="#观点" class="headerlink" title="观点"></a>观点</h3><p>你可能突然发现，社会好像发生了巨大的变化。</p>
+<h3 id="观点"><a href="#观点" class="headerlink" title="观点"></a>观点</h3><p>前些天去了趟高平旅游，过几天还会去桂林。</p>
+<p>高平还在市域之内，但是进个火车站和印象中的大不相同——刷身份证、详细的安检、火车站中严肃的警察乃至吓人的器具…紧张的气氛配合墙上的宣传《中华人民共和国反恐怖主义法》，让我好奇这个新出台法律的同时想了很多。</p>
+<p>你可能突然发现，社会好像发生了巨大的变化。</p>
 <p>全面实名制，天网工程，宣传条幅……</p>
 <p>广电总局，网信办，GFW……</p>
 <p>愚民化教育下，人们对周边的事漠不关心，把力量白白交给了这个能带来”安全”的政府，当一切都改变了，他们也无能为力，他们只能接受现实，只能继续相信。</p>
@@ -607,7 +560,7 @@
 <p>“The power of mind are like the rays of sun.When they are concentrated,they illumine.”–Swami Vivekananda</p>
 </blockquote>
 <p>When I was a child,I saw how a magnifying glass could burn a piece of paper,when the rays of the sun were focused through it one point.The fire could only be ignited,when the sun’s rays were concentrate on a small point.When the magnifying glass was moved too far away,or too close to the paper,the rays were not focused enough,and nothing happened.<br>This experience describes vividly how the power of concentration works.It’s a skill,which enables you to fix your attention on one single thought or subject.<br>When you focus your mind,you protect your energies from being disturbed by other thoughts or activities.Developing concentration is important for achieving success.Without it,your efforts get scattered,but with it,you can finish great things.<br>Concentration has many uses and benefits.It helps in studying,enables faster understanding,improves the memory,and helps in focusing on a task,or goal,and therefore,achieving them more easily and efficiently.When this ability is strong,the mind obeys you more readily and does not engage in worries.This ability plays an important role in gaining mental mastery,and having peace of mind.<br>To develop this power You need to train and exercise it.Forget all your excuses about not having the time or being too busy.Do not say that the circumstances are not proper,or that you cannot find a quiet place to exercise.With a little planning,desire and interest,you can always always find the time to exercise each day,no matter how busy you are.  </p>
-<p>1月15日，我读到这篇文章。在当时的特殊情况下，引起了思想共鸣，产生了巨大的影响。<br>3月15日，约两个月后，重读这篇文章，感触颇深。<br>专注，是成功的必要因素。我们的力量终归是有限的，我们的想法不可能都满足。努力固然是重要的，但是为什么有许多人努力了却依然是失败？究其原因，是因为力量过于分散。他们没有将精力放在真正对他们而言重要的事上，在全面推进的过程中，处处碰壁。<br>要想保持专注，必须知道什么对自己是真正重要的。有了这份认识，便会淡视诱惑与困难。同时，也要有严密的计划，在紧密的规划中稳定前进。<br>最近，是困难的。但我坚信我可以奋斗出亮丽未来，加油！Never give up and Never give in!</p>
+<p>1月15日，我读到这篇文章。在当时的特殊情况下，引起了思想共鸣，产生了巨大的影响。<br>3月15日，约两个月后，重读这篇文章，感触颇深。<br>专注，是成功的必要因素。我们的力量终归是有限的，我们的想法不可能都满足。努力固然是重要的，但是为什么有许多人努力了却依然是失败？究其原因，是因为力量过于分散。他们没有将精力放在真正对他们而言重要的事上，在全面推进的过程中，处处碰壁。<br>要想保持专注，必须知道什么对自己是真正重要的。有了这份认识，便会淡视诱惑与困难。同时，也要有严密的计划，在紧密的规划中稳定前进。  </p>
 ]]></content>
       <tags>
         <tag>mind</tag>
@@ -615,7 +568,7 @@
   </entry>
   <entry>
     <title>位运算</title>
-    <url>/2018/03/10/bitwise-operatorandquickpow2018/</url>
+    <url>/2018/10/10/bitwise-operatorandquickpow2018/</url>
     <content><![CDATA[<p>位运算，顾名思义，是对二进制数的一元或二元操作。位运算往往快于普通的加减乘除操作，可以节省很多时间。  </p>
 <h2 id="位运算符"><a href="#位运算符" class="headerlink" title="位运算符"></a>位运算符</h2><h3 id="取反-NOT"><a href="#取反-NOT" class="headerlink" title="取反(NOT)"></a>取反(NOT)</h3><p>一元运算符，对二进制的每一位进行取反。使0变为1，1变为0  </p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">NOT 0111</span><br><span class="line">  = 1000</span><br></pre></td></tr></table></figure>
@@ -996,23 +949,23 @@
   </entry>
   <entry>
     <title>华东师范大学《线性代数A》2021-2022学年第2学期C卷</title>
-    <url>/2023/01/07/ecnulinearalgebrafinal2022-1C/</url>
+    <url>/2023/01/08/ecnulinearalgebrafinal2022-1C/</url>
     <content><![CDATA[<p>这张卷纸为什么是C卷？因为2021-2022-2学期因为上海疫情学校封校封寝，正考(A卷)和补考(B卷)都放到了2022-2023-1学期初。</p>
 <p>这套卷纸在2022年6月初考的，只有准毕业生能参加。整体来说难度不大，放在这里大家可以参考一下。</p>
 <p>注：以下试题中，$E$表示单位矩阵，$M^{-1}$表示$M$的逆矩阵，$M^{T}$表示$M$的转置矩阵，$Tr(M)$表示$M$的迹。所有题目要有一定的解题步骤。</p>
 <h2 id="一-15分"><a href="#一-15分" class="headerlink" title="一(15分)"></a>一(15分)</h2><p>(1)(7分)</p>
-<p>设四阶行列式$D_4&#x3D;$$$<br>\left|\begin {array}{c}<br>1&amp;-1&amp;3&amp;1 \<br>0&amp;1&amp;0&amp;2 \<br>1&amp;3&amp;-1&amp;4 \<br>2&amp;5&amp;3&amp;1<br>\end{array}\right|<br>$$ $A_{4i}(i&#x3D;1,2,3,4)$分别为该行列式的第四行元素的代数余子式，求$A_{41}+2A_{42}-A_{43}+2A_{44}$的值</p>
-<p>(2)(8分)设$A$是3阶实对称矩阵，向量$\alpha&#x3D;$ $$\left[ \begin{matrix}<br>m\ -m\ 1\end{matrix} \right]  $$,$\beta&#x3D;$ $$\left[ \begin{matrix}<br>m\ 1\ 1-m\end{matrix} \right]  $$分别是齐次线性方程组$A\mathbf{x}&#x3D;0和(A+E)\mathbf{x}&#x3D;0$的解，求m的值</p>
+<p>设四阶行列式$D_4&#x3D;$$$<br>\left|\begin {array}{c}<br>1&amp;-1&amp;3&amp;1 \\<br>0&amp;1&amp;0&amp;2 \\<br>1&amp;3&amp;-1&amp;4 \\<br>2&amp;5&amp;3&amp;1<br>\end{array}\right|<br>$$ $A_{4i}(i&#x3D;1,2,3,4)$分别为该行列式的第四行元素的代数余子式，求$A_{41}+2A_{42}-A_{43}+2A_{44}$的值</p>
+<p>(2)(8分)设$A$是3阶实对称矩阵，向量$\alpha&#x3D;$ $$\left[ \begin{matrix}<br>m\\ -m\\ 1\end{matrix} \right]  $$,$\beta&#x3D;$ $$\left[ \begin{matrix}<br>m\\ 1\\ 1-m\end{matrix} \right]  $$分别是齐次线性方程组$A\mathbf{x}&#x3D;0和(A+E)\mathbf{x}&#x3D;0$的解，求m的值</p>
 <h2 id="二-15分"><a href="#二-15分" class="headerlink" title="二(15分)"></a>二(15分)</h2><p>设n阶矩阵$A$的n个特征值为$1,2,…n$,n阶矩阵$B$满足$E-B&#x3D;AB$</p>
 <p>(1)(6分)证明:$B$是可逆的</p>
 <p>(2)(9分)求$|B^{-1}|$</p>
 <h2 id="三-10分"><a href="#三-10分" class="headerlink" title="三(10分)"></a>三(10分)</h2><p>设数域$P$上的线性空间$V$中的三个向量$\alpha,\beta,\gamma$是线性无关的，若要使得$V$中的向量$\alpha+2\beta,2\beta+k\gamma,3\gamma+\beta$是线性相关的，求k的值</p>
-<h2 id="四-10分"><a href="#四-10分" class="headerlink" title="四(10分)"></a>四(10分)</h2><p>如果三阶矩阵$A&#x3D;$ $$\left[ \begin{matrix}<br>2&amp;0&amp;0\ 0&amp;a&amp;2\ 0&amp;2&amp;1\end{matrix} \right]  $$和$B&#x3D;$$$\left[ \begin{matrix}<br>-1&amp;0&amp;0\ -4&amp;t&amp;0\6&amp;0&amp;3\end{matrix} \right]  $$是相似的，求$a,t$的值</p>
-<h2 id="五-10分"><a href="#五-10分" class="headerlink" title="五(10分)"></a>五(10分)</h2><p>$a$取何值时矩阵$A &#x3D;$$$\left[ \begin{matrix}<br>2&amp;1&amp;4\ 0&amp;3&amp;a\ 0&amp;0&amp;3\end{matrix} \right]  $$共有两个线性无关的特征向量？试说明理由.</p>
+<h2 id="四-10分"><a href="#四-10分" class="headerlink" title="四(10分)"></a>四(10分)</h2><p>如果三阶矩阵$A&#x3D;$ $$\left[ \begin{matrix}<br>2&amp;0&amp;0\\ 0&amp;a&amp;2\\ 0&amp;2&amp;1\end{matrix} \right]  $$和$B&#x3D;$$$\left[ \begin{matrix}<br>-1&amp;0&amp;0\\ -4&amp;t&amp;0\\ 6&amp;0&amp;3\end{matrix} \right]  $$是相似的，求$a,t$的值</p>
+<h2 id="五-10分"><a href="#五-10分" class="headerlink" title="五(10分)"></a>五(10分)</h2><p>$a$取何值时矩阵$A &#x3D;$$$\left[ \begin{matrix}<br>2&amp;1&amp;4\\ 0&amp;3&amp;a\\ 0&amp;0&amp;3\end{matrix} \right]  $$共有两个线性无关的特征向量？试说明理由.</p>
 <h2 id="六-15分"><a href="#六-15分" class="headerlink" title="六(15分)"></a>六(15分)</h2><p>试用正交线性变换$X&#x3D;PY$($P$是正交矩阵)将二次型$f&#x3D;x_{1}^2+4x_{2}^2+4x_{3}^2-4x_{1}x_{2}+4x_{1}x_{3}-8x_{2}x_{3}$化为标准型，并求出它的秩</p>
 <h2 id="七-15分"><a href="#七-15分" class="headerlink" title="七(15分)"></a>七(15分)</h2><p>命题:设$A$是n阶实的反对称矩阵($A^{T}&#x3D;-A$)则对任意的向量$\alpha \in{\mathbb{R}^{n}}$,$\alpha \bot A\alpha $,且$A-E$可逆</p>
 <p>你认为这个命题正确吗？如果正确请给出证明。如果不正确，请给出反例。</p>
-<h2 id="八-10分"><a href="#八-10分" class="headerlink" title="八(10分)"></a>八(10分)</h2><p>设三阶矩阵$A,B$满足$2A^{-1}B&#x3D;2B+E$,如果令矩阵$B&#x3D;\frac{1}{2}$ $$\left[ \begin{matrix}<br>0&amp;-1&amp;0\ 1&amp;-1&amp;0\ 0&amp;0&amp;-3\end{matrix} \right]  $$请求出$A-E$的第二行的元素。</p>
+<h2 id="八-10分"><a href="#八-10分" class="headerlink" title="八(10分)"></a>八(10分)</h2><p>设三阶矩阵$A,B$满足$2A^{-1}B&#x3D;2B+E$,如果令矩阵$B&#x3D;\frac{1}{2}$ $$\left[ \begin{matrix}<br>0&amp;-1&amp;0\\ 1&amp;-1&amp;0\\ 0&amp;0&amp;-3\end{matrix} \right]  $$请求出$A-E$的第二行的元素。</p>
 ]]></content>
       <tags>
         <tag>linear_algebra</tag>
@@ -1035,8 +988,9 @@
   </entry>
   <entry>
     <title>华东师范大学《线性代数》2013-2014学年第二学期期末考试A卷</title>
-    <url>/2023/01/07/ecnulinearalgebrafinal2014/</url>
+    <url>/2023/01/08/ecnulinearalgebrafinal2014/</url>
     <content><![CDATA[<p>这张卷纸其实出得挺好的，自己在当时考线代前两天才做此卷，有些晚了&#x2F;捂脸</p>
+<p>用这张卷纸来练练自己敲markdown数学公式的手感吧:)</p>
 <p>在该试题中,$E$表示单位矩阵</p>
 <h2 id="单项选择题"><a href="#单项选择题" class="headerlink" title="单项选择题"></a>单项选择题</h2><p>(共15分，每小题3分)</p>
 <p>1 设$A,B$是n阶方阵，满足$AB&#x3D;O$,则必有( )</p>
@@ -1057,21 +1011,21 @@
 <p>(B)$A与B$特征方程相同</p>
 <p>(C)$A与B$相似于同一对角矩阵</p>
 <p>(D)存在正交矩阵$Q$使得$B&#x3D;Q^{-1}AQ$</p>
-<p>5 设$A&#x3D;$ $$\left[ \begin{matrix} 1 &amp; 1 &amp; 1\ 1 &amp; 1 &amp; 1 \ 1 &amp; 1 &amp; 1 \end{matrix} \right]  $$ $B&#x3D;$ $$\left[ \begin{matrix} 3 &amp; 0 &amp; 0\ 0 &amp; 0 &amp; 0 \ 0 &amp; 0 &amp; 0 \end{matrix} \right]  $$ 则$A与B$ </p>
+<p>5 设$A&#x3D;$ $$\left[ \begin{matrix} 1 &amp; 1 &amp; 1\\ 1 &amp; 1 &amp; 1 \\ 1 &amp; 1 &amp; 1 \end{matrix} \right]  $$ $B&#x3D;$ $$\left[ \begin{matrix} 3 &amp; 0 &amp; 0\\ 0 &amp; 0 &amp; 0 \\ 0 &amp; 0 &amp; 0 \end{matrix} \right]  $$ 则$A与B$ </p>
 <p>(A) 合同且相似</p>
 <p>(B) 合同但不相似</p>
 <p>(C) 不合同但相似</p>
 <p>(D) 不合同且不相似</p>
 <h2 id="填空题"><a href="#填空题" class="headerlink" title="填空题"></a>填空题</h2><p>(共25分，每小题5分)</p>
 <p>6 已知3阶方阵$A$的3个特征值时1,2,3,则$|A^{-1}+A^{*}|&#x3D;?$</p>
-<p>7 设矩阵$A&#x3D;$ $$\left[ \begin{matrix} 1 &amp; 1 &amp; 1\ 0 &amp; 2 &amp; 2 \ 0 &amp; 0 &amp; 3 \end{matrix} \right]  $$则$(A^{*})^{-1}&#x3D;?$</p>
+<p>7 设矩阵$A&#x3D;$ $$\left[ \begin{matrix} 1 &amp; 1 &amp; 1\\ 0 &amp; 2 &amp; 2 \\ 0 &amp; 0 &amp; 3 \end{matrix} \right]  $$则$(A^{*})^{-1}&#x3D;?$</p>
 <p>8 若n为向量组$\alpha_{1},\alpha_{2},\alpha_{3},\alpha_{4}(n\geq4)$线性无关，则向量组$\alpha_{1}+\alpha_{2},\alpha_{2}+\alpha_{3},\alpha_{3}+\alpha_{4},\alpha_{4}+\alpha_{1}$的关系是?(填”线性相关”或”线性无关”)</p>
 <p>9 若$\alpha,\beta,\gamma$是规范正交向量组，则$||\alpha+\beta+\gamma||&#x3D;?$</p>
-<p>10 若$A&#x3D;$ $$\left[ \begin{matrix} k &amp; k \ k &amp; -2 \end{matrix} \right]  $$是负定矩阵，那么$k$满足的条件是什么?</p>
+<p>10 若$A&#x3D;$ $$\left[ \begin{matrix} k &amp; k \\ k &amp; -2 \end{matrix} \right]  $$是负定矩阵，那么$k$满足的条件是什么?</p>
 <h2 id="计算及证明题"><a href="#计算及证明题" class="headerlink" title="计算及证明题"></a>计算及证明题</h2><p>(共60分，要求写出具体过程)</p>
 <p>11(10分)设n阶方阵$A&#x3D;(\alpha_{1},\alpha_{2},…,\alpha_{n})$,$B&#x3D;(\alpha_{1}+\alpha_{2},\alpha_{2}+\alpha_{3},…,\alpha_{n}+\alpha_{1})$,其中$\alpha_{1},\alpha_{2},…,\alpha_{n}$为n维向量$n\geq2$.已知$|A|&#x3D;a (a&#x3D;0)$,求$|B|$的值</p>
-<p>12(10分)设4维向量组$\alpha_1&#x3D;$$\left[ \begin{matrix}<br>a \ 1 \1 \1 \end{matrix} \right]  $ $\alpha_2&#x3D;$$\left[ \begin{matrix}<br>1 \ a \1 \1 \end{matrix} \right]  $ $\alpha_3&#x3D;$$\left[ \begin{matrix}<br>1 \ 1 \a \1 \end{matrix} \right]  $ $\alpha_4&#x3D;$ $\left[ \begin{matrix}<br>1 \ 1 \1 \a \end{matrix} \right]  $问当$a$为何值时$\alpha_{1},\alpha_{2},\alpha_{3},\alpha_{4}$的秩为3？$\alpha_{1},\alpha_{2},\alpha_{3},\alpha_{4}$的秩为3时，求其一个极大无关组，并将其余向量用该极大无关组线性表示.</p>
-<p>13(10分)已知$A&#x3D;$ $$\left[ \begin{matrix} 4 &amp; -3 &amp; 3\ 5 &amp; -4 &amp; 5 \ 0 &amp; 0 &amp; 1 \end{matrix} \right]  $$,求可逆矩阵$P$使得$P^{-1}AP$为对角矩阵，并求$A^{2015}$</p>
+<p>12(10分)设4维向量组$\alpha_1&#x3D;$$\left[ \begin{matrix}<br>a \\ 1 \\ 1 \\ 1 \end{matrix} \right]  $ $\alpha_2&#x3D;$$\left[ \begin{matrix}<br>1 \\ a \\ 1 \\ 1 \end{matrix} \right]  $ $\alpha_3&#x3D;$$\left[ \begin{matrix}<br>1 \\ 1 \\ a \\ 1 \end{matrix} \right]  $ $\alpha_4&#x3D;$ $\left[ \begin{matrix}<br>1 \\ 1 \\ 1 \\ a \end{matrix} \right]  $问当$a$为何值时$\alpha_{1},\alpha_{2},\alpha_{3},\alpha_{4}$的秩为3？$\alpha_{1},\alpha_{2},\alpha_{3},\alpha_{4}$的秩为3时，求其一个极大无关组，并将其余向量用该极大无关组线性表示.</p>
+<p>13(10分)已知$A&#x3D;$ $$\left[ \begin{matrix} 4 &amp; -3 &amp; 3\\ 5 &amp; -4 &amp; 5 \\ 0 &amp; 0 &amp; 1 \end{matrix} \right]  $$,求可逆矩阵$P$使得$P^{-1}AP$为对角矩阵，并求$A^{2015}$</p>
 <p>14(10分) 用配方法化二次型$f&#x3D;-4x_{1}x_{2}+2x_{1}x_{3}+2x_{2}x_{3}$为标准型,并写出对应的可你线性变换矩阵.</p>
 <p>15(10分) 设$A$为n阶方阵，$\mathbf{x}$为n维向量$n\geq2$,证明:</p>
 <p>(1)若存在非负整数k使得$A^{k}\mathbf{x}&#x3D;\mathbf{0}且A^{k+1}\mathbf{x}&#x3D;\mathbf{0}$则$\mathbf{x},\mathbf{Ax},…,\mathbf{A^{k}x}$线性无关</p>
@@ -1088,7 +1042,6 @@
     <url>/2022/01/12/fudangaoshu1-2021-2022-hard/</url>
     <content><![CDATA[<p> 这个题反正我不是很会做，倒是会猜测得出答案。</p>
 <p>转载自<a href="https://zhuanlan.zhihu.com/p/454773051">https://zhuanlan.zhihu.com/p/454773051</a></p>
-<p>今天这个主要也是在训练自己使用Markdown来书写公式</p>
 <h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>已知定义在$\mathbb{R}$上的实函数$f(x)$具有连续的导函数，且满足$f(0)&#x3D;\frac{4{\pi}}{3}$以及$f’(x)&#x3D;\frac{sin f(x)}{\sqrt{1+f^2(x)}}$ 记$a_n&#x3D;\int_{-n}^{n} \frac{sin^2 f(x)}{1+f^2(x)}, dx$ 试判断$(a_n)_{n\in{\mathbb{N^+}}}$</p>
 <p>的敛散性。并求出$f(x)$的单调区间，并求$\lim_{n \to +\infty}f(x)$和$\lim_{n \to -\infty}f(x)$</p>
 <h2 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h2><p>我们先证明$f(x)$在$\mathbb{R}$上单调递减。</p>
@@ -1294,54 +1247,6 @@
 ]]></content>
   </entry>
   <entry>
-    <title>状压DP初步之POJ 2288</title>
-    <url>/2018/03/09/islands-and-bridges-poj2018/</url>
-    <content><![CDATA[<h1 id="Islands-and-Bridges"><a href="#Islands-and-Bridges" class="headerlink" title="Islands and Bridges"></a>Islands and Bridges</h1><p><a href="http://poj.org/problem?id=2288">来源</a>  </p>
-<blockquote>
-<p>Suppose there are n islands. The value of a Hamilton path C1C2…Cn is calculated as the sum of three parts. Let Vi be the value for the island Ci. As the first part, we sum over all the Vi values for each island in the path. For the second part, for each edge CiCi+1 in the path, we add the product Vi<em>Vi+1. And for the third part, whenever three consecutive islands CiCi+1Ci+2 in the path forms a triangle in the map, i.e. there is a bridge between Ci and Ci+2, we add the product Vi</em>Vi+1*Vi+2. </p>
-</blockquote>
-<blockquote>
-<p>Most likely but not necessarily, the best triangular Hamilton path you are going to find contains many triangles. It is quite possible that there might be more than one best triangular Hamilton paths; your second task is to find the number of such paths. </p>
-</blockquote>
-<p>以上是本题的描述，好像做了一篇英语阅读理解～～，为了更好解题，手动翻译：<br>假设有n个岛，一条汉密尔顿路C1C2…Cn 由三部分的和计算。让Vi成为岛Ci的价值。作为第一部分，我们将路径上所有Vi相加；作为第二部分，对于每一条边CiCi+1，我们增加Vi<em>V(i+1)；作为第三部分，当路径上的CiCi+1Ci+2形成了一个三角形，即Ci与Ci+2之间有较大距离时，我们增加Vi</em>V(i+1)V(i+2)<br>最有可能但不一定，你要找到的的最佳三角形哈密尔顿路包含许多三角形。你的第二个任务是找到这样的路径数量。<br>目的就是求最大价值并找到路径数量。<br><br>总权值包括三部分<br><br>第1部分，v[i]之和<br><br>第2部分，v[i]<em>v[i+1]之和<br><br>第3部分，如果岛屿c[i]与岛屿c[i+2]也是相通的，即岛屿c[i]，c[i+1]，c[i+2]构成了一个三角关系，v[i]</em>[i+1]*[i+2]之和<br>  </p>
-<blockquote>
-<p>哈密尔顿回路：在一个无向图中，由指定的起点前往指定的终点，途中经过所有其他节点且只经过一次   </p>
-</blockquote>
-<p>Input  </p>
-<blockquote>
-<p>The input file starts with a number q (q&lt;&#x3D;20) on the first line, which is the number of test cases. Each test case starts with a line with two integers n and m, which are the number of islands and the number of bridges in the map, respectively. The next line contains n positive integers, the i-th number being the Vi value of island i. Each value is no more than 100. The following m lines are in the form x y, which indicates there is a (two way) bridge between island x and island y. Islands are numbered from 1 to n. You may assume there will be no more than 13 islands. </p>
-</blockquote>
-<p>Output </p>
-<blockquote>
-<p>For each test case, output a line with two numbers, separated by a space. The first number is the maximum value of a best triangular Hamilton path; the second number should be the number of different best triangular Hamilton paths. If the test case does not contain a Hamilton path, the output must be &#96;0 0’. </p>
-</blockquote>
-<blockquote>
-<p>Note: A path may be written down in the reversed order. We still think it is the same path.</p>
-</blockquote>
-<p>Sample Input</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">2</span><br><span class="line">3 3</span><br><span class="line">2 2 2</span><br><span class="line">1 2</span><br><span class="line">2 3</span><br><span class="line">3 1</span><br><span class="line">4 6</span><br><span class="line">1 2 3 4</span><br><span class="line">1 2</span><br><span class="line">1 3</span><br><span class="line">1 4</span><br><span class="line">2 3</span><br><span class="line">2 4</span><br><span class="line">3 4</span><br></pre></td></tr></table></figure>
-
-<p>Sample Output</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">22 3</span><br><span class="line">69 1</span><br></pre></td></tr></table></figure>
-<h2 id="思想"><a href="#思想" class="headerlink" title="思想"></a>思想</h2><p>显然，这是一道使用动态规划求解的题（符合重叠子问题原则）<br>如果要用朴素的方法建立数组实现，显然空间会炸。因此，这里要使用状态压缩。<br>每个点的状态由前两个点所决定，我们用F(s,i,j)表示状态为s时，当前点为i,上一个点为j是的最大价值。这个状态由F(s’,j,k)推导。<br>如何表示状态呢？二进制的某一位代表了这个位上的点的情况。若为1，则走过，若为0，则没有走过。<br>因此，我们可以推导出s’&#x3D;s-(1&lt;&lt;i)，回溯到了这一步之前一步的状态。<br>状态转移：F(s,i,j)&#x3D;max{F(s,i,j),F[s’,j,k]+tmp} tmp指的是加上的得分，即Vi<em>Vj+Vi,如果构成三角关系（i和k间有边）,tmp就要加上Vi</em>Vj<em>Vk<br>边界：F((1&lt;&lt;i)+(1&lt;&lt;j),i,j)&#x3D;Vi+Vj+Vi</em>Vj(i与j要有边）</p>
-<h2 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h2><ol>
-<li>n&#x3D;1时，路径的条数是1 </li>
-<li>技术要用_int64,因为有13个岛，即最多路径为2^13,超过int</li>
-<li>最后输出路径的时候要除以2，因为题目说颠倒路径只算1条</li>
-<li>如果哈密顿路不存在，输出“0 0”</li>
-</ol>
-<h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"> #include &lt;cstdio&gt;</span><br><span class="line"> #include &lt;cstring&gt;</span><br><span class="line"> using namespace std;</span><br><span class="line"> int v[15],g[15][15];</span><br><span class="line"> long long f[1&lt;&lt;13][13][13],p[1&lt;&lt;13][13][13];</span><br><span class="line"> int main()&#123;</span><br><span class="line">  int t;</span><br><span class="line">  long long ans=0,sum=0,tmp=0,st=0;</span><br><span class="line">  scanf(&quot;%d&quot;,&amp;t);</span><br><span class="line">  while(t--)&#123;</span><br><span class="line">   ans=-1,sum=0;</span><br><span class="line">   memset(v,0,sizeof(v));</span><br><span class="line">   memset(g,0,sizeof(g));</span><br><span class="line">   memset(f,-1,sizeof(f));</span><br><span class="line">   memset(p,0,sizeof(p));</span><br><span class="line">   int n,m;</span><br><span class="line">   scanf(&quot;%d%d&quot;,&amp;n,&amp;m);</span><br><span class="line">   for(int i=0;i&lt;n;++i)scanf(&quot;%d&quot;,&amp;v[i]);</span><br><span class="line">   for(int i=0;i&lt;m;++i)&#123;</span><br><span class="line">    int x,y;</span><br><span class="line">    scanf(&quot;%d%d&quot;,&amp;x,&amp;y);</span><br><span class="line">    --x,--y;</span><br><span class="line">    g[x][y]=g[y][x]=1;</span><br><span class="line">   &#125;</span><br><span class="line">   if(n==1)&#123;//特殊情况 </span><br><span class="line">    printf(&quot;%d 1\n&quot;,v[0]);</span><br><span class="line">    continue;</span><br><span class="line">   &#125;</span><br><span class="line">   for(int i=0;i&lt;n;++i)&#123;//预处理 </span><br><span class="line">    for(int j=0;j&lt;n;++j)&#123;</span><br><span class="line">	    if(i!=j&amp;&amp;g[i][j])&#123;</span><br><span class="line">		    f[(1&lt;&lt;i)+(1&lt;&lt;j)][i][j]=v[i]+v[j]+v[i]*v[j];</span><br><span class="line">		    p[(1&lt;&lt;i)+(1&lt;&lt;j)][i][j]=1;</span><br><span class="line">	    &#125;</span><br><span class="line">    &#125;</span><br><span class="line">   &#125;</span><br><span class="line">   for(long long s=0;s&lt;(1&lt;&lt;n);++s)&#123;//生成情况 </span><br><span class="line">    for(int i=0;i&lt;n;++i)&#123;</span><br><span class="line">	    if(s&amp;(1&lt;&lt;i))</span><br><span class="line">	    for(int j=0;j&lt;n;++j)&#123;</span><br><span class="line">		    if(i!=j&amp;&amp;g[i][j]&amp;&amp;s&amp;(1&lt;&lt;j))</span><br><span class="line">		    for(int k=0;k&lt;n;++k)&#123;</span><br><span class="line">			    if(i!=k&amp;&amp;j!=k&amp;&amp;s&amp;(1&lt;&lt;k)&amp;&amp;g[j][k])&#123;</span><br><span class="line">				    st=s-(1&lt;&lt;i);</span><br><span class="line">				    if(f[st][j][k]!=-1)&#123;//已经符合初始化的条件，即三步价值的第一步 </span><br><span class="line">					    tmp=v[i]+v[i]*v[j]+f[st][j][k];</span><br><span class="line">					    if(g[k][i])//成环情况</span><br><span class="line">					    tmp+=v[i]*v[j]*v[k];</span><br><span class="line">					    if(tmp&gt;f[s][i][j])&#123;//更新 </span><br><span class="line">						    f[s][i][j]=tmp;</span><br><span class="line">						    p[s][i][j]=p[st][j][k];//转移路径 </span><br><span class="line">					    &#125; </span><br><span class="line">					    else if(tmp==f[s][i][j])p[s][i][j]+=p[st][j][k];//对路径叠加 </span><br><span class="line">				    &#125;</span><br><span class="line">			    &#125;</span><br><span class="line">		    &#125;</span><br><span class="line">	    &#125;</span><br><span class="line">    &#125;</span><br><span class="line">   &#125;</span><br><span class="line">   for(int i=0;i&lt;n;++i)&#123;</span><br><span class="line">    for(int j=0;j&lt;n;++j)&#123;</span><br><span class="line">	    if(i!=j)&#123;</span><br><span class="line">		    if(f[(1&lt;&lt;n)-1][i][j]&gt;ans)&#123;//(1&lt;&lt;n -1即全部走过的值</span><br><span class="line">		        ans=f[(1&lt;&lt;n)-1][i][j];</span><br><span class="line">		        sum=p[(1&lt;&lt;n)-1][i][j];</span><br><span class="line">		    &#125;</span><br><span class="line">		    else if(f[(1&lt;&lt;n)-1][i][j]==ans)</span><br><span class="line">		    sum+=p[(1&lt;&lt;n)-1][i][j];</span><br><span class="line">	    &#125;</span><br><span class="line">    &#125;</span><br><span class="line">   &#125;</span><br><span class="line">   if(ans==-1)//无效情况</span><br><span class="line">   printf(&quot;0 0\n&quot;);</span><br><span class="line">   else</span><br><span class="line">   printf(&quot;%lld %lld\n&quot;,ans,sum/2); </span><br><span class="line">  &#125;</span><br><span class="line">  return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><ol>
-<li>不理解题意是无法正确解题的核心原因。看不懂一个题往往比不会做更可怕</li>
-<li>状压DP不错，但要酌情考虑，容易炸空间～～～</li>
-<li>熟悉位运算可以带来很大便利<br>The End<br>本文系原创，未经作者许可禁止转载。</li>
-</ol>
-]]></content>
-      <tags>
-        <tag>problem</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>信息可视化图像聚类大作业</title>
     <url>/2022/07/08/infovis2/</url>
     <content><![CDATA[<h2 id="作业要求"><a href="#作业要求" class="headerlink" title="作业要求"></a>作业要求</h2><p>课程作业: 基于已完成的练习，实现一个图片颜色的可视化页面，基本功能<br>要求如下：</p>
@@ -1500,41 +1405,6 @@
       </tags>
   </entry>
   <entry>
-    <title>KMP字符串匹配</title>
-    <url>/2018/06/17/kmp2018/</url>
-    <content><![CDATA[<p>KMP算法可在一个主文本串 S 内查找一个词 W 的出现位置<br>此算法通过运用对这个词在不匹配时本身就包含足够的信息来确定下一个匹配将在哪里开始的发现，从而避免重新检查先前匹配的字符。</p>
-<h2 id="朴素"><a href="#朴素" class="headerlink" title="朴素"></a>朴素</h2><p>有一个文本串S，和一个模式串P (两者长度分别为N,M) </p>
-<p>如果用暴力匹配的思路，并假设现在文本串S匹配到 i 位置，模式串P匹配到 j 位置，则有：<br>如果当前字符匹配成功（即S[i] &#x3D;&#x3D; P[j]），则i++，j++，继续匹配下一个字符；<br>如果失配（即S[i]! &#x3D; P[j]），令i &#x3D; i - (j - 1)，j &#x3D; 0。相当于每次匹配失败时，i 回溯，j 被置为0。</p>
-<p>时间复杂度 O(N*M)   </p>
-<h1 id="KMP"><a href="#KMP" class="headerlink" title="KMP"></a>KMP</h1><p>核心思想就是通过运用对这个词在不匹配时本身就包含足够的信息来确定下一个匹配将在哪里开始的发现，从而避免重新检查先前匹配的字符。</p>
-<p>方法  </p>
-<ol>
-<li><p>对模式串B自我匹配，求出next数组，其中next[i]表示A中以i结尾的后缀串与前缀串的最大匹配长度  </p>
-</li>
-<li><p>对A和B进行匹配，求出数组f，其中f[i]表示A中以i结尾的字串与B的前缀能匹配的最大长度</p>
-</li>
-</ol>
-<p>经过优化 在O(N+M)的复杂度内便可求解  </p>
-<h3 id="next数组"><a href="#next数组" class="headerlink" title="next数组"></a>next数组</h3><p>首先 举个例子<br>设B&#x3D;’abababa’,next[7]&#x3D;?<br>b[2<del>7]&#x3D;’bababa’ b[1</del>6]&#x3D;’ababab’ 不匹配<br>b[3<del>7]&#x3D;’ababa’ b[1</del>5]&#x3D;’ababa’ 长度为5<br><strong>…………</strong><br>最后得next[7]&#x3D;5<br>那么，我们如何求next数组呢？  </p>
-<p>选择相应的例子进行比较，我们显然能发现next数组中的递推关系  </p>
-<ol>
-<li>初始化next[1]&#x3D;0  </li>
-<li>假设next[1~i-i]已求出 求next[i] 拓展长度j   </li>
-<li>如果拓展失败，即下个字符不相等，则令j变为next[j],直至j&#x3D;0(应从头匹配)</li>
-<li>如果拓展成功 匹配长度j+1</li>
-<li>最后next[i]就为j</li>
-</ol>
-<h3 id="f数组"><a href="#f数组" class="headerlink" title="f数组"></a>f数组</h3><p>根据定义的相似性，求解f与求解next数组类似，此处不再细说 </p>
-<p>移动位数 &#x3D; 已匹配的字符数 - 对应的部分匹配值 </p>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">#include &lt;cstdio&gt;</span><br><span class="line">#include &lt;cstring&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">char a[66666666],b[66666666];</span><br><span class="line">int next[66666666],f[66666666],n,m;</span><br><span class="line">void KMP()&#123;</span><br><span class="line"> next[1]=0;</span><br><span class="line"> for(int i=2,j=0;i&lt;=m;++i)&#123;</span><br><span class="line">  while(j&gt;0&amp;&amp;b[i]!=b[j+1])j=next[j];</span><br><span class="line">  if(b[i]==b[j+1])j++;</span><br><span class="line">  next[i]=j;</span><br><span class="line"> &#125;</span><br><span class="line"> for(int i=1,j=0;i&lt;=n;++i)&#123;</span><br><span class="line">  while(j&gt;0&amp;&amp;(j==n||a[i]!=b[j+1]))j=next[j];</span><br><span class="line">  if(a[i]==b[j+1])j++;</span><br><span class="line">  f[i]=j;</span><br><span class="line"> &#125;</span><br><span class="line">&#125;</span><br><span class="line">int main()&#123;</span><br><span class="line"> scanf(&quot;%s%s&quot;,a+1,b+1);</span><br><span class="line"> n=strlen(a+1),m=strlen(b+1);</span><br><span class="line"> KMP();</span><br><span class="line"> /***********</span><br><span class="line"> THIS IS A TEST</span><br><span class="line">	</span><br><span class="line"> printf(&quot;%s\n&quot;,a+1);</span><br><span class="line"> for(int i=1;i&lt;=n;++i)printf(&quot;%d&quot;,f[i]);</span><br><span class="line"> printf(&quot;\n&quot;);</span><br><span class="line"> printf(&quot;%s\n&quot;,b+1);</span><br><span class="line"> for(int i=1;i&lt;=m;++i)printf(&quot;%d&quot;,next[i]);</span><br><span class="line"> ************/</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>附：然而，kmp并不是效率最高的算法，实际应用并不多，真正常见的是Boyer-Moore算法 相关资料<br><a href="http://www.ruanyifeng.com/blog/2013/05/boyer-moore_string_search_algorithm.html">阮一峰的博客</a></p>
-]]></content>
-      <tags>
-        <tag>algorithm</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>love</title>
     <url>/2018/06/07/love2018/</url>
     <content><![CDATA[<p>《爱》<br>——罗伊·克里夫特</p>
@@ -1596,7 +1466,7 @@
   </entry>
   <entry>
     <title>单源最短路</title>
-    <url>/2018/02/25/minway2018/</url>
+    <url>/2018/12/25/minway2018/</url>
     <content><![CDATA[<p>Hello!<br><br>单元最短路算法是图论中比较重要的算法，往往配合其他算法发挥重要作用。然而，各种讲解比较混乱，没有一个通用的模板来理解和记忆。<br><br>N、M、S，分别表示点的个数、有向边的个数、出发点的编号<br></p>
 <h1 id="SPFA"><a href="#SPFA" class="headerlink" title="SPFA"></a>SPFA</h1><p>主要思想：初始时将起点加入队列。每次从队列中取出一个元素，并对它所相邻的点进行修改，若某个相邻的点修改成功，则将其入队。直到队列为空算法结束。（和广搜类似。。。）适用于稀疏图和负权</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">inline void spfa()&#123;</span><br><span class="line">    queue&lt;int&gt; q;   </span><br><span class="line">    for(int i=1; i&lt;=n; i++) dis[i]=2147483647;//赋初值  </span><br><span class="line">    int u,v; q.push(s);//stl模板库里的一些函数大佬们应该都明白吧。。。  </span><br><span class="line">    dis[s]=0; vis[s]=1;   </span><br><span class="line">    while(!q.empty())&#123;//队列优化 </span><br><span class="line">        u=q.front(),v;  </span><br><span class="line">        q.pop(); vis[u]=0; </span><br><span class="line">        for(int i=head[u];i;i=h[i].next)&#123;//SPFA最重要的遍历图 </span><br><span class="line">            v=h[i].to;  </span><br><span class="line">            if(dis[v]&gt;dis[u]+h[i].w)&#123;   </span><br><span class="line">                dis[v]=dis[u]+h[i].w; </span><br><span class="line">                if(!vis[v])&#123; </span><br><span class="line">                    vis[v]=1;</span><br><span class="line">                    q.push(v);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -1759,80 +1629,6 @@
 <p>编辑于 2022-07-02 16:35</p>
 <p>#知乎禁止转载的回答怎么复制做笔记？<br>刚刚测试了一下，<br>复制时，不要只复制人家的正文，请把正文意外的（比如上面的作者名称、头衔、多少人赞同之类的信息）也多少复制一点点。然后就可以了。<br>可以鼠标点击一处，然后按住shift，鼠标点击下方。如此方便复制长文（包括了文字、图片、链接）。<br>发布于 2022-05-06 15:48<br>​</p>
 ]]></content>
-  </entry>
-  <entry>
-    <title>SDOI2010猪国杀</title>
-    <url>/2018/05/26/sdoi10zgs2018/</url>
-    <content><![CDATA[<h4 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h4><p>《猪国杀》是一种多猪牌类回合制游戏，一共有三种角色：主猪，忠猪，反猪。每局游戏主猪有且只有一只，忠猪和反猪可以有多只，每只猪扮演一种角色。</p>
-<p>游戏目的：</p>
-<p>主猪（MP）：自己存活的情况下消灭所有的反猪。</p>
-<p>忠猪（ZP）：不惜一切保护主猪，胜利条件与主猪相同。</p>
-<p>反猪（AP）：杀死主猪。</p>
-<p>游戏过程：</p>
-<p>游戏开始时候，每个玩家手里都会有4张牌，且体力上限和初始体力都是4。</p>
-<p>开始游戏时，从主猪开始，按照逆时针方向（数据中就是按照编号从1,2,3..n,1..的顺序）依次行动。</p>
-<p>每个玩家自己的回合可以分为4个阶段：</p>
-<p>摸牌阶段：从牌堆顶部摸两张牌，依次放到手牌的最右边；</p>
-<p>出牌阶段：你可以使用0张到任意张牌，每次使用牌的时候都使用最靠左的能够使用的牌。当然，要满足如下规则：</p>
-<p>1.如果没有猪哥连弩，每个出牌阶段只能使用一次“杀”来攻击；</p>
-<p>2.任何牌被使用后被弃置（武器是装备上）；</p>
-<p>被弃置的牌以后都不能再用，即与游戏无关；</p>
-<p>各种牌介绍：</p>
-<p>每张手牌用一个字母表示，字母代表牌的种类。</p>
-<p>基本牌：</p>
-<p>『桃(P)』：在自己的回合内，如果自己的体力值不等于体力上限，那么使用一个桃可以为自己补充一点体力，否则不能使用桃；桃只能对自己使用；在自己的回合外，如果自己的血变为0或者更低，那么也可以使用；</p>
-<p>『杀(K)』：在自己的回合内，对攻击范围内除自己以外的一名角色使用。如果没有被『闪』抵消，则造成1点伤害。无论有无武器，杀的攻击范围都是1；</p>
-<p>『闪(D)』：当你受到杀的攻击时，可以弃置一张闪来抵消杀的效果；</p>
-<p>◎锦囊牌：</p>
-<p>『决斗(F)』：出牌阶段，对除自己以外任意一名角色使用，由目标角色先开始，自己和目标角色轮流弃置一张杀，首先没有杀可弃的一方受到1点伤害，另一方视为此伤害的来源；</p>
-<p>『南猪入侵(N)』：出牌阶段，对除你以外所有角色使用，按逆时针顺序从使用者下家开始依次结算，除非弃置一张杀，否则受到1点伤害；</p>
-<p>​    『万箭齐发(W)』：和南猪入侵类似，不过要弃置的不是杀而是闪；</p>
-<p>『无懈可击(J)』：在目标锦囊生效前抵消其效果。每次有一张锦囊即将生效时，从使用这张锦囊的猪开始，按照逆时针顺序，依次得到使用无懈可击的机会；</p>
-<p>效果：用于决斗时，决斗无效并弃置；用于南猪入侵或万箭齐发时，当结算到某个角色时才能使用，当前角色不需弃置牌并且不会受到伤害（仅对一个角色产生效果）；用于无懈可击时，成为目标的无懈可击被无效。</p>
-<p>◎装备牌：</p>
-<p>『猪哥连弩(Z)』：武器，攻击范围1，出牌阶段你可以使用任意张杀；</p>
-<p>同一时刻最多只能装一个武器；如果先前已经有了一把武器，那么之后再装武器的话，会弃置以前的武器来装现在的武器；</p>
-<p>特殊事件及概念解释：</p>
-<p>◎伤害来源：杀、南猪入侵、万箭齐发的伤害来源均是使用该牌的猪，决斗的伤害来源如上；</p>
-<p>◎距离：两只猪的距离定义为沿着逆时针方向间隔的猪数＋1。即初始时1和2的距离为1，但是2和1的距离就是n-1。注意一个角色的死亡会导致一些猪距离的改变；</p>
-<p>◎玩家死亡：如果该玩家的体力降到0或者更低，并且自己手中没有足够的桃使得自己的体力值回到1，那么就死亡了，死亡后所有的牌（装备区，手牌区）被弃置；</p>
-<p>◎奖励与惩罚：反猪死亡时，最后一个伤害来源处（即使是反猪）立即摸三张牌。忠猪死亡时，如果最后一个伤害来源是主猪，那么主猪所有装备牌、手牌被弃置；</p>
-<p>◎注意，一旦达成胜利条件，游戏立刻结束，因此即使会摸3张牌或者还有牌可以用也不用执行了。</p>
-<p>现在，我们已经知道每只猪的角色、手牌，还有牌堆初始情况，并且假设每个角色会按照如下的行为准则进行游戏，你需要做的就是告诉小猪iPig最后的结果。</p>
-<p>几种行为：</p>
-<p>◎献殷勤：使用无懈可击挡下南猪入侵、万箭齐发、决斗；使用无懈可击抵消表敌意；</p>
-<p>◎表敌意：对某个角色使用杀、决斗；使用无懈可击抵消献殷勤；</p>
-<p>◎跳忠：即通过行动表示自己是忠猪。跳忠行动就是对主猪或对某只已经跳忠的猪献殷勤，或者对某只已经跳反的猪表敌意；</p>
-<p>◎跳反：即通过行动表示自己是反猪。跳反行动就是对主猪或对某只已经跳忠的猪表敌意，或者对某只已经跳反的猪献殷勤；</p>
-<p>忠猪不会跳反，反猪也不会跳忠；不管是忠猪还是反猪，能够跳必然跳；</p>
-<p>行动准则：</p>
-<p>共性：每个角色如果手里有桃且生命值未满，那么必然吃掉；有南猪入侵、万箭齐发、必然使用；有装备必然装上；受到杀时，有闪必然弃置；响应南猪入侵或者万箭齐发时候，有杀&#x2F;闪必然弃置；不会对未表明身份的猪献殷勤（包括自己）；</p>
-<p>特性：</p>
-<p>◎主猪：主猪会认为没有跳身份，且用南猪入侵&#x2F;万箭齐发对自己造成伤害的猪是“类反猪”（没伤害到不算，注意“类反猪”并没有表明身份），如果之后跳了，那么主猪会重新认识这只猪；对于每种表敌意的方式，对逆时针方向能够执行到的第一只“类反猪”或者已跳反猪表；如果没有，那么就不表敌意；决斗时会不遗余力弃置杀；如果能对已经跳忠的猪或自己献殷勤，那么一定献；如果能够对已经跳反的猪表敌意，那么一定表；</p>
-<p>◎忠猪：对于每种表敌意的方式，对逆时针方向能够执行到的第一只已经跳反的猪表，如果没有，那么就不表敌意；决斗时，如果对方是主猪，那么不会弃置杀，否则，会不遗余力弃置杀；如果有机会对主猪或者已经跳忠的猪献殷勤，那么一定献；</p>
-<p>◎反猪：对于每种表敌意的方式，如果有机会则对主猪表，否则，对逆时针方向能够执行到的第一只已经跳忠的猪表，如果没有，那么就不表敌意；决斗时会不遗余力弃置杀；如果有机会对已经跳反的猪献殷勤，那么一定献；</p>
-<p>限于iPig只会用P++语言写A + B，他请你用Pigcal(Pascal)、P(C)或P++(C++)语言来帮他预测最后的结果。</p>
-<h4 id="输入描述"><a href="#输入描述" class="headerlink" title="输入描述"></a>输入描述</h4><p>输入文件第一行包含两个正整数n(2 &lt;&#x3D; n &lt;&#x3D; 5) 和m( m &lt;&#x3D; 2000)，分别代表玩家数和牌堆中牌的数量。数据保证牌的数量够用。</p>
-<p>接下来n行，每行5个字符串，依次表示对第i只猪的角色和初始4张手牌描述。编号为1的肯定是主猪。</p>
-<p>再接下来一行，一共m个字符串，按照从牌堆顶部到牌堆底部的顺序描述每张牌。</p>
-<p>所有的相邻的两个字符串都严格用1个空格隔开，行尾没有多余空格。</p>
-<h4 id="输出描述"><a href="#输出描述" class="headerlink" title="输出描述"></a>输出描述</h4><p>输出数据第一行包含一个字符串代表游戏结果。如果是主猪胜利，那么输出“MP”，否则输出“FP”。数据保证游戏总会结束。</p>
-<p>接下来n行，第i行是对第i只猪的手牌描述（注意只需要输出手牌），按照手牌从左往右的顺序输出，相邻两张牌用一个空格隔开，行末尾没有多余空格。如果这只猪已阵亡，那么只要输出“DEAD”即可。注意如果要输出手牌而没有手牌的话，那么只需输出一个空行。</p>
-<h4 id="样例输入"><a href="#样例输入" class="headerlink" title="样例输入"></a>样例输入</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">3 10</span><br><span class="line">MP D D F F</span><br><span class="line">ZP N N N D</span><br><span class="line">FP J J J J</span><br><span class="line">F F D D J J F F K D</span><br></pre></td></tr></table></figure>
-
-<h4 id="样例输出"><a href="#样例输出" class="headerlink" title="样例输出"></a>样例输出</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">FP</span><br><span class="line">DEAD</span><br><span class="line">DEAD</span><br><span class="line">J J J J J J D</span><br></pre></td></tr></table></figure>
-
-<h4 id="数据范围及提示"><a href="#数据范围及提示" class="headerlink" title="数据范围及提示"></a>数据范围及提示</h4><p>样例1说明：第一回合主猪没有目标可以表敌意；接下来忠猪使用了3张南猪入侵，主猪掉了3点体力，并认为该角色为类反猪，3号角色尽管手里有无懈可击，但是因为自己未表明身份，所以同样不能对自己用，乖乖掉3点体力；下一回合反猪无牌可出；接下来主猪对着类反猪爆发，使用4张决斗，忠猪死亡，结果主猪弃掉所有牌；下来反猪摸到一张杀直接杀死主猪获胜。</p>
-<p>数据说明：一共20组测试数据，每个点5分。10%的数据没有锦囊牌，另外20%的数据没有无懈可击。</p>
-<h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><h4 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h4><p>一道大模拟题</p>
-<p>坑点挺多，要小心</p>
-<p>好像有一个AOE网，不过关键内容不多</p>
-<h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#include &lt;algorithm&gt;</span><br><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &lt;cstdlib&gt;</span><br><span class="line">#include &lt;cstring&gt;</span><br><span class="line">#include &lt;cstdio&gt;</span><br><span class="line">#include &lt;cctype&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">struct player &#123;</span><br><span class="line">    bool fan,jump,like; </span><br><span class="line">    int hp,num; </span><br><span class="line">    bool zhuge,used[2001]; </span><br><span class="line">    char shoupai[2001]; </span><br><span class="line">&#125;a[11];</span><br><span class="line">int n,m,fz=0,endgame=0,now=0;</span><br><span class="line">char paidui[2002];</span><br><span class="line">inline void update(int p) &#123;</span><br><span class="line">    int tot=0;</span><br><span class="line">    for (int i=1;i&lt;=a[p].num;i++)</span><br><span class="line">        if (!a[p].used[i])&#123;</span><br><span class="line">           tot++;</span><br><span class="line">           a[p].shoupai[tot]=a[p].shoupai[i];</span><br><span class="line">           a[p].used[tot]=false;</span><br><span class="line">        &#125;</span><br><span class="line">    a[p].num=tot;</span><br><span class="line">&#125;</span><br><span class="line">inline void printCard(int p)&#123;</span><br><span class="line">    if (a[p].hp&lt;=0) &#123;</span><br><span class="line">        printf(&quot;DEAD\n&quot;);</span><br><span class="line">        return;</span><br><span class="line">    &#125;</span><br><span class="line">    update(p); </span><br><span class="line">    for (int i=1;i&lt;=a[p].num;i++)&#123;</span><br><span class="line">        printf(&quot;%c&quot;,a[p].shoupai[i]);</span><br><span class="line">        if (i!=a[p].num) printf(&quot; &quot;); </span><br><span class="line">    &#125;</span><br><span class="line">    printf(&quot;\n&quot;);</span><br><span class="line">&#125;</span><br><span class="line">inline void print()  &#123;</span><br><span class="line">    if (endgame==1) puts(&quot;MP&quot;);</span><br><span class="line">    else puts(&quot;FP&quot;);</span><br><span class="line">    for (int i=0;i&lt;n;i++) printCard(i);</span><br><span class="line">&#125;</span><br><span class="line">inline bool fp(int p) &#123; return a[p].fan; &#125; </span><br><span class="line">inline bool zp(int p) &#123; return !a[p].fan&amp;&amp;p; &#125; </span><br><span class="line">inline bool mp(int p) &#123; return !p; &#125;  </span><br><span class="line">inline void like(int p) &#123; if (!a[p].jump) a[p].like=true; &#125;</span><br><span class="line">inline void jump(int p) &#123; a[p].jump=true;&#125;</span><br><span class="line">void init()&#123;</span><br><span class="line">    scanf(&quot;%d%d&quot;,&amp;n,&amp;m); char c[4];</span><br><span class="line">    for (int i=0;i&lt;n;i++)&#123;//注意从0开始编号</span><br><span class="line">        scanf(&quot;%s&quot;,c);</span><br><span class="line">        if (c[0]==&#x27;F&#x27;) &#123; a[i].fan=true; fz++; &#125;  </span><br><span class="line">        for (int j=1;j&lt;=4;++j) scanf(&quot; %c&quot;,&amp;a[i].shoupai[j]); </span><br><span class="line">        a[i].hp=a[i].num=4;</span><br><span class="line">    &#125;</span><br><span class="line">    for (int i=0;i&lt;m;i++)&#123;//读入牌堆  </span><br><span class="line">        char c=getchar();</span><br><span class="line">        while (!isalpha(c)) c=getchar();</span><br><span class="line">        paidui[i]=c;</span><br><span class="line">    &#125;</span><br><span class="line">    if (!fz) endgame=1; //没有反猪直接主猪胜利 </span><br><span class="line">&#125;</span><br><span class="line">inline bool useCard(int p,char card)&#123; </span><br><span class="line">//    printf(&quot;玩家%d使用了%c\n&quot;,p,card); </span><br><span class="line">    for (int i=1;i&lt;=a[p].num;i++)</span><br><span class="line">        if (a[p].shoupai[i]==card&amp;&amp;!a[p].used[i])</span><br><span class="line">        &#123;</span><br><span class="line">            a[p].used[i]=true; //使用这张牌 </span><br><span class="line">            return true; </span><br><span class="line">        &#125;</span><br><span class="line">    return false;</span><br><span class="line">&#125;</span><br><span class="line">inline bool Shan(int i) &#123; return useCard(i,&#x27;D&#x27;); &#125;</span><br><span class="line">inline bool Tao(int i) &#123; return useCard(i,&#x27;P&#x27;); &#125; </span><br><span class="line">inline bool Sha(int i) &#123; return useCard(i,&#x27;K&#x27;); &#125; </span><br><span class="line">inline bool Wuxiekeji(int i)&#123;</span><br><span class="line">    if (useCard(i,&#x27;J&#x27;))&#123;</span><br><span class="line">        jump(i);</span><br><span class="line">        return true;</span><br><span class="line">    &#125;</span><br><span class="line">    return false;</span><br><span class="line">&#125;</span><br><span class="line">inline void mopai(int p,int v)&#123;</span><br><span class="line">//    printf(&quot;玩家%d摸了%d张牌\n&quot;,p,v); </span><br><span class="line">    if (endgame) return; </span><br><span class="line">    for (int i=1;i&lt;=v;i++)&#123;</span><br><span class="line">        a[p].num++;</span><br><span class="line">        a[p].shoupai[a[p].num]=paidui[now];</span><br><span class="line">        a[p].used[a[p].num]=false;</span><br><span class="line">        if (now&lt;m-1) now++;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">inline void kill(int to,int from)&#123;</span><br><span class="line">    if (mp(to))&#123;</span><br><span class="line">        endgame=2; </span><br><span class="line">        return;</span><br><span class="line">    &#125;</span><br><span class="line">    if (fp(to))&#123;</span><br><span class="line">        fz--;</span><br><span class="line">        if (!fz)&#123;</span><br><span class="line">            endgame=1; </span><br><span class="line">            return;</span><br><span class="line">        &#125;</span><br><span class="line">        mopai(from,3); </span><br><span class="line">    &#125;</span><br><span class="line">    if (zp(to)&amp;&amp;mp(from))&#123;</span><br><span class="line">        a[0].num=0;</span><br><span class="line">        a[0].zhuge=false; </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">inline void Kouxie(int to,int from) &#123;</span><br><span class="line">    a[to].hp--;</span><br><span class="line">    if (!a[to].hp)&#123;</span><br><span class="line">        if (Tao(to)) &#123; a[to].hp=1;  &#125; </span><br><span class="line">        else kill(to,from); </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">inline bool AskWuxie(int from,bool f) &#123;</span><br><span class="line">    int i=from;</span><br><span class="line">    do&#123;</span><br><span class="line">        if (a[i].hp&amp;&amp;a[i].fan==f&amp;&amp;Wuxiekeji(i)) &#123;</span><br><span class="line">            if (!AskWuxie(i,!f)) return true;</span><br><span class="line">            return false;</span><br><span class="line">        &#125;</span><br><span class="line">        i=(i+1)%n; </span><br><span class="line">    &#125;</span><br><span class="line">    while (i!=from);</span><br><span class="line">    return false; </span><br><span class="line">&#125;</span><br><span class="line">inline bool Wuxie(int p,int k)&#123;</span><br><span class="line">    if (!a[p].jump&amp;&amp;!mp(p)) return false;</span><br><span class="line">    if (AskWuxie(k,a[p].fan)) return true; </span><br><span class="line">    return false; </span><br><span class="line">&#125;</span><br><span class="line">inline int Juedou(int p,int k) &#123;</span><br><span class="line">    if (zp(p)&amp;&amp;mp(k)) return 1; </span><br><span class="line">    if (Wuxie(p,k)) return 2; </span><br><span class="line">    while (1)&#123;</span><br><span class="line">        if (!Sha(p)) return 1; </span><br><span class="line">        if (!Sha(k)) return 0; </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">inline int dis(int p,int k) &#123;</span><br><span class="line">    int d=1;</span><br><span class="line">    for (int i=(p+1)%n;i!=k;i=(i+1)%n)</span><br><span class="line">        if (a[i].hp) d++; </span><br><span class="line">    return d;</span><br><span class="line">&#125;</span><br><span class="line">inline bool gongji(int p,int k) &#123;</span><br><span class="line">    if (fp(p))&#123;</span><br><span class="line">        if (dis(p,0)==1&amp;&amp;k==1)&#123;</span><br><span class="line">            jump(p); </span><br><span class="line">            if (!Shan(0)) Kouxie(0,p); </span><br><span class="line">            return true; </span><br><span class="line">        &#125;</span><br><span class="line">        if (k==2)&#123;</span><br><span class="line">            jump(p); </span><br><span class="line">            int t=Juedou(0,p);</span><br><span class="line">            if (t==1) Kouxie(0,p);</span><br><span class="line">            else if (t==0) Kouxie(p,0);</span><br><span class="line">            return true; </span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    if (mp(p))&#123;</span><br><span class="line">        for (int i=(p+1)%n;i!=p;i=(i+1)%n)&#123;</span><br><span class="line">            if (a[i].hp)&#123;</span><br><span class="line">                if ((fp(i)&amp;&amp;a[i].jump)||(a[i].like&amp;&amp;!a[i].jump))&#123;</span><br><span class="line">                    if (dis(p,i)==1&amp;&amp;k==1)&#123;</span><br><span class="line">                        if (!Shan(i)) Kouxie(i,p); </span><br><span class="line">                        return true;</span><br><span class="line">                    &#125;</span><br><span class="line">                    if (k==2)&#123;</span><br><span class="line">                        int t=Juedou(i,p);</span><br><span class="line">                        if (t==1) Kouxie(i,p);</span><br><span class="line">                        else if (t==0) Kouxie(p,i);</span><br><span class="line">                        return true;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    else&#123;</span><br><span class="line">        for (int i=(p+1)%n;i!=p;i=(i+1)%n) &#123;</span><br><span class="line">            if (a[i].hp) &#123;</span><br><span class="line">                if ((a[p].fan^a[i].fan)&amp;&amp;a[i].jump)&#123;</span><br><span class="line">                    if (dis(p,i)==1&amp;&amp;k==1)&#123;</span><br><span class="line">                        jump(p); </span><br><span class="line">                        if (!Shan(i)) Kouxie(i,p); </span><br><span class="line">                        return true;</span><br><span class="line">                    &#125;</span><br><span class="line">                    if (k==2)&#123;</span><br><span class="line">                        jump(p);</span><br><span class="line">                        int t=Juedou(i,p);</span><br><span class="line">                        if (t==1) Kouxie(i,p);</span><br><span class="line">                        else if (t==0) Kouxie(p,i);</span><br><span class="line">                        return true;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return false;</span><br><span class="line">&#125;</span><br><span class="line">inline void aoe(int p,int l) &#123;</span><br><span class="line">    for (int i=(p+1)%n;i!=p;i=(i+1)%n)&#123;</span><br><span class="line">        if (a[i].hp)&#123;</span><br><span class="line">            if (!Wuxie(i,p))&#123;</span><br><span class="line">                if (l==1)&#123;</span><br><span class="line">                    if (!Sha(i))&#123;</span><br><span class="line">                        if (mp(i)) like(p); </span><br><span class="line">                        Kouxie(i,p); </span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">                else &#123;</span><br><span class="line">                    if (!Shan(i))&#123;</span><br><span class="line">                        if (mp(i)) like(p); </span><br><span class="line">                        Kouxie(i,p); </span><br><span class="line">                &#125;</span><br><span class="line">                &#125;</span><br><span class="line">                if (endgame) return; </span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">inline void huihe(int p)&#123;</span><br><span class="line">    update(p); </span><br><span class="line">    mopai(p,2); </span><br><span class="line">    bool flag=false; </span><br><span class="line">    for (int i=1;i&lt;=a[p].num;i++)&#123;</span><br><span class="line">        if (endgame||!a[p].hp) return; </span><br><span class="line">        if (a[p].used[i]) continue; </span><br><span class="line">        if (a[p].shoupai[i]==&#x27;P&#x27;&amp;&amp;a[p].hp&lt;4)&#123;</span><br><span class="line">            a[p].used[i]=true;</span><br><span class="line">            a[p].hp++;</span><br><span class="line">        &#125;</span><br><span class="line">        else if (a[p].shoupai[i]==&#x27;N&#x27;) &#123; a[p].used[i]=true; aoe(p,1); i=0; &#125; </span><br><span class="line">        else if (a[p].shoupai[i]==&#x27;W&#x27;) &#123; a[p].used[i]=true; aoe(p,2); i=0; &#125; </span><br><span class="line">        else if (a[p].shoupai[i]==&#x27;K&#x27;&amp;&amp;(!flag||a[p].zhuge))&#123;</span><br><span class="line">            if (gongji(p,1))&#123;</span><br><span class="line">                flag=true; </span><br><span class="line">                a[p].used[i]=true; </span><br><span class="line">                i=0; </span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        else if (a[p].shoupai[i]==&#x27;F&#x27;)&#123;</span><br><span class="line">            if (gongji(p,2))&#123;</span><br><span class="line">                a[p].used[i]=true; </span><br><span class="line">                i=0;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        else if (a[p].shoupai[i]==&#x27;Z&#x27;)&#123;</span><br><span class="line">            a[p].used[i]=true; </span><br><span class="line">            if (!a[p].zhuge) &#123; a[p].zhuge=true; i=0; &#125;  </span><br><span class="line">        &#125;</span><br><span class="line">        if (endgame) return; </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">inline void BigHuihe() &#123;</span><br><span class="line">    for (int i=0;i&lt;n;i++)</span><br><span class="line">        if (a[i].hp) huihe(i); </span><br><span class="line">&#125;</span><br><span class="line">int main()&#123;</span><br><span class="line">    init(); </span><br><span class="line">    while (!endgame) BigHuihe(); </span><br><span class="line">    print(); </span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <tags>
-        <tag>problem</tag>
-      </tags>
   </entry>
   <entry>
     <title>德鲁克谈《自我管理》</title>
@@ -2768,6 +2564,212 @@
 <script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">]]></content>
       <tags>
         <tag>secret</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>二分答案转化为判定</title>
+    <url>/2019/03/30/binaryconvert2019/</url>
+    <content><![CDATA[<p>一个最优化问题抽象为函数</p>
+<p>其定义域为该问题下的可行方案</p>
+<p>对这些方案的评估值就是值域 </p>
+<p>假设评分越高越优，若最优解的评分是S，显然对于所有&gt;S的值，都不存在一个合法方案达到该值，否则就与S的最优矛盾。而对于所有&lt;S的值，一定存在一个合法的方案达到或超过该评分</p>
+<p>这样问题就具有一种特殊的单调性</p>
+<p>在S的一侧合法，在另一侧不合法</p>
+<p>可以通过二分找到这个分界点S</p>
+<p>这样，我们就把一个求最优解的问题转化为给定一个值mid，判定是否存在一个可行方案评分达到mid</p>
+<h4 id="例1"><a href="#例1" class="headerlink" title="例1"></a>例1</h4><p>有N本书排成一行，已知第i本的厚度为Ai</p>
+<p>把它们分成连续的M组，使T最小化，其中T表示厚度之和最大的一组的厚度</p>
+<p>题中出现了 最大值最小 答案具有单调性，可以用二分法</p>
+<p>我们将 把书划为M组的方案作为定义域</p>
+<p>厚度之和最大一组的厚度作为值域</p>
+<p>假设最终答案为S，因为S的最优性，如果要求每组的厚度都&lt;S,那么这M组一定无法容纳全部的书，可能需要更多的组才能分完。如果每组的厚度可以&gt;S,那么一定存在一种分数方案使得组数不超过M</p>
+<p>意味着对于本题的限制条件不存在可行的分书方案</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">bool valid(int size)&#123;</span><br><span class="line">    int group=1,rest=size;</span><br><span class="line">    for(int i=1;i&lt;=n;++i)&#123;</span><br><span class="line">        if(rest&gt;=a[i])rest-=a[i];</span><br><span class="line">        else group++,rest=size-a[i];</span><br><span class="line">    &#125;</span><br><span class="line">    return group&lt;=m;</span><br><span class="line">&#125;</span><br><span class="line">int main()&#123;</span><br><span class="line">    int l=0,r=sum_of_ai;</span><br><span class="line">    while(l&lt;r)&#123;</span><br><span class="line">        int mid=(l+r)/2;</span><br><span class="line">        if(valid(mid))r=mid;</span><br><span class="line">        else l=mid+1;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="例2"><a href="#例2" class="headerlink" title="例2"></a>例2</h3><p>NOIP2015跳石头</p>
+<h4 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h4><p>这项比赛将在一条笔直的河道中进行，河道中分布着一些巨大岩石。组委会已经选择好了两块岩石作为比赛起点和终点。在起点和终点之间，有 N 块岩石（不含起点和终点的岩石）。在比赛过程中，选手们将从起点出发，每一步跳向相邻的岩石，直至到达终点。</p>
+<p>为了提高比赛难度，组委会计划移走一些岩石，使得选手们在比赛过程中的最短跳跃距离尽可能长。由于预算限制，组委会至多从起点和终点之间移走 M 块岩石（不能移走起点和终点的岩石）。</p>
+<h4 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h4><p>第一行包含三个整数 L,N,M，分别表示起点到终点的距离，起点和终点之间的岩石数，以及组委会至多移走的岩石数。保证 L≥1 且 N≥M≥0 。</p>
+<p>接下来 N 行，每行一个整数，第 i 行的整数 Di(0&lt;Di&lt;L) ， 表示第 i 块岩石与起点的距离。这些岩石按与起点距离从小到大的顺序给出，且不会有两个岩石出现在同一个位置。</p>
+<h4 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式"></a>输出格式</h4><p>一个整数，即最短跳跃距离的最大值。 </p>
+<h4 id="输入样例"><a href="#输入样例" class="headerlink" title="输入样例"></a>输入样例</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">25 5 2 </span><br><span class="line">2</span><br><span class="line">11</span><br><span class="line">14</span><br><span class="line">17 </span><br><span class="line">21</span><br></pre></td></tr></table></figure>
+
+<h4 id="输出样例"><a href="#输出样例" class="headerlink" title="输出样例"></a>输出样例</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">4</span><br></pre></td></tr></table></figure>
+
+<h4 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h4><p>输入输出样例 1 说明：</p>
+<p>将与起点距离为 2 和 14 的两个岩石移走后,最短的跳跃距离为 4 (从与起点距离 17 的岩石跳到距离 21的岩石,或者从距离 21 的岩石跳到终点)。</p>
+<p>另：对于 20% 的数据, 0≤M≤N≤10 。</p>
+<p>对于 50% 的数据, 0≤M≤N≤100 。</p>
+<p>对于 100% 的数据, 0≤M≤N≤50,000,1≤L≤1,000,000,000 。</p>
+<h4 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">我们二分跳跃距离，然后把这个跳跃距离“认为”是最短的跳跃距离，然后去以这个距离为标准移石头。使用一个judge判断这个解是不是可行解。如果这个解是可行解，那么有可能会有比这更优的解，那么我们就去它的右边二分。为什么去右边？答案是，这个区间是递增的 ，而我们求的是最短跳跃距离的最大值，显然再右边的值肯定比左边大，那么我们就有可能找到比这更优的解，直到找不到，那么最后找到的解就有理由认为是区间内最优解。反过来，如果二分到的这个解是一个非法解，我们就不可能再去右边找了。因为性质，右边的解一定全都是非法解。那么我们就应该去左边找解。整个过程看起来很像递归，实际上，这个过程可以递归写， 也可以写成非递归形式，我个人比较喜欢使用非递归形式。</span><br><span class="line"></span><br><span class="line">下一个问题，这个judge怎么实现呢？judge函数每个题有每个题的写法，但大体上的思想应该都是一样的——想办法检测这个解是不是合法。拿这个题来说，我们去判断如果以这个距离为最短跳跃距离需要移走多少块石头，先不必考虑限制移走多少块，等全部拿完再把拿走的数量和限制进行比对，如果超出限制，那么这就是一个非法解，反之就是一个合法解，很好理解吧。</span><br><span class="line"></span><br><span class="line">可以去模拟这个跳石头的过程。开始你在i(i=0)位置，我在跳下一步的时候去判断我这个当前跳跃的距离，如果这个跳跃距离比二分出来的mid小，那这就是一个不合法的石头，应该移走。为什么？我们二分的是最短跳跃距离，已经是最短了，如果跳跃距离比最短更短岂不是显然不合法，是这样的吧。移走之后要怎么做？先把计数器加上1，再考虑向前跳啊。去看移走之后的下一块石头，再次判断跳过去的距离，如果这次的跳跃距离比最短的长，那么这样跳是完全可以的，我们就跳过去，继续判断，如果跳过去的距离不合法就再拿走，这样不断进行这个操作，直到i = n+1，为啥是n+1？河中间有n块石头，显然终点在n+1处。（这里千万要注意不要把n认为是终点，实际上从n还要跳一步才能到终点）。</span><br><span class="line"></span><br><span class="line">模拟完这个过程，我们查看计数器的值，这个值代表的含义是我们以mid作为答案需要移走的石头数量，然后判断这个数量 是不是超了就行。如果超了就返回false，不超就返回true。</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &lt;cstdio&gt;</span><br><span class="line">#include &lt;cstring&gt;</span><br><span class="line">#include &lt;cctype&gt;</span><br><span class="line">#define maxn 500010</span><br><span class="line">using namespace std;</span><br><span class="line">int d,n,m;</span><br><span class="line">int a[maxn];</span><br><span class="line">int l,r,mid,ans;</span><br><span class="line">inline int read()&#123;//我喜欢快读</span><br><span class="line">    int num = 0;</span><br><span class="line">    char c;</span><br><span class="line">    bool flag = false;</span><br><span class="line">    while ((c = getchar()) == &#x27; &#x27; || c == &#x27;\n&#x27; || c == &#x27;\r&#x27;);</span><br><span class="line">        if (c == &#x27;-&#x27;) flag = true;</span><br><span class="line">    else</span><br><span class="line">        num = c - &#x27;0&#x27;;</span><br><span class="line">    while (isdigit(c = getchar()))</span><br><span class="line">    num = num * 10 + c - &#x27;0&#x27;;</span><br><span class="line">    return (flag ? -1 : 1) * num;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">bool judge(int x)&#123;//judge函数，x代表当前二分出来的答案</span><br><span class="line">    int tot = 0;//tot代表计数器，记录以当前答案需要移走的实际石头数</span><br><span class="line">    int i = 0;//i代表下一块石头的编号</span><br><span class="line">    int now = 0;//now代表模拟跳石头的人当前在什么位置</span><br><span class="line">    while (i &lt; n+1)&#123;//千万注意不是n，n不是终点，n+1才是</span><br><span class="line">        i++;</span><br><span class="line">        if (a[i] - a[now] &lt; x)//判断距离，看二者之间的距离算差值就好</span><br><span class="line">            tot++;//判定成功，把这块石头拿走，继续考虑下一块石头</span><br><span class="line">        else</span><br><span class="line">            now = i;//判定失败，这块石头不用拿走，我们就跳过去，再考虑下一块</span><br><span class="line">    &#125;</span><br><span class="line">    if (tot &gt; m)</span><br><span class="line">        return false;</span><br><span class="line">    else</span><br><span class="line">        return true;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main()&#123;</span><br><span class="line">    d = read();//d代表总长度，也就是右边界</span><br><span class="line">    n = read();//n块石头</span><br><span class="line">    m = read();//限制移走m块，思考的时候可别被这个m限制</span><br><span class="line">    for (int i=1;i&lt;=n;i++)</span><br><span class="line">        a[i] = read();</span><br><span class="line">    a[n+1] = d;//敲黑板划重点，再强调一遍，n不是终点</span><br><span class="line">    l = 1;//l和r分别代表二分的左边界和右边界</span><br><span class="line">    r = d;</span><br><span class="line">    while (l &lt;= r)&#123;//非递归式二分正常向写法，可理解为一般框架</span><br><span class="line">        mid = (l+r) / 2;//这再看不出是啥意思可以退群了</span><br><span class="line">        if (judge(mid))&#123;//带入judge函数判断当前解是不是可行解</span><br><span class="line">            ans = mid;</span><br><span class="line">            l = mid + 1;//走到这里，看来是可行解，我们尝试看看是不是有更好的可行解</span><br><span class="line">        &#125;</span><br><span class="line">        else</span><br><span class="line">            r = mid - 1;//噫，你找了个非法解，赶紧回到左半边看看有没有可行解</span><br><span class="line">    &#125;</span><br><span class="line">    cout &lt;&lt; ans &lt;&lt; endl;//最后的ans绝对是最优解</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>二分法判定有两个条件:有界和单调</p>
+<p>一般涉及 最大值最小 或 最小值最大的问题都可以用二分法判定来解</p>
+]]></content>
+      <tags>
+        <tag>problem</tag>
+        <tag>algorithm</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>KMP字符串匹配</title>
+    <url>/2019/06/17/kmp2019/</url>
+    <content><![CDATA[<p>KMP算法可在一个主文本串 S 内查找一个词 W 的出现位置<br>此算法通过运用对这个词在不匹配时本身就包含足够的信息来确定下一个匹配将在哪里开始的发现，从而避免重新检查先前匹配的字符。</p>
+<h2 id="朴素"><a href="#朴素" class="headerlink" title="朴素"></a>朴素</h2><p>有一个文本串S，和一个模式串P (两者长度分别为N,M) </p>
+<p>如果用暴力匹配的思路，并假设现在文本串S匹配到 i 位置，模式串P匹配到 j 位置，则有：<br>如果当前字符匹配成功（即S[i] &#x3D;&#x3D; P[j]），则i++，j++，继续匹配下一个字符；<br>如果失配（即S[i]! &#x3D; P[j]），令i &#x3D; i - (j - 1)，j &#x3D; 0。相当于每次匹配失败时，i 回溯，j 被置为0。</p>
+<p>时间复杂度 O(N*M)   </p>
+<h1 id="KMP"><a href="#KMP" class="headerlink" title="KMP"></a>KMP</h1><p>核心思想就是通过运用对这个词在不匹配时本身就包含足够的信息来确定下一个匹配将在哪里开始的发现，从而避免重新检查先前匹配的字符。</p>
+<p>方法  </p>
+<ol>
+<li><p>对模式串B自我匹配，求出next数组，其中next[i]表示A中以i结尾的后缀串与前缀串的最大匹配长度  </p>
+</li>
+<li><p>对A和B进行匹配，求出数组f，其中f[i]表示A中以i结尾的字串与B的前缀能匹配的最大长度</p>
+</li>
+</ol>
+<p>经过优化 在O(N+M)的复杂度内便可求解  </p>
+<h3 id="next数组"><a href="#next数组" class="headerlink" title="next数组"></a>next数组</h3><p>首先 举个例子<br>设B&#x3D;’abababa’,next[7]&#x3D;?<br>b[2<del>7]&#x3D;’bababa’ b[1</del>6]&#x3D;’ababab’ 不匹配<br>b[3<del>7]&#x3D;’ababa’ b[1</del>5]&#x3D;’ababa’ 长度为5<br><strong>…………</strong><br>最后得next[7]&#x3D;5<br>那么，我们如何求next数组呢？  </p>
+<p>选择相应的例子进行比较，我们显然能发现next数组中的递推关系  </p>
+<ol>
+<li>初始化next[1]&#x3D;0  </li>
+<li>假设next[1~i-i]已求出 求next[i] 拓展长度j   </li>
+<li>如果拓展失败，即下个字符不相等，则令j变为next[j],直至j&#x3D;0(应从头匹配)</li>
+<li>如果拓展成功 匹配长度j+1</li>
+<li>最后next[i]就为j</li>
+</ol>
+<h3 id="f数组"><a href="#f数组" class="headerlink" title="f数组"></a>f数组</h3><p>根据定义的相似性，求解f与求解next数组类似，此处不再细说 </p>
+<p>移动位数 &#x3D; 已匹配的字符数 - 对应的部分匹配值 </p>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">#include &lt;cstdio&gt;</span><br><span class="line">#include &lt;cstring&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">char a[66666666],b[66666666];</span><br><span class="line">int next[66666666],f[66666666],n,m;</span><br><span class="line">void KMP()&#123;</span><br><span class="line"> next[1]=0;</span><br><span class="line"> for(int i=2,j=0;i&lt;=m;++i)&#123;</span><br><span class="line">  while(j&gt;0&amp;&amp;b[i]!=b[j+1])j=next[j];</span><br><span class="line">  if(b[i]==b[j+1])j++;</span><br><span class="line">  next[i]=j;</span><br><span class="line"> &#125;</span><br><span class="line"> for(int i=1,j=0;i&lt;=n;++i)&#123;</span><br><span class="line">  while(j&gt;0&amp;&amp;(j==n||a[i]!=b[j+1]))j=next[j];</span><br><span class="line">  if(a[i]==b[j+1])j++;</span><br><span class="line">  f[i]=j;</span><br><span class="line"> &#125;</span><br><span class="line">&#125;</span><br><span class="line">int main()&#123;</span><br><span class="line"> scanf(&quot;%s%s&quot;,a+1,b+1);</span><br><span class="line"> n=strlen(a+1),m=strlen(b+1);</span><br><span class="line"> KMP();</span><br><span class="line"> /***********</span><br><span class="line"> THIS IS A TEST</span><br><span class="line">	</span><br><span class="line"> printf(&quot;%s\n&quot;,a+1);</span><br><span class="line"> for(int i=1;i&lt;=n;++i)printf(&quot;%d&quot;,f[i]);</span><br><span class="line"> printf(&quot;\n&quot;);</span><br><span class="line"> printf(&quot;%s\n&quot;,b+1);</span><br><span class="line"> for(int i=1;i&lt;=m;++i)printf(&quot;%d&quot;,next[i]);</span><br><span class="line"> ************/</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>附：然而，kmp并不是效率最高的算法，实际应用并不多，真正常见的是Boyer-Moore算法 相关资料<br><a href="http://www.ruanyifeng.com/blog/2013/05/boyer-moore_string_search_algorithm.html">阮一峰的博客</a></p>
+]]></content>
+      <tags>
+        <tag>algorithm</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>状压DP初步之POJ 2288</title>
+    <url>/2019/03/09/islands-and-bridges-poj2019/</url>
+    <content><![CDATA[<h1 id="Islands-and-Bridges"><a href="#Islands-and-Bridges" class="headerlink" title="Islands and Bridges"></a>Islands and Bridges</h1><p><a href="http://poj.org/problem?id=2288">来源</a>  </p>
+<blockquote>
+<p>Suppose there are n islands. The value of a Hamilton path C1C2…Cn is calculated as the sum of three parts. Let Vi be the value for the island Ci. As the first part, we sum over all the Vi values for each island in the path. For the second part, for each edge CiCi+1 in the path, we add the product Vi<em>Vi+1. And for the third part, whenever three consecutive islands CiCi+1Ci+2 in the path forms a triangle in the map, i.e. there is a bridge between Ci and Ci+2, we add the product Vi</em>Vi+1*Vi+2. </p>
+</blockquote>
+<blockquote>
+<p>Most likely but not necessarily, the best triangular Hamilton path you are going to find contains many triangles. It is quite possible that there might be more than one best triangular Hamilton paths; your second task is to find the number of such paths. </p>
+</blockquote>
+<p>以上是本题的描述，好像做了一篇英语阅读理解～～，为了更好解题，手动翻译：<br>假设有n个岛，一条汉密尔顿路C1C2…Cn 由三部分的和计算。让Vi成为岛Ci的价值。作为第一部分，我们将路径上所有Vi相加；作为第二部分，对于每一条边CiCi+1，我们增加Vi<em>V(i+1)；作为第三部分，当路径上的CiCi+1Ci+2形成了一个三角形，即Ci与Ci+2之间有较大距离时，我们增加Vi</em>V(i+1)V(i+2)<br>最有可能但不一定，你要找到的的最佳三角形哈密尔顿路包含许多三角形。你的第二个任务是找到这样的路径数量。<br>目的就是求最大价值并找到路径数量。<br><br>总权值包括三部分<br><br>第1部分，v[i]之和<br><br>第2部分，v[i]<em>v[i+1]之和<br><br>第3部分，如果岛屿c[i]与岛屿c[i+2]也是相通的，即岛屿c[i]，c[i+1]，c[i+2]构成了一个三角关系，v[i]</em>[i+1]*[i+2]之和<br>  </p>
+<blockquote>
+<p>哈密尔顿回路：在一个无向图中，由指定的起点前往指定的终点，途中经过所有其他节点且只经过一次   </p>
+</blockquote>
+<p>Input  </p>
+<blockquote>
+<p>The input file starts with a number q (q&lt;&#x3D;20) on the first line, which is the number of test cases. Each test case starts with a line with two integers n and m, which are the number of islands and the number of bridges in the map, respectively. The next line contains n positive integers, the i-th number being the Vi value of island i. Each value is no more than 100. The following m lines are in the form x y, which indicates there is a (two way) bridge between island x and island y. Islands are numbered from 1 to n. You may assume there will be no more than 13 islands. </p>
+</blockquote>
+<p>Output </p>
+<blockquote>
+<p>For each test case, output a line with two numbers, separated by a space. The first number is the maximum value of a best triangular Hamilton path; the second number should be the number of different best triangular Hamilton paths. If the test case does not contain a Hamilton path, the output must be &#96;0 0’. </p>
+</blockquote>
+<blockquote>
+<p>Note: A path may be written down in the reversed order. We still think it is the same path.</p>
+</blockquote>
+<p>Sample Input</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">2</span><br><span class="line">3 3</span><br><span class="line">2 2 2</span><br><span class="line">1 2</span><br><span class="line">2 3</span><br><span class="line">3 1</span><br><span class="line">4 6</span><br><span class="line">1 2 3 4</span><br><span class="line">1 2</span><br><span class="line">1 3</span><br><span class="line">1 4</span><br><span class="line">2 3</span><br><span class="line">2 4</span><br><span class="line">3 4</span><br></pre></td></tr></table></figure>
+
+<p>Sample Output</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">22 3</span><br><span class="line">69 1</span><br></pre></td></tr></table></figure>
+<h2 id="思想"><a href="#思想" class="headerlink" title="思想"></a>思想</h2><p>显然，这是一道使用动态规划求解的题（符合重叠子问题原则）<br>如果要用朴素的方法建立数组实现，显然空间会炸。因此，这里要使用状态压缩。<br>每个点的状态由前两个点所决定，我们用F(s,i,j)表示状态为s时，当前点为i,上一个点为j是的最大价值。这个状态由F(s’,j,k)推导。<br>如何表示状态呢？二进制的某一位代表了这个位上的点的情况。若为1，则走过，若为0，则没有走过。<br>因此，我们可以推导出s’&#x3D;s-(1&lt;&lt;i)，回溯到了这一步之前一步的状态。<br>状态转移：F(s,i,j)&#x3D;max{F(s,i,j),F[s’,j,k]+tmp} tmp指的是加上的得分，即Vi<em>Vj+Vi,如果构成三角关系（i和k间有边）,tmp就要加上Vi</em>Vj<em>Vk<br>边界：F((1&lt;&lt;i)+(1&lt;&lt;j),i,j)&#x3D;Vi+Vj+Vi</em>Vj(i与j要有边）</p>
+<h2 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h2><ol>
+<li>n&#x3D;1时，路径的条数是1 </li>
+<li>技术要用_int64,因为有13个岛，即最多路径为2^13,超过int</li>
+<li>最后输出路径的时候要除以2，因为题目说颠倒路径只算1条</li>
+<li>如果哈密顿路不存在，输出“0 0”</li>
+</ol>
+<h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"> #include &lt;cstdio&gt;</span><br><span class="line"> #include &lt;cstring&gt;</span><br><span class="line"> using namespace std;</span><br><span class="line"> int v[15],g[15][15];</span><br><span class="line"> long long f[1&lt;&lt;13][13][13],p[1&lt;&lt;13][13][13];</span><br><span class="line"> int main()&#123;</span><br><span class="line">  int t;</span><br><span class="line">  long long ans=0,sum=0,tmp=0,st=0;</span><br><span class="line">  scanf(&quot;%d&quot;,&amp;t);</span><br><span class="line">  while(t--)&#123;</span><br><span class="line">   ans=-1,sum=0;</span><br><span class="line">   memset(v,0,sizeof(v));</span><br><span class="line">   memset(g,0,sizeof(g));</span><br><span class="line">   memset(f,-1,sizeof(f));</span><br><span class="line">   memset(p,0,sizeof(p));</span><br><span class="line">   int n,m;</span><br><span class="line">   scanf(&quot;%d%d&quot;,&amp;n,&amp;m);</span><br><span class="line">   for(int i=0;i&lt;n;++i)scanf(&quot;%d&quot;,&amp;v[i]);</span><br><span class="line">   for(int i=0;i&lt;m;++i)&#123;</span><br><span class="line">    int x,y;</span><br><span class="line">    scanf(&quot;%d%d&quot;,&amp;x,&amp;y);</span><br><span class="line">    --x,--y;</span><br><span class="line">    g[x][y]=g[y][x]=1;</span><br><span class="line">   &#125;</span><br><span class="line">   if(n==1)&#123;//特殊情况 </span><br><span class="line">    printf(&quot;%d 1\n&quot;,v[0]);</span><br><span class="line">    continue;</span><br><span class="line">   &#125;</span><br><span class="line">   for(int i=0;i&lt;n;++i)&#123;//预处理 </span><br><span class="line">    for(int j=0;j&lt;n;++j)&#123;</span><br><span class="line">	    if(i!=j&amp;&amp;g[i][j])&#123;</span><br><span class="line">		    f[(1&lt;&lt;i)+(1&lt;&lt;j)][i][j]=v[i]+v[j]+v[i]*v[j];</span><br><span class="line">		    p[(1&lt;&lt;i)+(1&lt;&lt;j)][i][j]=1;</span><br><span class="line">	    &#125;</span><br><span class="line">    &#125;</span><br><span class="line">   &#125;</span><br><span class="line">   for(long long s=0;s&lt;(1&lt;&lt;n);++s)&#123;//生成情况 </span><br><span class="line">    for(int i=0;i&lt;n;++i)&#123;</span><br><span class="line">	    if(s&amp;(1&lt;&lt;i))</span><br><span class="line">	    for(int j=0;j&lt;n;++j)&#123;</span><br><span class="line">		    if(i!=j&amp;&amp;g[i][j]&amp;&amp;s&amp;(1&lt;&lt;j))</span><br><span class="line">		    for(int k=0;k&lt;n;++k)&#123;</span><br><span class="line">			    if(i!=k&amp;&amp;j!=k&amp;&amp;s&amp;(1&lt;&lt;k)&amp;&amp;g[j][k])&#123;</span><br><span class="line">				    st=s-(1&lt;&lt;i);</span><br><span class="line">				    if(f[st][j][k]!=-1)&#123;//已经符合初始化的条件，即三步价值的第一步 </span><br><span class="line">					    tmp=v[i]+v[i]*v[j]+f[st][j][k];</span><br><span class="line">					    if(g[k][i])//成环情况</span><br><span class="line">					    tmp+=v[i]*v[j]*v[k];</span><br><span class="line">					    if(tmp&gt;f[s][i][j])&#123;//更新 </span><br><span class="line">						    f[s][i][j]=tmp;</span><br><span class="line">						    p[s][i][j]=p[st][j][k];//转移路径 </span><br><span class="line">					    &#125; </span><br><span class="line">					    else if(tmp==f[s][i][j])p[s][i][j]+=p[st][j][k];//对路径叠加 </span><br><span class="line">				    &#125;</span><br><span class="line">			    &#125;</span><br><span class="line">		    &#125;</span><br><span class="line">	    &#125;</span><br><span class="line">    &#125;</span><br><span class="line">   &#125;</span><br><span class="line">   for(int i=0;i&lt;n;++i)&#123;</span><br><span class="line">    for(int j=0;j&lt;n;++j)&#123;</span><br><span class="line">	    if(i!=j)&#123;</span><br><span class="line">		    if(f[(1&lt;&lt;n)-1][i][j]&gt;ans)&#123;//(1&lt;&lt;n -1即全部走过的值</span><br><span class="line">		        ans=f[(1&lt;&lt;n)-1][i][j];</span><br><span class="line">		        sum=p[(1&lt;&lt;n)-1][i][j];</span><br><span class="line">		    &#125;</span><br><span class="line">		    else if(f[(1&lt;&lt;n)-1][i][j]==ans)</span><br><span class="line">		    sum+=p[(1&lt;&lt;n)-1][i][j];</span><br><span class="line">	    &#125;</span><br><span class="line">    &#125;</span><br><span class="line">   &#125;</span><br><span class="line">   if(ans==-1)//无效情况</span><br><span class="line">   printf(&quot;0 0\n&quot;);</span><br><span class="line">   else</span><br><span class="line">   printf(&quot;%lld %lld\n&quot;,ans,sum/2); </span><br><span class="line">  &#125;</span><br><span class="line">  return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><ol>
+<li>不理解题意是无法正确解题的核心原因。看不懂一个题往往比不会做更可怕</li>
+<li>状压DP不错，但要酌情考虑，容易炸空间～～～</li>
+<li>熟悉位运算可以带来很大便利<br>The End<br>本文系原创，未经作者许可禁止转载。</li>
+</ol>
+]]></content>
+      <tags>
+        <tag>problem</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>SDOI2010猪国杀</title>
+    <url>/2019/05/26/sdoi10zgs2019/</url>
+    <content><![CDATA[<h4 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h4><p>《猪国杀》是一种多猪牌类回合制游戏，一共有三种角色：主猪，忠猪，反猪。每局游戏主猪有且只有一只，忠猪和反猪可以有多只，每只猪扮演一种角色。</p>
+<p>游戏目的：</p>
+<p>主猪（MP）：自己存活的情况下消灭所有的反猪。</p>
+<p>忠猪（ZP）：不惜一切保护主猪，胜利条件与主猪相同。</p>
+<p>反猪（AP）：杀死主猪。</p>
+<p>游戏过程：</p>
+<p>游戏开始时候，每个玩家手里都会有4张牌，且体力上限和初始体力都是4。</p>
+<p>开始游戏时，从主猪开始，按照逆时针方向（数据中就是按照编号从1,2,3..n,1..的顺序）依次行动。</p>
+<p>每个玩家自己的回合可以分为4个阶段：</p>
+<p>摸牌阶段：从牌堆顶部摸两张牌，依次放到手牌的最右边；</p>
+<p>出牌阶段：你可以使用0张到任意张牌，每次使用牌的时候都使用最靠左的能够使用的牌。当然，要满足如下规则：</p>
+<p>1.如果没有猪哥连弩，每个出牌阶段只能使用一次“杀”来攻击；</p>
+<p>2.任何牌被使用后被弃置（武器是装备上）；</p>
+<p>被弃置的牌以后都不能再用，即与游戏无关；</p>
+<p>各种牌介绍：</p>
+<p>每张手牌用一个字母表示，字母代表牌的种类。</p>
+<p>基本牌：</p>
+<p>『桃(P)』：在自己的回合内，如果自己的体力值不等于体力上限，那么使用一个桃可以为自己补充一点体力，否则不能使用桃；桃只能对自己使用；在自己的回合外，如果自己的血变为0或者更低，那么也可以使用；</p>
+<p>『杀(K)』：在自己的回合内，对攻击范围内除自己以外的一名角色使用。如果没有被『闪』抵消，则造成1点伤害。无论有无武器，杀的攻击范围都是1；</p>
+<p>『闪(D)』：当你受到杀的攻击时，可以弃置一张闪来抵消杀的效果；</p>
+<p>◎锦囊牌：</p>
+<p>『决斗(F)』：出牌阶段，对除自己以外任意一名角色使用，由目标角色先开始，自己和目标角色轮流弃置一张杀，首先没有杀可弃的一方受到1点伤害，另一方视为此伤害的来源；</p>
+<p>『南猪入侵(N)』：出牌阶段，对除你以外所有角色使用，按逆时针顺序从使用者下家开始依次结算，除非弃置一张杀，否则受到1点伤害；</p>
+<p>​    『万箭齐发(W)』：和南猪入侵类似，不过要弃置的不是杀而是闪；</p>
+<p>『无懈可击(J)』：在目标锦囊生效前抵消其效果。每次有一张锦囊即将生效时，从使用这张锦囊的猪开始，按照逆时针顺序，依次得到使用无懈可击的机会；</p>
+<p>效果：用于决斗时，决斗无效并弃置；用于南猪入侵或万箭齐发时，当结算到某个角色时才能使用，当前角色不需弃置牌并且不会受到伤害（仅对一个角色产生效果）；用于无懈可击时，成为目标的无懈可击被无效。</p>
+<p>◎装备牌：</p>
+<p>『猪哥连弩(Z)』：武器，攻击范围1，出牌阶段你可以使用任意张杀；</p>
+<p>同一时刻最多只能装一个武器；如果先前已经有了一把武器，那么之后再装武器的话，会弃置以前的武器来装现在的武器；</p>
+<p>特殊事件及概念解释：</p>
+<p>◎伤害来源：杀、南猪入侵、万箭齐发的伤害来源均是使用该牌的猪，决斗的伤害来源如上；</p>
+<p>◎距离：两只猪的距离定义为沿着逆时针方向间隔的猪数＋1。即初始时1和2的距离为1，但是2和1的距离就是n-1。注意一个角色的死亡会导致一些猪距离的改变；</p>
+<p>◎玩家死亡：如果该玩家的体力降到0或者更低，并且自己手中没有足够的桃使得自己的体力值回到1，那么就死亡了，死亡后所有的牌（装备区，手牌区）被弃置；</p>
+<p>◎奖励与惩罚：反猪死亡时，最后一个伤害来源处（即使是反猪）立即摸三张牌。忠猪死亡时，如果最后一个伤害来源是主猪，那么主猪所有装备牌、手牌被弃置；</p>
+<p>◎注意，一旦达成胜利条件，游戏立刻结束，因此即使会摸3张牌或者还有牌可以用也不用执行了。</p>
+<p>现在，我们已经知道每只猪的角色、手牌，还有牌堆初始情况，并且假设每个角色会按照如下的行为准则进行游戏，你需要做的就是告诉小猪iPig最后的结果。</p>
+<p>几种行为：</p>
+<p>◎献殷勤：使用无懈可击挡下南猪入侵、万箭齐发、决斗；使用无懈可击抵消表敌意；</p>
+<p>◎表敌意：对某个角色使用杀、决斗；使用无懈可击抵消献殷勤；</p>
+<p>◎跳忠：即通过行动表示自己是忠猪。跳忠行动就是对主猪或对某只已经跳忠的猪献殷勤，或者对某只已经跳反的猪表敌意；</p>
+<p>◎跳反：即通过行动表示自己是反猪。跳反行动就是对主猪或对某只已经跳忠的猪表敌意，或者对某只已经跳反的猪献殷勤；</p>
+<p>忠猪不会跳反，反猪也不会跳忠；不管是忠猪还是反猪，能够跳必然跳；</p>
+<p>行动准则：</p>
+<p>共性：每个角色如果手里有桃且生命值未满，那么必然吃掉；有南猪入侵、万箭齐发、必然使用；有装备必然装上；受到杀时，有闪必然弃置；响应南猪入侵或者万箭齐发时候，有杀&#x2F;闪必然弃置；不会对未表明身份的猪献殷勤（包括自己）；</p>
+<p>特性：</p>
+<p>◎主猪：主猪会认为没有跳身份，且用南猪入侵&#x2F;万箭齐发对自己造成伤害的猪是“类反猪”（没伤害到不算，注意“类反猪”并没有表明身份），如果之后跳了，那么主猪会重新认识这只猪；对于每种表敌意的方式，对逆时针方向能够执行到的第一只“类反猪”或者已跳反猪表；如果没有，那么就不表敌意；决斗时会不遗余力弃置杀；如果能对已经跳忠的猪或自己献殷勤，那么一定献；如果能够对已经跳反的猪表敌意，那么一定表；</p>
+<p>◎忠猪：对于每种表敌意的方式，对逆时针方向能够执行到的第一只已经跳反的猪表，如果没有，那么就不表敌意；决斗时，如果对方是主猪，那么不会弃置杀，否则，会不遗余力弃置杀；如果有机会对主猪或者已经跳忠的猪献殷勤，那么一定献；</p>
+<p>◎反猪：对于每种表敌意的方式，如果有机会则对主猪表，否则，对逆时针方向能够执行到的第一只已经跳忠的猪表，如果没有，那么就不表敌意；决斗时会不遗余力弃置杀；如果有机会对已经跳反的猪献殷勤，那么一定献；</p>
+<p>限于iPig只会用P++语言写A + B，他请你用Pigcal(Pascal)、P(C)或P++(C++)语言来帮他预测最后的结果。</p>
+<h4 id="输入描述"><a href="#输入描述" class="headerlink" title="输入描述"></a>输入描述</h4><p>输入文件第一行包含两个正整数n(2 &lt;&#x3D; n &lt;&#x3D; 5) 和m( m &lt;&#x3D; 2000)，分别代表玩家数和牌堆中牌的数量。数据保证牌的数量够用。</p>
+<p>接下来n行，每行5个字符串，依次表示对第i只猪的角色和初始4张手牌描述。编号为1的肯定是主猪。</p>
+<p>再接下来一行，一共m个字符串，按照从牌堆顶部到牌堆底部的顺序描述每张牌。</p>
+<p>所有的相邻的两个字符串都严格用1个空格隔开，行尾没有多余空格。</p>
+<h4 id="输出描述"><a href="#输出描述" class="headerlink" title="输出描述"></a>输出描述</h4><p>输出数据第一行包含一个字符串代表游戏结果。如果是主猪胜利，那么输出“MP”，否则输出“FP”。数据保证游戏总会结束。</p>
+<p>接下来n行，第i行是对第i只猪的手牌描述（注意只需要输出手牌），按照手牌从左往右的顺序输出，相邻两张牌用一个空格隔开，行末尾没有多余空格。如果这只猪已阵亡，那么只要输出“DEAD”即可。注意如果要输出手牌而没有手牌的话，那么只需输出一个空行。</p>
+<h4 id="样例输入"><a href="#样例输入" class="headerlink" title="样例输入"></a>样例输入</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">3 10</span><br><span class="line">MP D D F F</span><br><span class="line">ZP N N N D</span><br><span class="line">FP J J J J</span><br><span class="line">F F D D J J F F K D</span><br></pre></td></tr></table></figure>
+
+<h4 id="样例输出"><a href="#样例输出" class="headerlink" title="样例输出"></a>样例输出</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">FP</span><br><span class="line">DEAD</span><br><span class="line">DEAD</span><br><span class="line">J J J J J J D</span><br></pre></td></tr></table></figure>
+
+<h4 id="数据范围及提示"><a href="#数据范围及提示" class="headerlink" title="数据范围及提示"></a>数据范围及提示</h4><p>样例1说明：第一回合主猪没有目标可以表敌意；接下来忠猪使用了3张南猪入侵，主猪掉了3点体力，并认为该角色为类反猪，3号角色尽管手里有无懈可击，但是因为自己未表明身份，所以同样不能对自己用，乖乖掉3点体力；下一回合反猪无牌可出；接下来主猪对着类反猪爆发，使用4张决斗，忠猪死亡，结果主猪弃掉所有牌；下来反猪摸到一张杀直接杀死主猪获胜。</p>
+<p>数据说明：一共20组测试数据，每个点5分。10%的数据没有锦囊牌，另外20%的数据没有无懈可击。</p>
+<h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><h4 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h4><p>一道大模拟题</p>
+<p>坑点挺多，要小心</p>
+<p>好像有一个AOE网，不过关键内容不多</p>
+<h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#include &lt;algorithm&gt;</span><br><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &lt;cstdlib&gt;</span><br><span class="line">#include &lt;cstring&gt;</span><br><span class="line">#include &lt;cstdio&gt;</span><br><span class="line">#include &lt;cctype&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">struct player &#123;</span><br><span class="line">    bool fan,jump,like; </span><br><span class="line">    int hp,num; </span><br><span class="line">    bool zhuge,used[2001]; </span><br><span class="line">    char shoupai[2001]; </span><br><span class="line">&#125;a[11];</span><br><span class="line">int n,m,fz=0,endgame=0,now=0;</span><br><span class="line">char paidui[2002];</span><br><span class="line">inline void update(int p) &#123;</span><br><span class="line">    int tot=0;</span><br><span class="line">    for (int i=1;i&lt;=a[p].num;i++)</span><br><span class="line">        if (!a[p].used[i])&#123;</span><br><span class="line">           tot++;</span><br><span class="line">           a[p].shoupai[tot]=a[p].shoupai[i];</span><br><span class="line">           a[p].used[tot]=false;</span><br><span class="line">        &#125;</span><br><span class="line">    a[p].num=tot;</span><br><span class="line">&#125;</span><br><span class="line">inline void printCard(int p)&#123;</span><br><span class="line">    if (a[p].hp&lt;=0) &#123;</span><br><span class="line">        printf(&quot;DEAD\n&quot;);</span><br><span class="line">        return;</span><br><span class="line">    &#125;</span><br><span class="line">    update(p); </span><br><span class="line">    for (int i=1;i&lt;=a[p].num;i++)&#123;</span><br><span class="line">        printf(&quot;%c&quot;,a[p].shoupai[i]);</span><br><span class="line">        if (i!=a[p].num) printf(&quot; &quot;); </span><br><span class="line">    &#125;</span><br><span class="line">    printf(&quot;\n&quot;);</span><br><span class="line">&#125;</span><br><span class="line">inline void print()  &#123;</span><br><span class="line">    if (endgame==1) puts(&quot;MP&quot;);</span><br><span class="line">    else puts(&quot;FP&quot;);</span><br><span class="line">    for (int i=0;i&lt;n;i++) printCard(i);</span><br><span class="line">&#125;</span><br><span class="line">inline bool fp(int p) &#123; return a[p].fan; &#125; </span><br><span class="line">inline bool zp(int p) &#123; return !a[p].fan&amp;&amp;p; &#125; </span><br><span class="line">inline bool mp(int p) &#123; return !p; &#125;  </span><br><span class="line">inline void like(int p) &#123; if (!a[p].jump) a[p].like=true; &#125;</span><br><span class="line">inline void jump(int p) &#123; a[p].jump=true;&#125;</span><br><span class="line">void init()&#123;</span><br><span class="line">    scanf(&quot;%d%d&quot;,&amp;n,&amp;m); char c[4];</span><br><span class="line">    for (int i=0;i&lt;n;i++)&#123;//注意从0开始编号</span><br><span class="line">        scanf(&quot;%s&quot;,c);</span><br><span class="line">        if (c[0]==&#x27;F&#x27;) &#123; a[i].fan=true; fz++; &#125;  </span><br><span class="line">        for (int j=1;j&lt;=4;++j) scanf(&quot; %c&quot;,&amp;a[i].shoupai[j]); </span><br><span class="line">        a[i].hp=a[i].num=4;</span><br><span class="line">    &#125;</span><br><span class="line">    for (int i=0;i&lt;m;i++)&#123;//读入牌堆  </span><br><span class="line">        char c=getchar();</span><br><span class="line">        while (!isalpha(c)) c=getchar();</span><br><span class="line">        paidui[i]=c;</span><br><span class="line">    &#125;</span><br><span class="line">    if (!fz) endgame=1; //没有反猪直接主猪胜利 </span><br><span class="line">&#125;</span><br><span class="line">inline bool useCard(int p,char card)&#123; </span><br><span class="line">//    printf(&quot;玩家%d使用了%c\n&quot;,p,card); </span><br><span class="line">    for (int i=1;i&lt;=a[p].num;i++)</span><br><span class="line">        if (a[p].shoupai[i]==card&amp;&amp;!a[p].used[i])</span><br><span class="line">        &#123;</span><br><span class="line">            a[p].used[i]=true; //使用这张牌 </span><br><span class="line">            return true; </span><br><span class="line">        &#125;</span><br><span class="line">    return false;</span><br><span class="line">&#125;</span><br><span class="line">inline bool Shan(int i) &#123; return useCard(i,&#x27;D&#x27;); &#125;</span><br><span class="line">inline bool Tao(int i) &#123; return useCard(i,&#x27;P&#x27;); &#125; </span><br><span class="line">inline bool Sha(int i) &#123; return useCard(i,&#x27;K&#x27;); &#125; </span><br><span class="line">inline bool Wuxiekeji(int i)&#123;</span><br><span class="line">    if (useCard(i,&#x27;J&#x27;))&#123;</span><br><span class="line">        jump(i);</span><br><span class="line">        return true;</span><br><span class="line">    &#125;</span><br><span class="line">    return false;</span><br><span class="line">&#125;</span><br><span class="line">inline void mopai(int p,int v)&#123;</span><br><span class="line">//    printf(&quot;玩家%d摸了%d张牌\n&quot;,p,v); </span><br><span class="line">    if (endgame) return; </span><br><span class="line">    for (int i=1;i&lt;=v;i++)&#123;</span><br><span class="line">        a[p].num++;</span><br><span class="line">        a[p].shoupai[a[p].num]=paidui[now];</span><br><span class="line">        a[p].used[a[p].num]=false;</span><br><span class="line">        if (now&lt;m-1) now++;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">inline void kill(int to,int from)&#123;</span><br><span class="line">    if (mp(to))&#123;</span><br><span class="line">        endgame=2; </span><br><span class="line">        return;</span><br><span class="line">    &#125;</span><br><span class="line">    if (fp(to))&#123;</span><br><span class="line">        fz--;</span><br><span class="line">        if (!fz)&#123;</span><br><span class="line">            endgame=1; </span><br><span class="line">            return;</span><br><span class="line">        &#125;</span><br><span class="line">        mopai(from,3); </span><br><span class="line">    &#125;</span><br><span class="line">    if (zp(to)&amp;&amp;mp(from))&#123;</span><br><span class="line">        a[0].num=0;</span><br><span class="line">        a[0].zhuge=false; </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">inline void Kouxie(int to,int from) &#123;</span><br><span class="line">    a[to].hp--;</span><br><span class="line">    if (!a[to].hp)&#123;</span><br><span class="line">        if (Tao(to)) &#123; a[to].hp=1;  &#125; </span><br><span class="line">        else kill(to,from); </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">inline bool AskWuxie(int from,bool f) &#123;</span><br><span class="line">    int i=from;</span><br><span class="line">    do&#123;</span><br><span class="line">        if (a[i].hp&amp;&amp;a[i].fan==f&amp;&amp;Wuxiekeji(i)) &#123;</span><br><span class="line">            if (!AskWuxie(i,!f)) return true;</span><br><span class="line">            return false;</span><br><span class="line">        &#125;</span><br><span class="line">        i=(i+1)%n; </span><br><span class="line">    &#125;</span><br><span class="line">    while (i!=from);</span><br><span class="line">    return false; </span><br><span class="line">&#125;</span><br><span class="line">inline bool Wuxie(int p,int k)&#123;</span><br><span class="line">    if (!a[p].jump&amp;&amp;!mp(p)) return false;</span><br><span class="line">    if (AskWuxie(k,a[p].fan)) return true; </span><br><span class="line">    return false; </span><br><span class="line">&#125;</span><br><span class="line">inline int Juedou(int p,int k) &#123;</span><br><span class="line">    if (zp(p)&amp;&amp;mp(k)) return 1; </span><br><span class="line">    if (Wuxie(p,k)) return 2; </span><br><span class="line">    while (1)&#123;</span><br><span class="line">        if (!Sha(p)) return 1; </span><br><span class="line">        if (!Sha(k)) return 0; </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">inline int dis(int p,int k) &#123;</span><br><span class="line">    int d=1;</span><br><span class="line">    for (int i=(p+1)%n;i!=k;i=(i+1)%n)</span><br><span class="line">        if (a[i].hp) d++; </span><br><span class="line">    return d;</span><br><span class="line">&#125;</span><br><span class="line">inline bool gongji(int p,int k) &#123;</span><br><span class="line">    if (fp(p))&#123;</span><br><span class="line">        if (dis(p,0)==1&amp;&amp;k==1)&#123;</span><br><span class="line">            jump(p); </span><br><span class="line">            if (!Shan(0)) Kouxie(0,p); </span><br><span class="line">            return true; </span><br><span class="line">        &#125;</span><br><span class="line">        if (k==2)&#123;</span><br><span class="line">            jump(p); </span><br><span class="line">            int t=Juedou(0,p);</span><br><span class="line">            if (t==1) Kouxie(0,p);</span><br><span class="line">            else if (t==0) Kouxie(p,0);</span><br><span class="line">            return true; </span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    if (mp(p))&#123;</span><br><span class="line">        for (int i=(p+1)%n;i!=p;i=(i+1)%n)&#123;</span><br><span class="line">            if (a[i].hp)&#123;</span><br><span class="line">                if ((fp(i)&amp;&amp;a[i].jump)||(a[i].like&amp;&amp;!a[i].jump))&#123;</span><br><span class="line">                    if (dis(p,i)==1&amp;&amp;k==1)&#123;</span><br><span class="line">                        if (!Shan(i)) Kouxie(i,p); </span><br><span class="line">                        return true;</span><br><span class="line">                    &#125;</span><br><span class="line">                    if (k==2)&#123;</span><br><span class="line">                        int t=Juedou(i,p);</span><br><span class="line">                        if (t==1) Kouxie(i,p);</span><br><span class="line">                        else if (t==0) Kouxie(p,i);</span><br><span class="line">                        return true;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    else&#123;</span><br><span class="line">        for (int i=(p+1)%n;i!=p;i=(i+1)%n) &#123;</span><br><span class="line">            if (a[i].hp) &#123;</span><br><span class="line">                if ((a[p].fan^a[i].fan)&amp;&amp;a[i].jump)&#123;</span><br><span class="line">                    if (dis(p,i)==1&amp;&amp;k==1)&#123;</span><br><span class="line">                        jump(p); </span><br><span class="line">                        if (!Shan(i)) Kouxie(i,p); </span><br><span class="line">                        return true;</span><br><span class="line">                    &#125;</span><br><span class="line">                    if (k==2)&#123;</span><br><span class="line">                        jump(p);</span><br><span class="line">                        int t=Juedou(i,p);</span><br><span class="line">                        if (t==1) Kouxie(i,p);</span><br><span class="line">                        else if (t==0) Kouxie(p,i);</span><br><span class="line">                        return true;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return false;</span><br><span class="line">&#125;</span><br><span class="line">inline void aoe(int p,int l) &#123;</span><br><span class="line">    for (int i=(p+1)%n;i!=p;i=(i+1)%n)&#123;</span><br><span class="line">        if (a[i].hp)&#123;</span><br><span class="line">            if (!Wuxie(i,p))&#123;</span><br><span class="line">                if (l==1)&#123;</span><br><span class="line">                    if (!Sha(i))&#123;</span><br><span class="line">                        if (mp(i)) like(p); </span><br><span class="line">                        Kouxie(i,p); </span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">                else &#123;</span><br><span class="line">                    if (!Shan(i))&#123;</span><br><span class="line">                        if (mp(i)) like(p); </span><br><span class="line">                        Kouxie(i,p); </span><br><span class="line">                &#125;</span><br><span class="line">                &#125;</span><br><span class="line">                if (endgame) return; </span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">inline void huihe(int p)&#123;</span><br><span class="line">    update(p); </span><br><span class="line">    mopai(p,2); </span><br><span class="line">    bool flag=false; </span><br><span class="line">    for (int i=1;i&lt;=a[p].num;i++)&#123;</span><br><span class="line">        if (endgame||!a[p].hp) return; </span><br><span class="line">        if (a[p].used[i]) continue; </span><br><span class="line">        if (a[p].shoupai[i]==&#x27;P&#x27;&amp;&amp;a[p].hp&lt;4)&#123;</span><br><span class="line">            a[p].used[i]=true;</span><br><span class="line">            a[p].hp++;</span><br><span class="line">        &#125;</span><br><span class="line">        else if (a[p].shoupai[i]==&#x27;N&#x27;) &#123; a[p].used[i]=true; aoe(p,1); i=0; &#125; </span><br><span class="line">        else if (a[p].shoupai[i]==&#x27;W&#x27;) &#123; a[p].used[i]=true; aoe(p,2); i=0; &#125; </span><br><span class="line">        else if (a[p].shoupai[i]==&#x27;K&#x27;&amp;&amp;(!flag||a[p].zhuge))&#123;</span><br><span class="line">            if (gongji(p,1))&#123;</span><br><span class="line">                flag=true; </span><br><span class="line">                a[p].used[i]=true; </span><br><span class="line">                i=0; </span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        else if (a[p].shoupai[i]==&#x27;F&#x27;)&#123;</span><br><span class="line">            if (gongji(p,2))&#123;</span><br><span class="line">                a[p].used[i]=true; </span><br><span class="line">                i=0;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        else if (a[p].shoupai[i]==&#x27;Z&#x27;)&#123;</span><br><span class="line">            a[p].used[i]=true; </span><br><span class="line">            if (!a[p].zhuge) &#123; a[p].zhuge=true; i=0; &#125;  </span><br><span class="line">        &#125;</span><br><span class="line">        if (endgame) return; </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">inline void BigHuihe() &#123;</span><br><span class="line">    for (int i=0;i&lt;n;i++)</span><br><span class="line">        if (a[i].hp) huihe(i); </span><br><span class="line">&#125;</span><br><span class="line">int main()&#123;</span><br><span class="line">    init(); </span><br><span class="line">    while (!endgame) BigHuihe(); </span><br><span class="line">    print(); </span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <tags>
+        <tag>problem</tag>
       </tags>
   </entry>
 </search>
