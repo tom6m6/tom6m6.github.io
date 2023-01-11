@@ -30,9 +30,10 @@
 <meta property="og:description" content="引子无疑，使用博客是记录一个程序员成长的有效方式。在技术之外，自己也想通过个人的主页发布一些好的文章。国内的网络审查是越来越严了，网络的实名制使我们没有很多渠道畅所欲言，甚至不敢大声地把自己的想法说出来。为了让自己安心地好好记录，冷静地记录自己一路以来的成长，我又重新拾起了2018年便已玩过的github+hexo。这是一个低成本低投入创立个人主页的方式，今天我就来记录一下中间的过程。 预先安装g">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-05-19T10:55:11.000Z">
-<meta property="article:modified_time" content="2023-01-05T03:08:16.500Z">
+<meta property="article:modified_time" content="2023-01-11T04:11:13.126Z">
 <meta property="article:author" content="tommy">
 <meta property="article:tag" content="blog">
+<meta property="article:tag" content="skill">
 <meta name="twitter:card" content="summary">
 
 
@@ -160,18 +161,18 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">55</span>
+          <span class="site-state-item-count">66</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories/">
-        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-count">6</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">18</span>
+        <span class="site-state-item-count">17</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -246,7 +247,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2023-01-05 11:08:16" itemprop="dateModified" datetime="2023-01-05T11:08:16+08:00">2023-01-05</time>
+      <time title="修改时间：2023-01-11 12:11:13" itemprop="dateModified" datetime="2023-01-11T12:11:13+08:00">2023-01-11</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -254,7 +255,7 @@
       </span>
       <span class="post-meta-item-text">分类于</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/software/" itemprop="url" rel="index"><span itemprop="name">software</span></a>
+          <a href="/categories/outclass-study/" itemprop="url" rel="index"><span itemprop="name">outclass_study</span></a>
         </span>
     </span>
 
@@ -280,7 +281,7 @@
 <p>出现 Hi tom6m6! You’ve successfully authenticated, but GitHub does not provide shell access.表示成功</p>
 <h3 id="nodejs"><a href="#nodejs" class="headerlink" title="nodejs"></a>nodejs</h3><p>node.js是能够在服务器端运行javascript的开源跨平台执行环境<br><a target="_blank" rel="noopener" href="https://nodejs.org/zh-cn/download/">nodejs官方下载</a><br>安装还是一路next 中间有个过程可能会选择是否 ADD TO PATH 这个就是在看是否要添加环境变量，此处一定要选<br>安装成功之后cmd中输入 node -v和 npm-v都正常<br>之后建议别乱改默认的环境变量设置，否则之后会出很多问题，本人就在这被坑了呜呜呜</p>
 <h2 id="主要"><a href="#主要" class="headerlink" title="主要"></a>主要</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">hexo就是我们需要的博客框架</span><br><span class="line">先建立一个自己博客文件夹，然后在此开git bash</span><br><span class="line">npm install -g hexo-cli 安装</span><br><span class="line">之后输入hexo -v看看是否成功安装</span><br><span class="line">hexo init blog 初始化到blog文件夹</span><br><span class="line">然后进入blog文件夹</span><br><span class="line">hexo new test</span><br><span class="line">hexo g </span><br><span class="line">hexo s</span><br><span class="line">之后在本地的 localhost:4000可以加载预览</span><br></pre></td></tr></table></figure>
-<h3 id="部署与流程"><a href="#部署与流程" class="headerlink" title="部署与流程"></a>部署与流程</h3><p>有两个_config.yml 一个在最外层blog的目录下，一个在themes文件夹中<br>前者是站点配置，后者是主题配置<br>关联hexo与github<br>进入站点配置<br>找到deploy:以下改为(以本人为例)<br>deploy:<br>type: git<br>repo: <a href="mailto:&#103;&#105;&#116;&#64;&#103;&#x69;&#x74;&#104;&#117;&#x62;&#x2e;&#99;&#x6f;&#x6d;">&#103;&#105;&#116;&#64;&#103;&#x69;&#x74;&#104;&#117;&#x62;&#x2e;&#99;&#x6f;&#x6d;</a>:tom6m6&#x2F;tom6m6.github.io<br>branch: master<br>注意此处repo后一定是 <a href="mailto:&#x67;&#105;&#x74;&#x40;&#103;&#105;&#x74;&#104;&#117;&#x62;&#46;&#99;&#111;&#109;">&#x67;&#105;&#x74;&#x40;&#103;&#105;&#x74;&#104;&#117;&#x62;&#46;&#99;&#111;&#109;</a>:tom6m6&#x2F;tom6m6.github.io<br>而不是某些博客写的<a target="_blank" rel="noopener" href="https://github.com/tom6m6/tom6m6.github.io.git">https://github.com/tom6m6/tom6m6.github.io.git</a><br>而且选项冒号之后一定要有空格<br>完成这个操作之后<br>到github上那个仓库的设置部分里的github pages，把source改为master而不是 main<br>安装部署插件</p>
+<h3 id="部署与流程"><a href="#部署与流程" class="headerlink" title="部署与流程"></a>部署与流程</h3><p>有两个_config.yml 一个在最外层blog的目录下，一个在themes文件夹中<br>前者是站点配置，后者是主题配置<br>关联hexo与github<br>进入站点配置<br>找到deploy:以下改为(以本人为例)<br>deploy:<br>type: git<br>repo: <a href="mailto:&#x67;&#x69;&#x74;&#x40;&#103;&#105;&#116;&#104;&#x75;&#98;&#46;&#99;&#x6f;&#109;">&#x67;&#x69;&#x74;&#x40;&#103;&#105;&#116;&#104;&#x75;&#98;&#46;&#99;&#x6f;&#109;</a>:tom6m6&#x2F;tom6m6.github.io<br>branch: master<br>注意此处repo后一定是 <a href="mailto:&#103;&#105;&#116;&#64;&#103;&#105;&#x74;&#104;&#117;&#98;&#46;&#x63;&#x6f;&#x6d;">&#103;&#105;&#116;&#64;&#103;&#105;&#x74;&#104;&#117;&#98;&#46;&#x63;&#x6f;&#x6d;</a>:tom6m6&#x2F;tom6m6.github.io<br>而不是某些博客写的<a target="_blank" rel="noopener" href="https://github.com/tom6m6/tom6m6.github.io.git">https://github.com/tom6m6/tom6m6.github.io.git</a><br>而且选项冒号之后一定要有空格<br>完成这个操作之后<br>到github上那个仓库的设置部分里的github pages，把source改为master而不是 main<br>安装部署插件</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
 <p>测试上述过程git bash中输入<br>hexo clean &amp; hexo g &amp; hexo d</p>
 <h3 id="更改主题"><a href="#更改主题" class="headerlink" title="更改主题"></a>更改主题</h3><p>说实话，内置的landscape主题挺丑的，本博客采用next主题，感觉这个十分简洁<br>当然，你也可以在 <a target="_blank" rel="noopener" href="https://hexo.io/themes/index.html">这里</a> 挑选自己喜欢的<br>以安装next为例<br>先下载 git clone <a target="_blank" rel="noopener" href="https://github.com/next-theme/hexo-theme-next">https://github.com/next-theme/hexo-theme-next</a> themes&#x2F;next<br>然后在站点配置文件中找到theme 改为 theme: next<br>在主题配置中，各选项根据实际需求更改，只要删掉注释，然后为默认的加上#就行</p>
@@ -324,6 +325,7 @@
     <footer class="post-footer">
           <div class="post-tags">
               <a href="/tags/blog/" rel="tag"># blog</a>
+              <a href="/tags/skill/" rel="tag"># skill</a>
           </div>
 
         
