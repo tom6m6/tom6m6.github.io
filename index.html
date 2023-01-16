@@ -85,7 +85,7 @@
 
 
 <nav class="site-nav">
-  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
       <li class="menu-item menu-item-search">
         <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
         </a>
@@ -156,7 +156,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">66</span>
+          <span class="site-state-item-count">73</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -167,7 +167,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">17</span>
+        <span class="site-state-item-count">18</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -196,6 +196,572 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/01/17/quickstudySAalgo2023/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://raw.githubusercontent.com/tom6m6/files_upload_blog/main/csman.jpg">
+      <meta itemprop="name" content="tommy">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="tommy's blog">
+      <meta itemprop="description" content="知行合一">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | tommy's blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2023/01/17/quickstudySAalgo2023/" class="post-title-link" itemprop="url">快速学习模拟退火算法</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2023-01-17 00:04:50 / 修改时间：00:29:58" itemprop="dateCreated datePublished" datetime="2023-01-17T00:04:50+08:00">2023-01-17</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="历史背景"><a href="#历史背景" class="headerlink" title="历史背景"></a>历史背景</h2><p>美国物理学家 N.Metropolis 和同仁在1953年发表研究复杂系统、计算其中能量分布的文章，他们使用蒙特卡罗模拟法计算多分子系统中分子的能量分布。这相当于是本文所探讨之问题的开始，事实上，模拟退火中常常被提到的一个名词就是Metropolis准则 。</p>
+<p>美国IBM公司物理学家 S.Kirkpatrick、C. D. Gelatt 和 M. P. Vecchi 于1983年在《Science》上发表了一篇颇具影响力的文章：《以模拟退火法进行最优化（Optimization by Simulated Annealing）》。他们借用了Metropolis等人的方法探讨一种旋转玻璃态系统（spin glass system）时，发觉其物理系统的能量和一些组合最优（combinatorial optimization）问题（著名的旅行推销员问题TSP即是一个代表例子）的成本函数相当类似：寻求最低成本即似寻求最低能量。由此，他们发展出以 Metropolis 方法为本的一套算法，并用其来解决组合问题等的寻求最优解。</p>
+<p>几乎同时，欧洲物理学家 V.Carny 也发表了几乎相同的成果，但两者是各自独立发现的；只是Carny“运气不佳”，当时没什么人注意到他的大作；或许可以说，《Science》杂志行销全球，“曝光度”很高，素负盛名，而Carny却在另外一本发行量很小的专门学术期刊《J.Opt.Theory Appl.》发表其成果因而并未引起应有的关注。</p>
+<p>Kirkpatrick等人受到Metropolis等人用蒙特卡罗模拟的启发而发明了“模拟退火”这个名词，因为它和物体退火过程相类似。寻找问题的最优解（最值）即类似寻找系统的最低能量。因此系统降温时，能量也逐渐下降，而同样意义地，问题的解也“下降”到最值。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2023/01/17/quickstudySAalgo2023/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/01/16/englishshortstorymid2022/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://raw.githubusercontent.com/tom6m6/files_upload_blog/main/csman.jpg">
+      <meta itemprop="name" content="tommy">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="tommy's blog">
+      <meta itemprop="description" content="知行合一">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | tommy's blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2023/01/16/englishshortstorymid2022/" class="post-title-link" itemprop="url">我校《英语短篇小说赏析》期中读后续写</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2023-01-16 23:58:22 / 修改时间：23:59:58" itemprop="dateCreated datePublished" datetime="2023-01-16T23:58:22+08:00">2023-01-16</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="要求"><a href="#要求" class="headerlink" title="要求"></a>要求</h2><p>Please imagine what had happened many years ago in Ohio between Bill and Mary and write about it. (Early Autumn)<br>    Use the third-person narration<br>    Use direct&#x2F;indirect characterization to depict two persons.<br>    No less than 150 words<br>    Don’t print</p>
+<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>Bill and Mary are so young that they consider loss as what they will gain again in extensive lifetime and don’t cherish the genuine treasurable matters. They are perfect soul mates and everything has proved that point. The park witnesses a couple to take evening walks almost everyday and they can’t share completely owing to time. </p>
+<p>​    Another Saturday, when the first shades of twilight are beginning to settle upon the earth, They step into a bar as usual. They drink and spout eloquent speeches about their future. After a while, Mary starts to feel bored but Bill continues to express his perspectives. Wonderful piano sound originated from the corner strike, “What about listen to the fantastic piano music? I used to be an piano lover and had a good command of it.”, Mary asked. She succeeds in finding a pretext to transfer topic finally and expects Bill to be interested. “Oh, fine.”, Bill is annoyed for the interruption  but he said. A gentle man who looks like an intellectual is intoxicatedly playing, and memory in the childhood occurs to Mary at the same time. A little girl is accompanied by the exquisite piano in years, and pleasure fill her heart. Regarding Mary’s addiction, Bill doesn’t understand and he inappropriately says, “may I go on?”. As if something connects Mary with that piano player, he looks up and looks Mary eye to eye. Mary doesn’t reply to Bill and goes straight to that man shockingly. He makes way for her and she plays the piano as what she did many years ago. He sits next to her, staring at the beauty and listening to her clumsy play. Mary’s heart melts and she feels she is in dreamland. The music end finally and they both don’t know how long has passed. He smiles at her and she does, too. They chat a lot about piano and Mary feels excited due to their similar experience. If the bar operates all night long, they doesn’t bid farewell reluctantly.</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2023/01/16/englishshortstorymid2022/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/01/16/programmingadvice3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://raw.githubusercontent.com/tom6m6/files_upload_blog/main/csman.jpg">
+      <meta itemprop="name" content="tommy">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="tommy's blog">
+      <meta itemprop="description" content="知行合一">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | tommy's blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2023/01/16/programmingadvice3/" class="post-title-link" itemprop="url">编程建议三篇</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2023-01-16 22:57:59 / 修改时间：23:00:17" itemprop="dateCreated datePublished" datetime="2023-01-16T22:57:59+08:00">2023-01-16</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="Bruce-Eckel：编程生涯"><a href="#Bruce-Eckel：编程生涯" class="headerlink" title="Bruce Eckel：编程生涯"></a>Bruce Eckel：编程生涯</h2><p>大家总是问一个错误的问题：“我应该学习C++还是Java？”在本文中，我将告诉大伙儿：对于选择编程生涯真正需要关注的是哪些问题。</p>
+<p>请注意，这篇文章的目标读者并不是那些已经做出自己选择的人。（对于这些人而言）你会继续自己的编程生涯，而不管别人会怎么说。因为它已经渗透到你的血液中，你已经无法摆脱。你已经知道答案：C++、Java、Shell脚本、Python、还有其它一大堆的语言和技术，你都理所当然地会去学习。甚至有可能你才仅仅14岁，就已经知道好几种不同的语言。</p>
+<p>问我这样的问题的人可能来自其他行业，或者来自诸如Web开发之类的领域。他们知道HTML是一种类编程语言，而且想尝试构建某些更大型的应用。但我特别希望，当你在问这个问题时，你已经意识到了想要在计算机领域取得成功，你需要掌握自学能力，而且永不停息。</p>
+<p>在这个领域做得越多，我越觉得软件开发比任何行业都更接近于写作。 我们从来不知道是什么造就了优秀的作者，我们只知道什么时候我们会喜欢某个人的文字。编程不是一种工程，仅需要把东西从入口倒进去，然后再转动手柄。把软件开发看成确定性的，是一个诱人的想法。因为这个想法，人们总想搞出一些工具来帮我们开发出想要的软件。但是我的经验告诉我，事实并非如此——人的重要性远高于流程。而软件是否运行在一部精确的机器上已经越来越不重要了——这犹如测不准原理对人类的影响。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2023/01/16/programmingadvice3/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/01/16/maogaipaper-2022/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://raw.githubusercontent.com/tom6m6/files_upload_blog/main/csman.jpg">
+      <meta itemprop="name" content="tommy">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="tommy's blog">
+      <meta itemprop="description" content="知行合一">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | tommy's blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2023/01/16/maogaipaper-2022/" class="post-title-link" itemprop="url">2021-2022-2学期毛概期末论文</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2023-01-16 16:45:41 / 修改时间：16:56:58" itemprop="dateCreated datePublished" datetime="2023-01-16T16:45:41+08:00">2023-01-16</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>不说啥了，我当时真的摆烂，纯纯在网上找资料复制粘贴而成。<br>第一次查重率39.9%，把我吓傻了；经过两个小时的不(xiu)懈(xiu)努(bu)力(bu)，终于降到了11.4%。<br>最后我们班的毛概期末分数普遍偏低（身边很多同学70多分甚至有的60+，这在其他很多班级是不可思议的），自己也只搞了个80分的论文成绩，这确实狠狠地影响了我的绩点。唉，当时就该认真去写一下了，没准就能到90分的论文，然后自己就4.0了呢&#x2F;捂脸。</p>
+<h3 id="要求"><a href="#要求" class="headerlink" title="要求"></a>要求</h3><p>总评成绩100%</p>
+<p>平时成绩70%&#x3D;平时考勤10%+课堂参与10%+社会实践30%+线上测验20%</p>
+<p>期末论文（就是这篇）30%</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2023/01/16/maogaipaper-2022/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/01/16/ecnuhistoryww2indoc/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://raw.githubusercontent.com/tom6m6/files_upload_blog/main/csman.jpg">
+      <meta itemprop="name" content="tommy">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="tommy's blog">
+      <meta itemprop="description" content="知行合一">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | tommy's blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2023/01/16/ecnuhistoryww2indoc/" class="post-title-link" itemprop="url">我校《纪录片中的二战史》期末论文</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2023-01-16 12:54:14 / 修改时间：13:04:04" itemprop="dateCreated datePublished" datetime="2023-01-16T12:54:14+08:00">2023-01-16</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>ECNU @ HIST0031112994<br>赵继珂 老师<br>课程类别 价值、社会与进步 (属于模块课程)</p>
+<p>观影报告（要求同学们观看一部有关二战的纪录片，并写一篇不少于3500字的观影报告，观影报告应该符合学术规范，不能抄袭。）<br>什么是学术规范？<br>就是和正儿八经的论文一样，有标题，摘要，关键词，正文，引用</p>
+<p>这篇文章我没有认真完成，写得马马虎虎，最后也就是个90分，放在这里仅供参考。</p>
+<h2 id="我的文章"><a href="#我的文章" class="headerlink" title="我的文章"></a>我的文章</h2><p>《天启:第二次世界大战》——浅谈决定性战役在二战中的作用</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2023/01/16/ecnuhistoryww2indoc/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/01/16/ecnumarx-files/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://raw.githubusercontent.com/tom6m6/files_upload_blog/main/csman.jpg">
+      <meta itemprop="name" content="tommy">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="tommy's blog">
+      <meta itemprop="description" content="知行合一">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | tommy's blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2023/01/16/ecnumarx-files/" class="post-title-link" itemprop="url">我校《马克思主义基本原理》资料搜集</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2023-01-16 12:20:55 / 修改时间：13:15:38" itemprop="dateCreated datePublished" datetime="2023-01-16T12:20:55+08:00">2023-01-16</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>这两个学期思政类课程以论文结课的形式伴随着中国疫情防控的放开而告一段落，之后又回归到了正(ku)常(bi)的线下闭卷考试了。<br>在这里我把一些自己搜集到的马原试题分享一下。</p>
+<h1 id="皮皮-整理-转载"><a href="#皮皮-整理-转载" class="headerlink" title="皮皮 整理(转载)"></a>皮皮 整理(转载)</h1><p>序言</p>
+<p>马克思主义基本原理概论（以下简称“马原”）是华东师范大学思政类必修课之一。2018年秋季起，教材更换为《马克思主义基本原理概论（2018版）》。 其评价方式分为过程性评价和期末测试两方面进行。最初，过程性评价通过课堂出勤、课堂发言、课堂展示等方面综合评价，受疫情影响线上学习的那一学期为转折点，随后过程性评价增加了中国大学mooc（以下简称“mooc”）评价的新方式。这也使得期末考核题型有相应变化：减少了单选题和多选题，改为 mooc上进行。而无论哪个学期，马原的期末测试总是以闭卷形式进行，试卷包含简答题、辨析题、材料论述题等多种题型。<br>由于需要识记的内容众多，老师往往会在期末考试前一周给出大题的“重点”，减轻学生的负担。（皮皮注：马原也是唯一会提供重点的思政课） 所谓重点就是所有考试内容（包括 A卷、B卷）一定包含在重点当中。因此，不在重点中的内容一定不会考大题，不在重点中的教材内容可以直接跳过不看。<br>回忆版真题的整理从皮皮上马原课并参加考试的那个学期开始进行整理。第一学期由自己考完回忆并进行整理；后续的学期的整理离不开其他小朋友的帮助，在这里，皮皮向所有给予皮皮帮助的小朋友表示衷心的感谢。<br>当然，正是因为每年的重点不同，所以考试题目也有所不同，往年的考题很多都不会再考（因为不在后续学期的重点范围内了），马原的回忆版真题对于预测考题的价值不大。那么有什么复习建议呢？<br>首先是熟悉重点，既然老师给了重点，那就应该通读重点，把重点烂熟于心。在考试时候遇到一个辨析题，毫无头绪的时候，应该在脑海里检索重点中的知识点，看看哪个知识点与题目相对应。<br>其次是在教材中找到相应内容。根据老师给的每个重点在教材中找到相应的大的范围，然后可以列一定的提纲，进行整理，提炼成（1）、（2）、（3）等小点，熟读并背诵。<br>最后是交流重点，上了大学你不是一个人在战斗，要多了解其他班级的老师给的重点，也许有的老师会说的更细致，会“透露”一部分考题，这就需要找到上其他老师的课的学生交流重点，看看有没有漏，有没有补充，这样相互一交流，你的信心能够显著提高。<br>由于皮皮无法预测下一年老师会给出什么重点， 因而仅仅将本文当作复习材料是远远不够的。马原期末考前背书记忆的过程是一个漫长的枯燥的过程，祝愿你能顺利、愉快地度过这段时光，参加完考试，取得理想的成绩！</p>
+<p>皮皮整理的有哪些题？</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2023/01/16/ecnumarx-files/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/01/13/major-transfer-files/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://raw.githubusercontent.com/tom6m6/files_upload_blog/main/csman.jpg">
+      <meta itemprop="name" content="tommy">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="tommy's blog">
+      <meta itemprop="description" content="知行合一">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | tommy's blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2023/01/13/major-transfer-files/" class="post-title-link" itemprop="url">major-transfer-files</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2023-01-13 11:52:50" itemprop="dateCreated datePublished" datetime="2023-01-13T11:52:50+08:00">2023-01-13</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2023-01-16 12:18:31" itemprop="dateModified" datetime="2023-01-16T12:18:31+08:00">2023-01-16</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>转专业算是一门学问了，自己在2021年10月14日-2022年4月20日之间有不少的研究。这个页面就放各种而样的转专业资料（包括但不限于转数据的）吧！</p>
+<p>由于涉及隐私，其中有的文件是被加密的，如有需要请联系本人。</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/tom6m6/files_upload_blog/tree/main/mine-major_transfer">我的转数据资料 </a>这个其实不算很全面，还是需要之后找到相关的文件再补充。</p>
+<p><a target="_blank" rel="noopener" href="https://tom6m6.github.io/2023/01/11/major-transfer-math15-22/">ecnu转数学试题</a></p>
+<p>以下转载自花狮朝夕，个人感觉还是有些用</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2023/01/13/major-transfer-files/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -235,7 +801,7 @@
       <span class="post-meta-item-text">发表于</span>
       
 
-      <time title="创建时间：2023-01-11 20:20:52 / 修改时间：20:30:02" itemprop="dateCreated datePublished" datetime="2023-01-11T20:20:52+08:00">2023-01-11</time>
+      <time title="创建时间：2023-01-11 20:20:52 / 修改时间：20:33:40" itemprop="dateCreated datePublished" datetime="2023-01-11T20:20:52+08:00">2023-01-11</time>
     </span>
 
   
@@ -618,9 +1184,15 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">发表于</span>
-      
 
-      <time title="创建时间：2023-01-10 23:10:26 / 修改时间：23:26:58" itemprop="dateCreated datePublished" datetime="2023-01-10T23:10:26+08:00">2023-01-10</time>
+      <time title="创建时间：2023-01-10 23:10:26" itemprop="dateCreated datePublished" datetime="2023-01-10T23:10:26+08:00">2023-01-10</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2023-01-11 12:14:03" itemprop="dateModified" datetime="2023-01-11T12:14:03+08:00">2023-01-11</time>
     </span>
 
   
@@ -894,573 +1466,6 @@
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2023/01/08/ecnulinearalgebrafinal2022-1C/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2023/01/08/ecnulinearalgebrafinal2014/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://raw.githubusercontent.com/tom6m6/files_upload_blog/main/csman.jpg">
-      <meta itemprop="name" content="tommy">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="tommy's blog">
-      <meta itemprop="description" content="知行合一">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | tommy's blog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2023/01/08/ecnulinearalgebrafinal2014/" class="post-title-link" itemprop="url">华东师范大学《线性代数》2013-2014学年第二学期期末考试A卷</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2023-01-08 15:18:03 / 修改时间：23:50:01" itemprop="dateCreated datePublished" datetime="2023-01-08T15:18:03+08:00">2023-01-08</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>这张卷纸其实出得挺好的，自己在当时考线代前两天才做此卷，有些晚了&#x2F;捂脸</p>
-<p>用这张卷纸来练练自己敲markdown数学公式的手感吧:)</p>
-<p>在该试题中,$E$表示单位矩阵</p>
-<h2 id="单项选择题"><a href="#单项选择题" class="headerlink" title="单项选择题"></a>单项选择题</h2><p>(共15分，每小题3分)</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2023/01/08/ecnulinearalgebrafinal2014/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2023/01/08/marxfinalpaper/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://raw.githubusercontent.com/tom6m6/files_upload_blog/main/csman.jpg">
-      <meta itemprop="name" content="tommy">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="tommy's blog">
-      <meta itemprop="description" content="知行合一">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | tommy's blog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2023/01/08/marxfinalpaper/" class="post-title-link" itemprop="url">马原期末论文</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2023-01-08 00:24:07" itemprop="dateCreated datePublished" datetime="2023-01-08T00:24:07+08:00">2023-01-08</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2023-01-11 12:17:44" itemprop="dateModified" datetime="2023-01-11T12:17:44+08:00">2023-01-11</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="华东师范大学-《马克思主义基本原理》课程期末考察方案2022—2023-学年第一学期"><a href="#华东师范大学-《马克思主义基本原理》课程期末考察方案2022—2023-学年第一学期" class="headerlink" title="华东师范大学 《马克思主义基本原理》课程期末考察方案2022—2023 学年第一学期"></a>华东师范大学 《马克思主义基本原理》课程期末考察方案2022—2023 学年第一学期</h1><h2 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h2><p>（1） 2022-2023 学年第一学期《马克思主义基本原理》课程期末考试以撰 写小论文方式开展，请学生登录“知网作业检测平台”（参考附件《知网作业检测平台学生指导手册》）提交作业。 （2） 从所给主题范围中自选角度，题目自拟，结合课程内容和自己的思考，撰写论文。 （3） 字数不少于 3000 字，引用符合学术规范，知网查重率不高于 30%。 （4） 立场正确，观点明确，论证充分，逻辑严谨，表达流畅。 （5） 论文提交截止时间：2023 年 1 月 8 日 24:00</p>
-<h2 id="论文主题范围"><a href="#论文主题范围" class="headerlink" title="论文主题范围"></a>论文主题范围</h2><p>1、习近平总书记指出：“即使在当今西方社会，马克思主义仍然具有重要影 响力。在本世纪来临的时候，马克思被西方思想界评为‘千年第一思想家’。美国学者海尔布隆纳在他的著作《马克思主义：赞成与反对》中表示，要探索人类 社会发展前景，必须向马克思求教，人类社会至今仍然生活在马克思所阐明的发 展规律之中。实践也证明，无论时代如何变迁、科学如何进步，马克思主义依然显示出科学思想的伟力，依然占据着真理和道义的制高点。”</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2023/01/08/marxfinalpaper/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2023/01/07/permanentsl2021/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://raw.githubusercontent.com/tom6m6/files_upload_blog/main/csman.jpg">
-      <meta itemprop="name" content="tommy">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="tommy's blog">
-      <meta itemprop="description" content="知行合一">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | tommy's blog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2023/01/07/permanentsl2021/" class="post-title-link" itemprop="url">permanentsl2021</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2023-01-07 13:24:02 / 修改时间：13:28:34" itemprop="dateCreated datePublished" datetime="2023-01-07T13:24:02+08:00">2023-01-07</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          一篇爽文
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2023/01/07/permanentsl2021/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2023/01/07/selftrainningfromtumblr/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://raw.githubusercontent.com/tom6m6/files_upload_blog/main/csman.jpg">
-      <meta itemprop="name" content="tommy">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="tommy's blog">
-      <meta itemprop="description" content="知行合一">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | tommy's blog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2023/01/07/selftrainningfromtumblr/" class="post-title-link" itemprop="url">selftrainningfromtumblr</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2023-01-07 00:07:00 / 修改时间：13:26:20" itemprop="dateCreated datePublished" datetime="2023-01-07T00:07:00+08:00">2023-01-07</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          一篇爽文
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2023/01/07/selftrainningfromtumblr/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/12/13/2022autumnoutschoolaudit/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://raw.githubusercontent.com/tom6m6/files_upload_blog/main/csman.jpg">
-      <meta itemprop="name" content="tommy">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="tommy's blog">
-      <meta itemprop="description" content="知行合一">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | tommy's blog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/12/13/2022autumnoutschoolaudit/" class="post-title-link" itemprop="url">2022年秋季学期出校审批纪实</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2022-12-13 23:59:50" itemprop="dateCreated datePublished" datetime="2022-12-13T23:59:50+08:00">2022-12-13</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2023-01-11 12:03:31" itemprop="dateModified" datetime="2023-01-11T12:03:31+08:00">2023-01-11</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>全面放开的春风随着各地竞相出台政策而快速地刮来，混沌的2022，活得是多么艰难;人们是多么累啊!这已经变得不可逆地放开，或许是真的防不住了之后的妥协，但我由衷地感到欣慰——自己运气很差，但还在此基础上有一点点好。</p>
-<p>坎坷的2022马上也就要到尾声了，抛开上半年上海封控时自己被卷入风暴中心不说，下半年自己同样没有享受自己应该有的自由的sweet air.谨以此篇献给这个学期吧。</p>
-<h3 id="8月"><a href="#8月" class="headerlink" title="8月"></a>8月</h3><p>26 返校事由：返校学习</p>
-<h3 id="9月"><a href="#9月" class="headerlink" title="9月"></a>9月</h3>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2022/12/13/2022autumnoutschoolaudit/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/09/05/csapp1/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://raw.githubusercontent.com/tom6m6/files_upload_blog/main/csman.jpg">
-      <meta itemprop="name" content="tommy">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="tommy's blog">
-      <meta itemprop="description" content="知行合一">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | tommy's blog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/09/05/csapp1/" class="post-title-link" itemprop="url">csapp1</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2022-09-05 17:14:17" itemprop="dateCreated datePublished" datetime="2022-09-05T17:14:17+08:00">2022-09-05</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h3 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h3><p>Hello there!今天是新学期正式开始的一天，也是开启深奥的《计算机系统》的第一天。作为一门专业核心课程，我希望自己能通过博客来记录自己的成长。</p>
-<h2 id="第二章-信息的表示与处理"><a href="#第二章-信息的表示与处理" class="headerlink" title="第二章~信息的表示与处理"></a>第二章~信息的表示与处理</h2><p>第一次课程很粗略地过了一下第一章的内容，重点还是留给大家课余时间翻阅。课后布置的任务是预习2.1-2.2.2，但是我多看了一些，在此把预习当中遇到的重要问题给记录了下来。</p>
-<h4 id="信息存储"><a href="#信息存储" class="headerlink" title="信息存储"></a>信息存储</h4>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2022/09/05/csapp1/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/07/08/infovis2/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://raw.githubusercontent.com/tom6m6/files_upload_blog/main/csman.jpg">
-      <meta itemprop="name" content="tommy">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="tommy's blog">
-      <meta itemprop="description" content="知行合一">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | tommy's blog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/07/08/infovis2/" class="post-title-link" itemprop="url">信息可视化图像聚类大作业</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2022-07-08 18:44:20" itemprop="dateCreated datePublished" datetime="2022-07-08T18:44:20+08:00">2022-07-08</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="作业要求"><a href="#作业要求" class="headerlink" title="作业要求"></a>作业要求</h2><p>课程作业: 基于已完成的练习，实现一个图片颜色的可视化页面，基本功能<br>要求如下：</p>
-<ol>
-<li>对图片中的像素颜色进行聚类，类的数量K可在代码中指定（聚类算法可使用k-means<br>等，聚类算法尽可能自己实现）；</li>
-<li>须可视化的信息包含2个维度：（1）聚类中心的颜色或类里像素颜色的均值；（2）某<br>类里颜色的数量。</li>
-<li>选择一种EChart可视化样式对聚类结果进行展示，可使用柱状图、饼图等。<br>进阶功能（不强制要求）:</li>
-<li>可交互式选择不同的图片；</li>
-<li>可切换可视化样式（例如，可在饼图柱状图等图表间切换）；</li>
-<li>其他功能<br>作业请以“学号+姓名”命名，打包为zip文件（注意不是rar格式）<br>上传到超星泛雅平台课程作业栏目<br>作业提交截止时间为07月10日晚11:59</li>
-</ol>
-<h2 id="完成过程"><a href="#完成过程" class="headerlink" title="完成过程"></a>完成过程</h2><p>讲真，我感觉这个项目对于初学前端开发的我来说挺难的。一来是因为不太熟练js的异步操作，二来是希望加一些新的东西，但是这些新的东西也属于自己的未知领域，三来就是自己对kmeans掌握的并不是十分熟练。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2022/07/08/infovis2/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>

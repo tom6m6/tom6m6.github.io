@@ -85,7 +85,7 @@
 
 
 <nav class="site-nav">
-  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
       <li class="menu-item menu-item-search">
         <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
         </a>
@@ -156,7 +156,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">66</span>
+          <span class="site-state-item-count">73</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -167,7 +167,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">17</span>
+        <span class="site-state-item-count">18</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -196,6 +196,631 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2018/03/03/bgit/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://raw.githubusercontent.com/tom6m6/files_upload_blog/main/csman.jpg">
+      <meta itemprop="name" content="tommy">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="tommy's blog">
+      <meta itemprop="description" content="知行合一">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | tommy's blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2018/03/03/bgit/" class="post-title-link" itemprop="url">Git常用命令</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2018-03-03 23:30:45" itemprop="dateCreated datePublished" datetime="2018-03-03T23:30:45+08:00">2018-03-03</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2023-01-11 12:09:45" itemprop="dateModified" datetime="2023-01-11T12:09:45+08:00">2023-01-11</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p><img src="https://raw.githubusercontent.com/tg6169/tmp/master/bg2015120901.png"><br>我们现在已经初步了解了Git的信息，并且已经完成部署。现在，让我们正式使用Git。<br>本博文将介绍Git的常用命令。<br>注解：  </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">Workspace：工作区</span><br><span class="line">Index / Stage：暂存区</span><br><span class="line">Repository：仓库区（或本地仓库）</span><br><span class="line">Remote：远程仓库</span><br></pre></td></tr></table></figure>
+
+<h2 id="新建代码库"><a href="#新建代码库" class="headerlink" title="新建代码库"></a>新建代码库</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"># 在当前新建目录中进行初始化</span><br><span class="line">git init</span><br><span class="line"></span><br><span class="line"># 新建一个目录，并将其初始化</span><br><span class="line">git init [project-name]</span><br><span class="line"> </span><br><span class="line"># 下载项目和整个代码历史</span><br><span class="line">git clone [url]</span><br></pre></td></tr></table></figure>
+
+<h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2018/03/03/bgit/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2018/02/26/crossberlinwall/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://raw.githubusercontent.com/tom6m6/files_upload_blog/main/csman.jpg">
+      <meta itemprop="name" content="tommy">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="tommy's blog">
+      <meta itemprop="description" content="知行合一">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | tommy's blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2018/02/26/crossberlinwall/" class="post-title-link" itemprop="url">转载_德国人的翻墙精神</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2018-02-26 23:53:01" itemprop="dateCreated datePublished" datetime="2018-02-26T23:53:01+08:00">2018-02-26</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2023-01-11 12:12:26" itemprop="dateModified" datetime="2023-01-11T12:12:26+08:00">2023-01-11</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="翻越柏林墙的故事"><a href="#翻越柏林墙的故事" class="headerlink" title="翻越柏林墙的故事"></a>翻越柏林墙的故事</h2><p>　　“自由有许多困难，民主亦非完美，然而我们从未建造一堵墙把我们的人民关在里面，不准他们离开。”——肯尼迪《柏林墙下的演说》，1963年6月25日于西德市政厅柏林墙前。<br>　　德国的柏林墙是东德于1961年在自己的领土上建立的围墙，目的是不让东德人逃入西柏林，在柏林墙建立之前，大约有250万东德人逃入西柏林，1990年柏林墙被拆除，随后东德加入了联邦德国，两德实现了统一。<br>肯尼迪曾评价柏林墙是“世界上第一堵不是用于抵御外敌，而是用来对付自家百姓的墙”。但是对于德国人来说，柏林墙所代表的不是肯尼迪，冷战这样的大字眼，而是数以万计小人物的故事，这些小人物在这堵墙边，用自己的生命，造就了人类历史上的一个传说，这个传说的名字，叫做“自由”。<br>　　仅在此记录自己了解到的一些故事。常觉得，我国和西方的历史，记录很不一样。在我国的历史记录里，少有这样详尽，乃至繁琐的小人物的记录。所以读西方的历史，经常觉得过于平淡，过于拘泥细节而不见大方向。然而，却自有一种力量在。柏林墙的故事，在西方的历史里，感觉不但不惊天动地，或者剑拔弩张，反而竟然多有幽默。当然，是黑色幽默。</p>
+<h3 id="又一个“中国长城”"><a href="#又一个“中国长城”" class="headerlink" title="又一个“中国长城”"></a>又一个“中国长城”</h3><p>　　万没有想到，在柏林墙纪念馆会读到我们中国的名字。柏林墙工程的代号，就是“中国长城第二”。<br>　　1961年8月，一个沉闷的夏天。对于大量东德人经柏林逃往西方已经忍无可忍的东德人和苏联人搞了一个漂亮的偷袭。8月12日凌晨1点，2万多军队突然开到东西柏林边境，立刻开始了修筑柏林墙的工程。应该说，这个以我国长城命名的工程，准备还是很充分的，绝对不是豆腐渣工程。仅仅到13日凌晨，第一期工程全部完工，整个东西柏林被铁丝网全部分割，再加路障。柏林墙正式树立了起来。<br>　　不过上帝实在会开玩笑，就在柏林墙的修筑过程中，东德人就开始了翻越柏林墙，逃亡西德的“柏林墙传说”。东德人的争分夺秒，只争朝夕的精神，给柏林墙的历史研究留下了千古之迷，到底是先有柏林墙，再有翻越行动，还是未等墙树起来，就已经开始了翻越，竟然永远无法得到一个答案了。<br>　　历史记载，柏林墙初步完成，即东西柏林正式分割，在13日中午12点37分，最后一个路口宣布封锁为标志。但就在13日，最早明白过来的东德人已经开始用生命搏击柏林墙，当天，一位技工跨过正在树立的铁丝网跳进了西柏林，有人跳进运河游到了西柏林。然而，天意弄人，谁也没想到记录他们踏上西德领土的时间。<br>　　13日上午，西德人涌向柏林墙，向墙那边的同胞投掷自己的通行证，身份证件。到苏联军队能够阻止这一举动前，数以千计的证件已经被扔到了东德同胞的手里。大批东德人借机混在返回西柏林的西德人中间偷渡逾越了柏林墙。<br>　　13日下午，柏林墙树立以后，第一个逾越柏林墙的人出现了。一个青年在光天化日之下，用百米冲刺的速度飞奔向铁丝网。但是，三名警察追上了他，将他打倒在地，谁也没有想到，被打倒的他竟奇迹般又站了起来，夺过警察的枪，一边与警察对峙一边继续向西柏林飞奔。警察是尽职的，他们不顾这个年轻人的枪，冲上去和他又一次扭打成一团，并且一刀刺进青年人的膝盖。这次这个年轻人失去了奔跑的能力，面对三个警察，结局已经注定。<br>　　然而，上天决心要给大家看一幕喜剧而不是悲剧。就在此刻，西柏林群众雷鸣般的怒吼惊醒了三名警察，他们已经越过了柏林墙，现在是在西德的土地上，他们不再是警察，而成了违法者。他们扔下青年跑回柏林墙的另一侧。这个青年拖著残废的腿，一边拼命呼救一边爬到了西柏林。<br>　　事后证明，这是一个大大的误会。事实上柏林墙并不是沿东德西德的边境修筑的，而是偏东德一侧，这是为了保证，即使你越过了柏林墙，你仍然在东德土地上，警察和军队仍然有权力和能力开枪将你击毙。当时那三位警察并没有越界，他们大可以合法将那个青年绑回东德。然而，面对这柏林墙上的第一次交锋，他们误会了，害怕了，那个青年简直是奇迹般的竟然这样逃脱了已经笼罩住了自己的厄运。这是第一个通过柏林墙的逃亡者。也许这第一个人就定下了逃亡柏林墙故事的基调。<br>　　在柏林墙传说里，有眼泪、有悲壮、有无奈；但同样也有幽默、滑稽和令人含泪微笑的故事。</p>
+<h3 id="最可爱的人"><a href="#最可爱的人" class="headerlink" title="最可爱的人"></a>最可爱的人</h3>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2018/02/26/crossberlinwall/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2018/02/25/markdown1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://raw.githubusercontent.com/tom6m6/files_upload_blog/main/csman.jpg">
+      <meta itemprop="name" content="tommy">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="tommy's blog">
+      <meta itemprop="description" content="知行合一">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | tommy's blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2018/02/25/markdown1/" class="post-title-link" itemprop="url">markdown指南1</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2018-02-25 18:56:52" itemprop="dateCreated datePublished" datetime="2018-02-25T18:56:52+08:00">2018-02-25</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2023-01-11 12:17:13" itemprop="dateModified" datetime="2023-01-11T12:17:13+08:00">2023-01-11</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/software/" itemprop="url" rel="index"><span itemprop="name">software</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>本文章包含一些简单的markdown语法</p>
+<blockquote>
+<p>Markdown是一种轻量级标记语言</p>
+<p>它允许人们“使用易读易写的纯文本格式编写文档，然后转换成有效的XHTML（或者HTML）文档”。</p>
+</blockquote>
+<p>Markdown是优秀的，值得我们学习一下。那么，如何使用Markdown呢？</p>
+<h2 id="标题"><a href="#标题" class="headerlink" title="标题"></a>标题</h2><p>在标题内容前输入特定数量的井号#来实现对应级别的标题（提供六级标题）。例如：</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2018/02/25/markdown1/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2018/01/26/confident2018/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://raw.githubusercontent.com/tom6m6/files_upload_blog/main/csman.jpg">
+      <meta itemprop="name" content="tommy">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="tommy's blog">
+      <meta itemprop="description" content="知行合一">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | tommy's blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2018/01/26/confident2018/" class="post-title-link" itemprop="url">自信</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2018-01-26 13:34:26" itemprop="dateCreated datePublished" datetime="2018-01-26T13:34:26+08:00">2018-01-26</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2023-01-11 12:11:40" itemprop="dateModified" datetime="2023-01-11T12:11:40+08:00">2023-01-11</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>马上就要上战场了</p>
+<p>坚定地相信自己能行的人会拼尽全力证明自己是对的</p>
+<p>坚定地相信自己是一切的力量来源</p>
+<p>相信，才能成功</p>
+<p>The man who believe he can or he can’t are both right.</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2018/01/26/confident2018/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2017/11/10/carnegiehowtowinfriendsmain/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://raw.githubusercontent.com/tom6m6/files_upload_blog/main/csman.jpg">
+      <meta itemprop="name" content="tommy">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="tommy's blog">
+      <meta itemprop="description" content="知行合一">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | tommy's blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2017/11/10/carnegiehowtowinfriendsmain/" class="post-title-link" itemprop="url">卡耐基《人性的弱点》大纲</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2017-11-10 14:39:01" itemprop="dateCreated datePublished" datetime="2017-11-10T14:39:01+08:00">2017-11-10</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2023-01-11 12:11:19" itemprop="dateModified" datetime="2023-01-11T12:11:19+08:00">2023-01-11</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h4 id="一、人际关系的基本技巧"><a href="#一、人际关系的基本技巧" class="headerlink" title="一、人际关系的基本技巧"></a>一、人际关系的基本技巧</h4><ol>
+<li><p>不要批评、谴责、抱怨。<br>  Don’t criticize, condemn or complain.</p>
+</li>
+<li><p>真诚地欣赏他人。<br>  Give honest and sincere appreciation.</p>
+</li>
+<li><p>激发他人的渴望。<br>  Arouse in the other person an eager want.</p>
+</li>
+</ol>
+<h4 id="二、获得他人好感的六种方法"><a href="#二、获得他人好感的六种方法" class="headerlink" title="二、获得他人好感的六种方法"></a>二、获得他人好感的六种方法</h4><ol start="4">
+<li><p>对他人真的感兴趣。<br>  Become genuinely interested in other people.</p>
+</li>
+<li><p>微笑。<br>  Smile.</p>
+</li>
+<li><p>所有语言中最甜蜜、最重要的声音，就是当一个人听到自己的名字。<br>  Remember that a person’s name is to that person the sweetest and most important sound in any language.</p>
+</li>
+<li><p>做一个优秀的听众，鼓励对方谈论他自己。<br>  Be a good listener. Encourage others to talk about themselves.</p>
+</li>
+<li><p>谈对方感兴趣的话题。<br>  Talk in terms of the other person’s interests.</p>
+</li>
+<li><p>让对方感觉自己很重要，并且你是真诚地这样做。<br>  Make the other person feel important - and do it sincerely.</p>
+</li>
+</ol>
+<h4 id="三、如何得到他人的支持"><a href="#三、如何得到他人的支持" class="headerlink" title="三、如何得到他人的支持"></a>三、如何得到他人的支持</h4>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2017/11/10/carnegiehowtowinfriendsmain/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2017/08/15/sylvialikens/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://raw.githubusercontent.com/tom6m6/files_upload_blog/main/csman.jpg">
+      <meta itemprop="name" content="tommy">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="tommy's blog">
+      <meta itemprop="description" content="知行合一">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | tommy's blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2017/08/15/sylvialikens/" class="post-title-link" itemprop="url">An American Crime-The Torturing Death of Sylvia Marie Likens</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2017-08-15 11:44:27" itemprop="dateCreated datePublished" datetime="2017-08-15T11:44:27+08:00">2017-08-15</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/story/" itemprop="url" rel="index"><span itemprop="name">story</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          2021年2月至6月我的qq空间
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2017/08/15/sylvialikens/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2017/07/17/hst170717/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://raw.githubusercontent.com/tom6m6/files_upload_blog/main/csman.jpg">
+      <meta itemprop="name" content="tommy">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="tommy's blog">
+      <meta itemprop="description" content="知行合一">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | tommy's blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2017/07/17/hst170717/" class="post-title-link" itemprop="url">胡适的三大主义</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2017-07-17 21:51:20" itemprop="dateCreated datePublished" datetime="2017-07-17T21:51:20+08:00">2017-07-17</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/life/" itemprop="url" rel="index"><span itemprop="name">life</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 

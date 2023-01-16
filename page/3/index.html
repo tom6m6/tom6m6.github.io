@@ -85,7 +85,7 @@
 
 
 <nav class="site-nav">
-  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
       <li class="menu-item menu-item-search">
         <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
         </a>
@@ -156,7 +156,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">66</span>
+          <span class="site-state-item-count">73</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -167,7 +167,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">17</span>
+        <span class="site-state-item-count">18</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -196,6 +196,620 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/05/19/blogsetup220518/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://raw.githubusercontent.com/tom6m6/files_upload_blog/main/csman.jpg">
+      <meta itemprop="name" content="tommy">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="tommy's blog">
+      <meta itemprop="description" content="知行合一">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | tommy's blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/05/19/blogsetup220518/" class="post-title-link" itemprop="url">创建github+hexo个人博客</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2022-05-19 18:55:11" itemprop="dateCreated datePublished" datetime="2022-05-19T18:55:11+08:00">2022-05-19</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2023-01-11 12:11:13" itemprop="dateModified" datetime="2023-01-11T12:11:13+08:00">2023-01-11</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/outclass-study/" itemprop="url" rel="index"><span itemprop="name">outclass_study</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="引子"><a href="#引子" class="headerlink" title="引子"></a>引子</h2><p>无疑，使用博客是记录一个程序员成长的有效方式。在技术之外，自己也想通过个人的主页发布一些好的文章。国内的网络审查是越来越严了，网络的实名制使我们没有很多渠道畅所欲言，甚至不敢大声地把自己的想法说出来。<br>为了让自己安心地好好记录，冷静地记录自己一路以来的成长，我又重新拾起了2018年便已玩过的github+hexo。这是一个低成本低投入创立个人主页的方式，今天我就来记录一下中间的过程。</p>
+<h2 id="预先安装"><a href="#预先安装" class="headerlink" title="预先安装"></a>预先安装</h2><h3 id="git-amp-github"><a href="#git-amp-github" class="headerlink" title="git&amp;github"></a>git&amp;github</h3><blockquote>
+<p>git是一个分布式的版本控制软件<br>github是通过Git进行版本控制的源代码托管平台<br><a target="_blank" rel="noopener" href="https://git-scm.com/downloads">git官网下载</a><br>安装一路next就行，安装之后通过以下代码配置git用户名和邮箱</p>
+</blockquote>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2022/05/19/blogsetup220518/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/05/19/hello-world/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://raw.githubusercontent.com/tom6m6/files_upload_blog/main/csman.jpg">
+      <meta itemprop="name" content="tommy">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="tommy's blog">
+      <meta itemprop="description" content="知行合一">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | tommy's blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/05/19/hello-world/" class="post-title-link" itemprop="url">hello_world</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2022-05-19 00:34:49" itemprop="dateCreated datePublished" datetime="2022-05-19T00:34:49+08:00">2022-05-19</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2023-01-11 12:15:40" itemprop="dateModified" datetime="2023-01-11T12:15:40+08:00">2023-01-11</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/life/" itemprop="url" rel="index"><span itemprop="name">life</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>Hello World<br>2018年2月4日，我创建的博客上如是说…<br>Blog<br>博客（Blog）是一种由个人管理、张贴新的文章、图片或视频的网站或在线日记，用来纪录、抒发情感或分享信息。博客上的文章通常根据张贴时间，以倒序方式由新到旧排列。</p>
+<p>博客，显然已经成为了新时代的“老古董”。繁琐的操作注定与这个时代脱轨。但是，对于知识的传播，信息交流和思想表达，这显然是一个完美的平台。</p>
+<p>Aim<br>本博客旨在让有效信息更快传播，让交流更为容易。</p>
+<p>Principle<br>简洁是核心思想。这可以使我们更高效地交流，也可以使行动更容易</p>
+<p>Content<br>本博客以技术内容为主，但会涉及政治，历史及其他领域。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2022/05/19/hello-world/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/04/20/afterchangepity/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://raw.githubusercontent.com/tom6m6/files_upload_blog/main/csman.jpg">
+      <meta itemprop="name" content="tommy">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="tommy's blog">
+      <meta itemprop="description" content="知行合一">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | tommy's blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/04/20/afterchangepity/" class="post-title-link" itemprop="url">转专业成功之后在学校论坛的话</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2022-04-20 21:29:20" itemprop="dateCreated datePublished" datetime="2022-04-20T21:29:20+08:00">2022-04-20</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/life/" itemprop="url" rel="index"><span itemprop="name">life</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>转专业成功了，进入数据卷院开启理想的人生。</p>
+<p>念念不忘，必有回响。从2021年10月14日距今的189天，我没有一天不想过转专业，没有一天停下追逐的步伐。对于每一个追梦人，无论是高考考研还是转专业乃至之后人生的那些大事，心存信念，并且付诸有效行动，上天是能看得到我们的努力的，我们最终一定会收获应得的回报。</p>
+<p>比起自己转专业的胜利，我更关注的是那多多少少的失败者。或许就是面试的卡壳，或许就是自己的一点差运气，或许…就那一点点，让天下这么多努力而有能力的人功亏一篑。我只是一个普通的人，我没有超人般的力量配合同情心修改那已经写好的结果。我的安慰，我的鼓舞，无法让那滚滚眼泪不要流下。但是，我还是要说，损失无法避免，但是状态可以改变，明天可以很好。损失无法避免，无论怎样弥补都无法抹去损失的既定事实。但是状态可以改变，无论过去如何，通过现今的努力，状态量是可以改变的，我们依然可以创造光明辉煌的帝国。明天可以很好，对于未来，我们要心怀希望，即使过去和现在会左右未来，但那也只是一小段。如果看到文字的你不幸在这场战役中失败了，我希望你能遵循自己的本心。在今晚之前，我做好了转失败即复读的打算。这学期我没有选一节专业课，封校封楼使自己的效率锐减，可口程度单调递减的饭菜和生活质量，原则问题单调递增的学校和社会，都打破了自己本该有的平静与镇定，混乱来了，真的很难刹住。可能你纠结要不要复读，可能你纠结跨专业考研，可能你纠结要不要明年继续降两级，对于此，不要犹豫，我希望你坚决地实践自己的本心。</p>
+<p>愿我们每个人前程似锦！</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/01/12/fudangaoshu1-2021-2022-hard/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://raw.githubusercontent.com/tom6m6/files_upload_blog/main/csman.jpg">
+      <meta itemprop="name" content="tommy">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="tommy's blog">
+      <meta itemprop="description" content="知行合一">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | tommy's blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/01/12/fudangaoshu1-2021-2022-hard/" class="post-title-link" itemprop="url">复旦大学2021-2022秋季学期高数A（上）压轴题</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2022-01-12 11:38:17" itemprop="dateCreated datePublished" datetime="2022-01-12T11:38:17+08:00">2022-01-12</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2023-01-11 12:14:49" itemprop="dateModified" datetime="2023-01-11T12:14:49+08:00">2023-01-11</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p> 这个题反正我不是很会做，倒是会猜测得出答案。</p>
+<p>转载自<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/454773051">https://zhuanlan.zhihu.com/p/454773051</a></p>
+<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>已知定义在$\mathbb{R}$上的实函数$f(x)$具有连续的导函数，且满足$f(0)&#x3D;\frac{4{\pi}}{3}$以及$f’(x)&#x3D;\frac{sin f(x)}{\sqrt{1+f^2(x)}}$ 记$a_n&#x3D;\int_{-n}^{n} \frac{sin^2 f(x)}{1+f^2(x)}, dx$ 试判断$(a_n)_{n\in{\mathbb{N^+}}}$</p>
+<p>的敛散性。并求出$f(x)$的单调区间，并求$\lim_{n \to +\infty}f(x)$和$\lim_{n \to -\infty}f(x)$</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2022/01/12/fudangaoshu1-2021-2022-hard/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/06/19/20212to7qzone/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://raw.githubusercontent.com/tom6m6/files_upload_blog/main/csman.jpg">
+      <meta itemprop="name" content="tommy">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="tommy's blog">
+      <meta itemprop="description" content="知行合一">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | tommy's blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/06/19/20212to7qzone/" class="post-title-link" itemprop="url">2021年2月至6月我的qq空间</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-06-19 22:14:34" itemprop="dateCreated datePublished" datetime="2021-06-19T22:14:34+08:00">2021-06-19</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/life/" itemprop="url" rel="index"><span itemprop="name">life</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          2021年2月至6月我的qq空间
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2021/06/19/20212to7qzone/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2019/08/03/aesalog/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://raw.githubusercontent.com/tom6m6/files_upload_blog/main/csman.jpg">
+      <meta itemprop="name" content="tommy">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="tommy's blog">
+      <meta itemprop="description" content="知行合一">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | tommy's blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2019/08/03/aesalog/" class="post-title-link" itemprop="url">AES算法</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2019-08-03 12:55:36" itemprop="dateCreated datePublished" datetime="2019-08-03T12:55:36+08:00">2019-08-03</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2023-01-11 12:07:57" itemprop="dateModified" datetime="2023-01-11T12:07:57+08:00">2023-01-11</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h3 id="AES简介"><a href="#AES简介" class="headerlink" title="AES简介"></a>AES简介</h3><p>AES加密算法即密码学中的高级加密标准（Advanced Encryption Standard，AES），又称Rijndael加密法，是美国联邦政府采用的一种区块加密标准。这个标准用来替代原先的DES，已经被多方分析且广为全世界所使用。经过五年的甄选流程，高级加密标准由美国国家标准与技术研究院 （NIST）于2001年11月26日发布于FIPS PUB 197，并在2002年5月26日成为有效的标准。</p>
+<p>AES算法本质上是一种对称分组密码体制，采用代替&#x2F;置换网络，每轮由三层组成：线性混合层确保多轮之上的高度扩散，非线性层由16个S盒并置起到混淆的作用，密钥加密层将子密钥异或到中间状态。AES是一个迭代分组密码，其分组长度和密钥长度都是可变的，只是为了满足AES的要求才限定处理的分组大小为128位，而密钥长度为128位、192位或256位，相应的迭代轮数N，为10轮、12轮、14轮。AES汇聚了安全性能、效率、可实现性、灵活性等优点。最大的优点是可以给出算法的最佳查分特征的概率，并分析算法抵抗查分密码分析及线性密码分析的能力。</p>
+<h3 id="AES算法概述"><a href="#AES算法概述" class="headerlink" title="AES算法概述"></a>AES算法概述</h3><p>AES算法，基本变换包括SubBytes（字节替代）、ShiftRows（行移位）、MixColumns（列混淆）、AddRoundKey(轮密钥加）KeyExtension（密钥扩展）</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2019/08/03/aesalog/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2019/06/17/kmp2019/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://raw.githubusercontent.com/tom6m6/files_upload_blog/main/csman.jpg">
+      <meta itemprop="name" content="tommy">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="tommy's blog">
+      <meta itemprop="description" content="知行合一">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | tommy's blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2019/06/17/kmp2019/" class="post-title-link" itemprop="url">KMP字符串匹配</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2019-06-17 18:06:45" itemprop="dateCreated datePublished" datetime="2019-06-17T18:06:45+08:00">2019-06-17</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2023-01-08 23:35:31" itemprop="dateModified" datetime="2023-01-08T23:35:31+08:00">2023-01-08</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>KMP算法可在一个主文本串 S 内查找一个词 W 的出现位置<br>此算法通过运用对这个词在不匹配时本身就包含足够的信息来确定下一个匹配将在哪里开始的发现，从而避免重新检查先前匹配的字符。</p>
+<h2 id="朴素"><a href="#朴素" class="headerlink" title="朴素"></a>朴素</h2><p>有一个文本串S，和一个模式串P (两者长度分别为N,M) </p>
+<p>如果用暴力匹配的思路，并假设现在文本串S匹配到 i 位置，模式串P匹配到 j 位置，则有：<br>如果当前字符匹配成功（即S[i] &#x3D;&#x3D; P[j]），则i++，j++，继续匹配下一个字符；<br>如果失配（即S[i]! &#x3D; P[j]），令i &#x3D; i - (j - 1)，j &#x3D; 0。相当于每次匹配失败时，i 回溯，j 被置为0。</p>
+<p>时间复杂度 O(N*M)   </p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2019/06/17/kmp2019/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -968,653 +1582,6 @@
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2018/08/03/doi/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://raw.githubusercontent.com/tom6m6/files_upload_blog/main/csman.jpg">
-      <meta itemprop="name" content="tommy">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="tommy's blog">
-      <meta itemprop="description" content="知行合一">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | tommy's blog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2018/08/03/doi/" class="post-title-link" itemprop="url">独立宣言</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2018-08-03 10:10:24" itemprop="dateCreated datePublished" datetime="2018-08-03T10:10:24+08:00">2018-08-03</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2023-01-11 12:12:48" itemprop="dateModified" datetime="2023-01-11T12:12:48+08:00">2023-01-11</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p><strong>THE DECLARATION OF INDEPENDENCE</strong> </p>
-<p>In Congress, July 4, 1776,</p>
-<p>大陆会议(一七七六年七月四日)</p>
-<p>THE UNANIMOUS DECLARATION OF THE THIRTEEN UNITED STATES OF AMERICA</p>
-<p>美利坚合众国十三个州一致通过的独立宣言</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2018/08/03/doi/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2018/08/03/doioc/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://raw.githubusercontent.com/tom6m6/files_upload_blog/main/csman.jpg">
-      <meta itemprop="name" content="tommy">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="tommy's blog">
-      <meta itemprop="description" content="知行合一">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | tommy's blog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2018/08/03/doioc/" class="post-title-link" itemprop="url">《赛博空间独立宣言》</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2018-08-03 10:06:17" itemprop="dateCreated datePublished" datetime="2018-08-03T10:06:17+08:00">2018-08-03</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2023-01-11 12:12:52" itemprop="dateModified" datetime="2023-01-11T12:12:52+08:00">2023-01-11</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>**DECLARATION OF THE INDEPENDENCE OF CYBERSPACE **</p>
-<p>Governments of the Industrial World, you weary giants of flesh and<br>　　steel, I come from Cyberspace, the new home of Mind. On behalf of the<br>　　future, I ask you of the past to leave us alone. You are not welcome<br>　　among us. You have no sovereignty where we gather.<br>　　工业世界的政府，你们这些肉体和钢铁的巨人，令人厌倦，我来自赛柏空间，思维的新家园。以未来的名义，我要求属于过去的你们，不要干涉我们的自由。我们不欢迎你们，我们聚集的地方，你们不享有主权。<br>　　We have no elected government, nor are we likely to have one, so I<br>　　address you with no greater authority than that with which liberty<br>　　itself always speaks. I declare the global social space we are<br>　　building to be naturally independent of the tyrannies you seek to<br>　　impose on us. You have no moral right to rule us nor do you possess<br>　　any methods of enforcement we have true reason to fear.<br>　　我们没有民选政府，将来也不会有，所以我现在跟你们讲话，运用的不过是自由言说的权威。我宣布，我们建立的全球社会空间，自然地不受你们强加给我们的专制的约束。你们没有任何道德权利统治我们，你们也没有任何强制方法，让我们真的有理由恐惧。<br>　　Governments derive their just powers from the consent of the governed.<br>　　You have neither solicited nor received ours. We did not invite you.<br>　　You do not know us, nor do　you know our world. Cyberspace does not<br>　　lie within your borders. Do not think that you can build it, as though<br>　　it were a public construction project. You cannot. It is an act of<br>　　nature and it grows itself through our collective actions.<br>　　政府的正当权利来自被统治者的同意。你们从来没有要求过我们的同意，你们也没有得到我们的同意。我们没有邀请你来，你们不了解我们，不了解我们的世界。赛柏空间不在你们的疆界之内。不要认为你们可以建造这样一个疆界，好像建造一座公共建筑。你们没有这个能力。这个疆界是一件自然行为，它将从我们的集体行动中生发出来。<br>　　You have not engaged in our great and gathering conversation, nor did<br>　　you create the wealth of our marketplaces. You do not know our<br>　　culture, our ethics, or the unwritten codes that already provide our<br>　　society more order than could be obtained by any of your impositions.<br>　　你们从来没有参加过我们的大会，你们也没有创造我们的市场财富。对我们的文化，我们的道德，我们的不成文法典，你们一无所知，这些法典已经在维护我们社会的秩序，比你们的任何强制所能达到的要好得多。<br>　　You claim there are problems among us that you need to solve. You use<br>　　this claim as an excuse to invade our precincts. Many of these<br>　　problems don’t exist. Where there are real conflicts, where there are<br>　　wrongs, we will identify them and address them by our means. We are<br>　　forming our own Social Contract . This governance will arise according<br>　　to the conditions of our world, not yours. Our world is different.<br>　　你们说我们有问题，你们要解决这些问题。你们用这个借口侵犯我们的领地。你们所宣称的这些问题，许多都不存在。真正冲突出现的时候，不公正出现的时候，我们自己会鉴定它，用自己的方式解决它。我们正在形成我们自己的社会契约。治理将出现，但根据的是我们世界的情况，不是你们的。我们的世界，是不同的。<br>　　Cyberspace consists of transactions, relationships, and thought<br>　　itself, arrayed like a standing wave in the web of our communications.<br>　　Ours is a world that is both everywhere and nowhere, but it is not<br>　　where bodies live.<br>　　赛柏空间由交易、关系和思想本身构成，它们像一道永恒的波浪，在我们的交流之网上部署着。我们的世界无处不在，又无处可寻，我们的世界不是肉体存在的世界。<br>　　We are creating a world that all may enter without privilege or<br>　　prejudice accorded by race, economic power, military force, or station<br>　　of birth.<br>　　我们正在创造一个新世界，人人都可以进入这个世界，而不必考虑由种族、经济力、武力、出生地而来的特权或偏见。<br>　　We are creating a world where anyone, anywhere may express his or her<br>　　beliefs, no matter how singular, without fear of being coerced into<br>　　silence or conformity.<br>　　我们正在创造一个新世界，人人、处处可以表达他或她的信仰，无论这种信仰是多么古怪，而不再害怕被强制沉默或强制一律。<br>　　Your legal concepts of property, expression, identity, movement, and<br>　　context do not apply to us. They are based on matter, There is no<br>　　matter here.<br>　　你们关于财产、表达、身份、迁徙的法律概念及其关联对我们不适用。这些概念建立在物质的基础上，我们这里没有物质。<br>　　Our identities have no bodies, so, unlike you, we cannot obtain order<br>　　by physical coercion. We believe that from ethics, enlightened<br>　　self-interest, and the commonweal, our governance will emerge . Our<br>　　identities may be distributed across many of your jurisdictions. The<br>　　only law that all our constituent cultures would generally recognize<br>　　is the Golden Rule. We hope we will be able to build our particular<br>　　solutions on that basis.　But we cannot accept the solutions you are<br>　　attempting to impose.<br>　　我们的身份不涉及肉体，所以和你们不一样，我们不能通过肉体的强制来获得秩序。我们相信，我们的治道将从伦理、明智的自我利益和公益中产生出来。我们的身份可能分布在你们许许多多的法律管辖中。我们全部的立宪文化能够普遍认可的唯一法律就是这样一个法则：己所不欲，勿施予人。我们希望能在这个基础上确立我们特殊的解决方案。但是我们不能接受你们企图强加给我们的解决方案。</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2018/07/31/atlprc/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://raw.githubusercontent.com/tom6m6/files_upload_blog/main/csman.jpg">
-      <meta itemprop="name" content="tommy">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="tommy's blog">
-      <meta itemprop="description" content="知行合一">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | tommy's blog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2018/07/31/atlprc/" class="post-title-link" itemprop="url">中华人民共和国反恐怖主义法.评论</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2018-07-31 10:32:11" itemprop="dateCreated datePublished" datetime="2018-07-31T10:32:11+08:00">2018-07-31</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2023-01-11 12:09:00" itemprop="dateModified" datetime="2023-01-11T12:09:00+08:00">2023-01-11</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>先上全文</p>
-<p>中华人民共和国反恐怖主义法（全文）<br>（2015年12月27日第十二届全国人民代表大会常务委员会第十八次会议通过）<br>目录</p>
-<p>第一章　总则</p>
-<p>第二章　恐怖活动组织和人员的认定</p>
-<p>第三章　安全防范</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2018/07/31/atlprc/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2018/07/22/vaccine/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://raw.githubusercontent.com/tom6m6/files_upload_blog/main/csman.jpg">
-      <meta itemprop="name" content="tommy">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="tommy's blog">
-      <meta itemprop="description" content="知行合一">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | tommy's blog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2018/07/22/vaccine/" class="post-title-link" itemprop="url">vaccine</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2018-07-22 10:51:31" itemprop="dateCreated datePublished" datetime="2018-07-22T10:51:31+08:00">2018-07-22</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2023-01-11 12:34:00" itemprop="dateModified" datetime="2023-01-11T12:34:00+08:00">2023-01-11</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p><a target="_blank" rel="noopener" href="http://tech.163.com/18/0724/17/DNGFQAFL00097U81.html">我们为什么打不上进口疫苗？ @ 网易科技</a></p>
-<blockquote>
-<p>国产疫苗又出事了，想必大家已经知道了。这次出事的是几十万只百白破疫苗，这是一种针对百日咳、白喉和破伤风的三联疫苗，主要的接种人群是刚刚出生三个月到半年的小婴儿。  　　在家长们欲哭无泪、急着核对自家孩子有没有接种涉事疫苗的同时，不少人将“打进口疫苗”提上了日程。打进口疫苗并不是新鲜事。人们有很多理由想打进口疫苗：或许是对国产疫苗的不信任，或许只是单纯地想用比较贵的疫苗，或许只是因为想打的新型疫苗没有国产品种。然而，进口疫苗并不是你想打就能打的。  　　<strong>进口疫苗入华，寸步难行</strong>  　　中国是全球最大的人用疫苗市场，每年批签发疫苗5<del>10亿支，国内疫苗产值保持在150亿元左右。作为最具有潜力的新兴市场，不少外资疫苗企业也对中国跃跃欲试。然而，想要进入中国市场，并非易事。  　　中国拥有据说是“全世界最严格”的疫苗监督体系，对进口疫苗的审批则更是把关严密。根据中国现行的《药品注册管理办法》，进口疫苗被批准国内上市之前，必须开展临床试验，除了临床试验外，还要经过1至5年不等的评审时间，才能颁发《进口药品注册证》。<strong>这些审批流程的时间成本巨大，而且中国对进口疫苗的评审标准，有时候高到让人无法理解的程度。</strong>  　　以宫颈癌疫苗为例。它于2006年在美国上市，此后迅速在全球100多个国家和地区（包括香港、澳门和台湾）被批准使用，然而，<strong>大陆地区却拖了整整十年，才同意让宫颈癌疫苗入华。</strong>再后来，中国才加速了宫颈癌疫苗4价和9价的引进。  　　<strong>为什么拖了那么久？</strong>  　　虽然宫颈癌疫苗能够预防 HPV（人乳头瘤病毒）感染、而且 HPV 感染早被证实可以导致宫颈癌，但是中国食药监（CFDA）却坚持认为，这两个事实无法推导出“宫颈癌疫苗可以降低宫颈癌发病率”的结论。它必须花上更长的时间，收集到宫颈癌疫苗能够直接降低宫颈癌发病率的数据才行。<strong>这种与全球其他国家地区格格不入的标准，让许多女性错过了打疫苗的最佳时机。</strong>  　　此外，即使进口疫苗拿到了上述的注册许可，也并不代表可以高枕无忧，因为进口许可证需要五年续期一次，一不小心，就会前功尽弃。2015年4月，辉瑞宣布停止供应沛儿7价肺炎疫苗，因为它的进口许可证过期，而续期申请被 CFDA 拒绝了。然而，当时更先进的沛儿13价还在缓慢地审批中，沛儿7价是国内唯一的一种肺炎疫苗，断了就没有替代品了。  　　CFDA 并没有透露为什么拒绝了辉瑞的续期申请，《财经》杂志援引的分析则认为，这可能是想为国内的肺炎疫苗研发争取时间。<strong>CFDA 想不惜代价保护国内疫苗企业，而我们和身边的亲朋好友都可能成为那个代价。</strong>那次事件造成了全国性的、持续三年的肺炎疫苗断档：不少孩子已经打过一针、两针，最后家长被告知疫苗已经断货，原本制定好的后续打针计划，就只能这样胎死腹中。  　　另外，进口疫苗不仅要拿到药品注册许可，还要符合《中国药典》的要求。《药典》每隔五年就修订一次，假如不符合新版药典的要求，那么即使疫苗已经通过其他所有审批、在中国安全销售了很久，也必须下架。  　　2010年10月，新版的药典对疫苗中的抗生素残留量和 Vero 细胞 DNA 残留量都提出了更高的要求，不少进口疫苗只能打包袱滚回家。每年进口疫苗批签发的数量占所有疫苗的不到 10%，2011年，受新版药典影响，进口疫苗的数量狂跌到了 4%。  　　<strong>国产和进口疫苗，谁更好？</strong>  　　疫苗是守护健康和生命的重要工具，采用最严格的质量和安全标准无可厚非。然而，CFDA 屡屡推出的特立独行的标准，是不是就更加科学、更加严谨呢？不少人因为新版药典事件而认定进口疫苗其实还不如国产疫苗，这是对的吗？恐怕不是。  　　<strong>中国从来就不是疫苗发达国家，我们的防疫水平也还处在初级阶段。</strong>目前只对甲类和乙类传染性疾病中的大多数有比较稳定的控制，对丙类传染性疾病的控制能力还很低。当然，能够控制住甲类乙类已经是不错的进步，但我们要清醒一点，离发达水平还有不少距离。  　　<strong>虽然中国拥有38家疫苗生产企业，数量全球第一，但是质量却不乐观，甚至远远落后于印度的疫苗企业。</strong>国内的疫苗企业缺乏自主创新能力，名牌产品极少，市场竞争力很低。而国产疫苗总体在稳定性、产能及关键技术上，与进口疫苗相比还有一定的差距。  　　近日，网上流传一篇名为《“迷信”进口疫苗毫无必要》的文章，文中写道，中国已建立覆盖疫苗全生命周期的监管体系，并于2011年通过了世界卫生组织的国家监管体系评估。这是真的，但很可惜的是，<strong>这不代表中国的疫苗制作已经步入国际先进行列</strong>。  　　想要理解中国疫苗与世界水平的差距，我们可以了解一下联合国儿童基金会（UNICEF）一年一度的疫苗爆买活动。联合国儿基会是疫苗国际公共市场的主要采购方，每年都会出面代表数十个贫穷国家进行疫苗的大批采购。为了压缩预算，有 40% 的疫苗、折合下来大约是12亿支都要从发展中国家的厂家那里买。而印度基本包揽了这些订单。  　　为什么不买中国产的疫苗？因为要保证疫苗的质量。只有通过了 WHO 预认证的疫苗，才有资格参加联合国机构的采购。想要让疫苗通过这个 WHO 预认证，首先，生产该疫苗的国家必须先通过世卫组织的国家监管体系评估。  　　换句话说，<strong>世卫的那个国家监管体系评估只是一个最基本的、如同门槛般的标准。从1999年起，中国就开始申请这个评估了，不及格了两次，</strong>一直到2011年，才成为第36个通过这个评估的国家。要知道，据世界卫生组织的统计，全球只有48个国家生产疫苗，而且其中只有27个国家是常规生产大量疫苗的。  　　早在2006年，印度就已经有7个品种的疫苗通过了 WHO 预认证，得到了走上国际舞台的机会；而中国直到2013年，才第一次有疫苗（成都所的乙脑疫苗）通过 WHO 预认证。也就是说，我们国家生产的大部分疫苗，连出口去援助最贫穷国家的资格都没有。目前中国总共有4个疫苗品种通过预认证，而印度已经有40多个了。  　　上一段提到的 <strong>CFDA 对进口疫苗的苛刻要求，与其说是为人民健康着想，不如说是对国产疫苗的“护短”式保护政策。</strong>  　　对于大多数中国人来说，国产疫苗是价格最低廉、最容易获得的预防工具了，也在过去的几十年里发挥了重要的贡献。如果能够严格按照规程生产，国产疫苗确实是有保障的，毕竟它们也都需要通过 CFDA 审批和各项质量检验。但有多少国产疫苗能够恪守规程，我们就不得而知了。  　　<strong>有钱，你也买不到进口疫苗</strong>  　　少量进口疫苗进入了中国市场，但是，人们依然很难随心所欲地给自己或者孩子打上进口疫苗。  　　中国的疫苗可以分成两种，包括一类疫苗和二类疫苗。  　　一类疫苗就是免费向人们提供的计划疫苗，主要由国家定点计划生产，统一定价，再集中招标采购，按计划进行接种。<strong>这次出事的百白破疫苗，就是一类疫苗。目前，身为国企的六大生物制品研究所基本垄断了一类疫苗，占据了全国 95% 的份额。</strong>  　　国家对儿童实行预防接种证制度，在不少地区，如果儿童没有按照计划进行接种，入托、入学都会有麻烦。孩子能不能顺利上学是家长们最大的牵挂，因此，一类疫苗的推广势头非常好，根据2004年江苏某市的调查，市镇内学校的预防接种持证率基本上都达到了 97% 以上。正因如此，一类疫苗基本找不到进口品种。  　　二类疫苗是指一切自费疫苗，其中既有国产疫苗，也有进口疫苗，人们的选择余地大了些。不过，进口疫苗一针就要几百元的价格实在有点昂贵，绝大部分人难以承担。  　　在这里，我们要多提一句：<strong>国产的减毒疫苗，其实是毒力较弱的活病毒株。如果出事的是这种活病毒疫苗，那后果可能不就不仅仅是“疫苗无效”了，可能还会有活病毒感染孩子的危险。</strong>  　　<strong>进口疫苗贵有很多原因</strong>  　　首先，国内的疫苗企业普遍规模小、靠仿制起家，而且生产的疫苗大多数是单价疫苗、减毒疫苗，成本较为低廉；而进入中国的外资疫苗企业，都是全球排名前几的大公司，它们销售的疫苗，不少是自己研发的，而且以更先进的联合、灭活、结合疫苗为主。  　　同时，二类疫苗的身份也是进口疫苗贵的原因。2005年，国家发改委出台了新规定，赋予了二类疫苗自主定价权，并允许疫苗厂家直接向接种单位、疾控中心、疫苗批发商销售疫苗。  　　这对疫苗企业来说，是一个巨大的好消息；同时对于接种的单位来说，它们也有油水可以赚。虽然疾控机构是国家全额拨款的非营利性机构，但是各地都允许它们加价出售二类疫苗，借此合法盈利。以云南为例，县级及以下接种单位直接购入二类疫苗后，可以加价 35% 售出。也就是说，疫苗企业可以自由定价，而接种单位也可以合法赚钱，可以说是双赢了。  　　细心的朋友可以发现，对于掌握采购大权的接种单位来说，疫苗越贵，它们就越有利可图。企业更是乐于抬高价钱，由此，形成了二类疫苗竞争激烈、而且价格昂贵的状况。不过，虽然进口疫苗昂贵，但人们对它的热情始终不减，常常还出现进口疫苗断货、有价无市的情形。  　　早在2016年底，浙江省就出现了“五联疫苗”缺货的问题。这种五联疫苗由赛诺菲巴斯德公司出品，四针可以预防五种疾病，即使总价需要2400元，想要为孩子接种的家长还是络绎不绝。一年多过去了，短缺的状况不仅没有改善还越发严重，蔓延至江苏、山东、广东甚至北京等多地。  　　从五联疫苗到宫颈癌疫苗，进口疫苗的缺货并不罕见，然而这又是为什么呢？显然，想要打进口疫苗的中国人实在是太多了，而且是越来越多，然而疫苗生产周期长，产能一时半会是提不上来的；另外，即使疫苗生产好了、运输到了中国，之后从检验到审核，可能也需要磨蹭上3-6个月的时间。假如目前承担疫苗批签发的机构愿意将权力下发至各省，建立多个检验中心，疫苗的批签发速度或许会变快很多。  　　<strong>为了进口疫苗而努力</strong>  　　虽然想要打进口疫苗很难，但依然有人靠着惊人的行动力和决心，摸索出特别的解决方法。最直接的，就是飞到香港澳门出境打。  　　在大陆还没有批准宫颈癌疫苗的时候，便已经有不少女性选择了这个方法，这甚至还发展成了某些旅游线路的招牌项目。尽管大陆后来批准了宫颈癌疫苗，但赴港的热情依然不变：目前，大陆的宫颈癌疫苗主要是2价、4价的，只有少部分地区像香港那样供应9价疫苗。这些2价、4价是指疫苗能够预防多少种株型的病毒，一般来说，“价”越高，效果更好。  　　赴港打疫苗的人群除了年轻女性，还有亲子家庭。尽管路途奔波，而且无法像香港儿童那样享受免费疫苗和额外的补贴，但带着孩子赴港的家长也有增无减。根据香港卫生署的数据，非本地儿童（主要是大陆儿童）来港注射疫苗的数量，人数每年递增，2010年全年只有1356人，之后的五年里增幅接近三倍。不过，赴港打进口疫苗毕竟只是缓宜之计，解决不了根本问题，小小的香港也不可能满足大陆居民庞大的疫苗需求。  　　今年五月起，香港的宫颈癌疫苗也出现了短缺的现象，大陆居民想去接种疫苗，要额外付出的，就不仅仅是机票酒店的费用了。以香港仁和医院为例，假如大陆居民只想去那里接种疫苗，那么恕不接待；想要接种宫颈癌疫苗，只能搭配上5.89万港币的基因检测项目，这还不算三针疫苗5500港币的价格。  　　2016年山东的“黑心疫苗”时间曝光后，短短数月内，到香港打疫苗的孩子数量便增加到2083人，为了保障本地儿童的疫苗供应，卫生署不得不紧急实行配额制，限定每月接受疫苗的外来儿童的数量，每家母婴健康院，每月只能给2</del>7位外来小朋友接种疫苗。  　　出境打疫苗不仅麻烦，而且渠道正在缩窄。因此，有人不惜铤而走险，踏上了走私疫苗的道路。2018年1月5日，上海美华门诊的法定代表人、华人医生郭桥，因为销售了1.3万支未经批准的进口疫苗站上了法庭的被告席。2015年到2016年，在沛儿7价断货、沛儿13价还未批准上市的时期，郭桥擅自找到了新加坡的供应商、购买疫苗提供给前来求医的家长。在法庭上，尽管他自辩在运送疫苗的过程中保证了冷链的完整、接种的儿童中没有出现一例不良反应，并且有家长求情，但依然以“销售假药”的罪名，被判刑7年。  　　有人质疑郭桥通过进口肺炎疫苗牟取暴利，也有人同情他罪不至此，可是有没有人想过，谁该为整整三年的肺炎疫苗断供负责呢？ </p>
-</blockquote>
-<p>(深度调查行业兴衰史——中国调查记者都去哪了？ @ 新浪专栏)[<a target="_blank" rel="noopener" href="http://tech.sina.com.cn/csj/2018-07-23/doc-ihftenhz2197657.shtml]">http://tech.sina.com.cn/csj/2018-07-23/doc-ihftenhz2197657.shtml]</a></p>
-<blockquote>
-<p>过去两天，焦虑席卷全国，除了制药公司的资本大鳄之外，还有两个人物被意外牵出，他们就是著名记者王克勤，以及他在《中国经济时报》的顶头上司包月阳。</p>
-<p>　　2010年3月17日，时任《中国经济时报》首席记者的王克勤，发表了一篇重磅的调查报道。两个月后，签发这篇报道的总编辑包月阳被免职，调去仅有20余人的中国发展出版社工作。第二年七月，《中国经济时报》调查部被解散，王克勤被迫离职。</p>
-<p>　　已经是明星记者的王克勤，找新工作并不难，他在2011年9月加盟了《经济观察报》，任总编辑助理。但新工作并没有干多久，在2012年10月，《经济观察报》调查新闻部也遭到了解散，王克勤不久后便再次离开。</p>
-<p>　　2018年7月22日，包月阳发了一条意味深长的微博：“有时候，时间能改变一切。有时候，时间什么也改变不了。”在这焦虑和愤怒的一天内，57159个转发，7401条评论，65416个点赞。</p>
-<p>　　不过，这些当年冲在报道第一线的人物，得到关注的时间总是短暂的，相信不久后，他们的消息就会被淹没在综艺八卦和明星绯闻里。人们只会在事情降临到自己身上时，才会问：“那些为我们抱薪取暖的人，他们都去哪儿了？”</p>
-<p>　　王克勤和包月阳的遭遇，只是中国深度调查行业的一个缩影。这个曾经坚硬和骄傲的行业，凋零地无比迅速。根据中山大学张志安教授估计，现在仍在从事一线深度调查的记者，不过数十人。</p>
-<p>　　深度调查行业的兴衰，是这篇文章的主要内容，文章包含四部分：<br>1． 曾经辉煌的过往<br>2． 日益衰落的纸媒<br>3． 凋零离去的记者<br>4． 深度报道的未来</p>
-<p>　　下面进入正文部分。</p>
-<p> 　　1. 曾经辉煌的过往</p>
-<p>　　朱镕基的“五不”很出名：不题词、不受礼、不吃请、不剪彩、不批条子。但他给《焦点访谈》破过例，在1998年视察中央电视台时，用签字笔给节目组留下了“舆论监督，群众喉舌，政府镜鉴，改革尖兵”的十六个字勉励。</p>
-<p>　　曾有部长忐忑地对敬一丹说：“现在我晚上都不敢出去吃饭，因为怕耽误了看《焦点访谈》。总理常在会上问：‘你们看昨晚的《焦点访谈》了吗？’答不上来怎么办？我如果有事看不成，就让秘书看，让家人看，再告诉我。”</p>
-<p>　　那会儿权威单位都怕记者，而且特别怕《南方周末》。在南周的旗下，余刘文扳倒了背景深厚的昆明恶霸；赵世龙在洗脚城卧底三天揭发了湖南高考舞弊案；孙保罗揪出了贵州官场一串串庸官，等等等等……</p>
-<p>　　那是纸媒的辉煌时刻，江艺平时代的《南方周末》广告收入过亿，好的记者月收入过万，要知道2000年全国城镇员工平均工资才780元。曾经有记者这样描述上世纪90年代南周的工资：“钱发下来了，还没来得及存进银行，下个月又发了。放在家里，一摞一摞的。”</p>
-<p>　　在崇高的荣誉感和高薪的激励之下，一大批深度报道记者活跃于神州大地。急速崛起的中国经济，带来了诸多光芒四射的成就，也催生了许多暗黑莫测的罅隙，这给深度调研提供了丰厚的土壤，而媒体为了扩大社会影响力，也鼓励记者做深度报道。</p>
-<p>　　那个年代为我们留下了很多教科书式的深度调查案例，而那些诸如“让无力者有力，让悲观者前行”、“总有一种力量让我们泪流满面”等文字，时至今日都让人热血沸腾。当年洛阳纸贵、一报难求的盛况，依然历历在目。</p>
-<p>　　雪球创始人方三文，北大中文系毕业后就加入了《南方周末》，他后来说“当时我觉得，《南方周末》就是中国最好的报纸，最好的媒体，也是我能找到的最好的工作。到现在为止，我都为当时能进《南方周末》感到幸运和自豪。”</p>
-<p>　　《南方周末》前著名记者，如今腾讯的副总裁陈菊红后来写过一篇《离开》，她说：“那些金子一样的日子，闪亮得让人不敢相信。”</p>
-<p> 　　2. 日益衰落的纸媒</p>
-<p>　　2010年之后，在各类新媒体冲击下，纸媒开始急速衰落，2012年8月微信公众号横空出世，传统报纸和杂志的收入利润更是江河日下，总印张2011年顶峰时的2272亿张，急速下跌到2016年的1267亿张。</p>
-<p>　　报纸出版行业收入的停滞，伴随而来的是广告主的离场，报纸+期刊能够拿到的广告投放费用日益减少。在2016年，这种广告投放的同比下滑比率居然超过了40%，纸媒经营的困难可想而知。</p>
-<p>　　而与此相对比的是，网络和移动广告投放正在井喷，其中网络广告从几百亿的规模，迅速做到了2017年的近4000亿；而移动广告也从无到有，2017年规模发展为2649亿。</p>
-<p>　　著名记者王志安曾经说过：“在中国，记者这个职业的天花板太低，几乎没什么成长性，30岁不进入管理层或者转行，就是失败的代名词。但调查记者对知识，经验有很高的要求。不用感慨，有人愿意为调查记者开出百万年薪，人会排着队回来。所有不付钱的感慨没什么价值。”</p>
-<p>　　但显然，急速衰落的传统媒体，已经没有了90年代的阔绰，调查记者们的大批离开，是必然的问题。当然，这不是大批优秀记者离开的唯一原因。</p>
-<p> 　　3. 凋零离去的记者</p>
-<p>　　世界杯期间，中国仅有几万名注册足球运动员的真相刺痛国人，但调查记者的数量，比足球运动员还要稀缺的多。</p>
-<p>　　一直将调查记者作为研究对象的学者张志安在2011年发布了一项《中国调查记者生态调查》，直言“即使用最宽松的定义标准，全国调查记者也不过数百人”。</p>
-<p>　　而到了2017年，当年尚能找到334名调查记者的张志安，在撰写《新媒体环境下中国调查记者行业生态变化报告》时，仅仅联系到175名调查记者。六年时间，调查记者的人数又几乎腰斩。</p>
-<p>　　河南《大河报》的一位调查记者曾说过：“2000年的时候，记者的工资达到五六千、六七千，当时郑州的房价是一千多，可想当时的收入是非常高的；现在郑州的房价每平米1<del>2万了、多的3</del>4万，现在记者的人均工资才四五千”。</p>
-<p>　　曾经调查记者是天之骄子，如今他们的工资，只抽得起娇子。报道了三聚氰胺的简光洲2012年在社交媒体上写道：“理想已死，我先撤了，兄弟们珍重！”</p>
-<p>　　记者身处时代前沿，他们极其敏锐的察觉到行业兴衰的转折，当互联网无可阻挡的崛起时，不少记者便奋不顾身的扑了上去。</p>
-<p>　　报道过鸡西矿难、焦作录像厅失火等重大事件的李玉霄，在2006年投入腾讯的怀抱；打造了《卧底番禺传销》、《揭开传销绝对秘密》等传销系列的傅剑锋，也在2011年告别记者生涯，成为腾讯新闻中心的副总监。南周头版编辑方三文头也不回的去了网易，随后创办了互联网投资社区雪球。</p>
-<p>　　《21世纪经济报道》的一代稿神郎朗，能用稿费在广州买房的男人，写过一篇广为流传的《一个10年老记的心声——我为什么要离开》，解释自己为何离开纸媒“为了人生不留遗憾，为了不在平媒大船沉没中跟着沉沦，我必须走出这关键的一步。”</p>
-<p>　　马云说员工离开，要么钱没给够，要么心委屈了。记者们主要可能还是心委屈了。</p>
-<p>　　被誉为“中国揭黑第一人”的王克勤，当年打扮成农民，把笔记本和相机藏在麻袋里，嘴里叼着烟，开着拖拉机，突破封锁报道了定州征地血案，其中曲折艰辛闻者落泪。但当他站上央视的领奖台时，这种荣誉感和自豪感也是无可取代的。</p>
-<p>　　不过这种荣誉感并不能当饭吃。这个硬的像刀一样的汉子，四次因为各种原因被报社劝退，长期只能拿底薪，出门调查大多坐公交，更是曾被人打电话威胁要来“接”他老婆孩子，一家人在荷枪实弹的警察保护下度过了好几天。</p>
-<p>　　所以，这个曾经号称要把调查记者做到80岁的人，后来去做了公益，帮助他调查过的尘肺病人。</p>
-<p>　　2003年连续报道了孙志刚案和非典情况后，南方都市报的总经理喻华峰、总编程益中因涉嫌受贿被带走，差点被办成铁案的他们被放出来后，渐渐淡出了纸媒。喻华峰创立了本来生活网，程益中加盟了乐视体育香港公司。</p>
-<p>　　名单上还有很多人，比如：孙保罗、郭国松、朱德付、余刘文、谭庭浩、赵世龙、简光洲、付振中、陈峰、邓飞、龙志、刘建峰、朱文娜、景剑锋、傅桦、仇子明、乐倩、杨琼文、卢广……</p>
-<p>　　他们具体的遭遇，这里就不做细述了，原因想必不难明白。</p>
-<p>　　而那些受惠于调查揭黑的网民，也并没有坚定地站在调查记者一边，反而在近些年一波接一波的污名化记者和妖魔化媒体的风潮中，向他们投去了冰冷的石块。在转发包月阳微博的那57159个人中，又有多少个没跟风骂过记者呢？</p>
-<p>　　因此，对于大部分艰难挣扎的调查记者而言，他们的左耳，可能响着周华健的那句歌：其实不想走，其实我想留；而他们的右耳，则可能是李诞的那句话：人间不值得。</p>
-<p> 　　4. 深度报道的未来</p>
-<p>　　1894年，美国GDP超越英国，成为世界第一，随之而来的不是民主、文明和健康，而是腐败、剥削和污染。贫富差距拉大，底层人民焦虑，社会心态浮躁，环境污染严重，食品卫生糟糕……马克吐温用辛辣的笔触将这一切记录在了他的名著《镀金时代》里。</p>
-<p>　　面对社会的种种乱象，“铁肩担道义，辣手著文章”的美国调查记者们掀起了扒粪运动（muckraker），也称黑幕揭发运动。</p>
-<p>　　1905年，25岁的调查记者厄普顿·辛克莱（Upton Sinclair Jr.）以打工的名义，卧底芝加哥的一家屠宰场七个礼拜，目睹了病死猪肉制成香肠的疯狂恶心景象，将其写进《屠场》一书中，引爆了美国人的舆论。</p>
-<p>　　据说，美国总统西奥多·罗斯福读《屠场》时正在吃早餐，当读到香肠中混进死老鼠时，大喊一声“我中毒了！”把吃了一半的香肠扔出窗外，后来再也不敢吃肉，变成素食主义者。</p>
-<p>　　《屠场》一书，直接促成了美国国会通过了《纯净食品与药品管理法》与《肉类检查法》，美国食品和药品从此慢慢安全起来。</p>
-<p>　　怀着推动美国社会进步的目的，美国调查记者们再接再厉，写出了2000多篇揭露社会各界丑闻的文章，从市政腐败到经济垄断，从药品掺假到雇佣童工。在调查记者看来这个看似发展迅速的社会，道德的血液明显跟不上肌体的成长，社会实际上藏着令人发指的罪恶与黑暗。</p>
-<p>　　揭露假丑恶的扒粪运动有没有摧毁美国人民建设美好未来的信心？没有。这些揭短反而使美国社会上下达成了改革的共识，诸多影响深远的制度都是在那一时期建立起来的。</p>
-<p>　　扒粪运动产生了深远的影响和积极的社会作用，调查性报告成为美国的新闻传统。水门事件、越战等美国历史的重要时刻，都有调查报告在背后左右的身影。普利策奖更是成为全球新闻人的诺贝尔奖。</p>
-<p>　　心系天下的不只是美国调查记者，中国文人从来都不缺少“先天下之忧而忧”的家国情怀，也不缺少心怀新闻理想的青年记者，我们需要思考的是如何给他们更好的社会环境和物质支持。</p>
-<p>　　调查记者并不是一个狭隘的噱头，所有勇于用孤独臂膀揭开残酷真相的人，都是这个社会的守夜人。对他们好点儿，就是对我们自己好点儿，对我们的孩子好点儿。</p>
-<p>　　谨以此文，致敬那些曾为我们挺身而出的人，无论你们现在在哪里。</p>
-<p>　　参考资料：<br>[1]． 告别“黄金时代” ，陈敏<br>[2]． 中国调查记者行业生态报告，张志安<br>[3]． 王克勤：一个捍卫人道的专业记者，他山石<br>[4]． 镀金时代的扒粪运动，周斌，国家人文历史</p>
-</blockquote>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2018/07/13/ifib2018/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://raw.githubusercontent.com/tom6m6/files_upload_blog/main/csman.jpg">
-      <meta itemprop="name" content="tommy">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="tommy's blog">
-      <meta itemprop="description" content="知行合一">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | tommy's blog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2018/07/13/ifib2018/" class="post-title-link" itemprop="url">斐波那契数列</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2018-07-13 12:59:05" itemprop="dateCreated datePublished" datetime="2018-07-13T12:59:05+08:00">2018-07-13</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2023-01-11 12:16:26" itemprop="dateModified" datetime="2023-01-11T12:16:26+08:00">2023-01-11</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h3 id="斐波那契数列"><a href="#斐波那契数列" class="headerlink" title="斐波那契数列"></a>斐波那契数列</h3><p>第1，2项为1，之后的每一项都为前两项之和</p>
-<p>(OEIS的<a target="_blank" rel="noopener" href="https://oeis.org/A000045">A000045</a>)</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1,1,2,3,5,8,13,21,......</span><br></pre></td></tr></table></figure>
-
-<h4 id="表达式"><a href="#表达式" class="headerlink" title="表达式"></a>表达式</h4>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2018/07/13/ifib2018/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2018/07/11/topicaboutdev2018/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://raw.githubusercontent.com/tom6m6/files_upload_blog/main/csman.jpg">
-      <meta itemprop="name" content="tommy">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="tommy's blog">
-      <meta itemprop="description" content="知行合一">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | tommy's blog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2018/07/11/topicaboutdev2018/" class="post-title-link" itemprop="url">论增长</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2018-07-11 23:10:35" itemprop="dateCreated datePublished" datetime="2018-07-11T23:10:35+08:00">2018-07-11</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2023-01-11 12:33:41" itemprop="dateModified" datetime="2023-01-11T12:33:41+08:00">2023-01-11</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>增长？增长是一个概念，更是一个事实。</p>
-<p>现实波动，想保持现状长期不变难上加难。“不增长便退步”看似极端，但却是事实。一方的增长必定意味着另一方的衰退。只有保持增长，拒绝退步，才能在巩固原有力量的同时拓展振兴。</p>
-<h4 id="增长中的增长是增长。"><a href="#增长中的增长是增长。" class="headerlink" title="增长中的增长是增长。"></a>增长中的增长是增长。</h4><p>有的人可能疑惑，为什么他们增长了，但结果却显得退步了呢？</p>
-<p>你增长的同时，其他人也在增长。如果这个增者的队伍中，你增长的速度慢，或者你增长的数量少，那么显得相对整体你退步了，于是结果就不太理想。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2018/07/11/topicaboutdev2018/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2018/07/10/16/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://raw.githubusercontent.com/tom6m6/files_upload_blog/main/csman.jpg">
-      <meta itemprop="name" content="tommy">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="tommy's blog">
-      <meta itemprop="description" content="知行合一">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | tommy's blog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2018/07/10/16/" class="post-title-link" itemprop="url">16</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2018-07-10 10:52:38" itemprop="dateCreated datePublished" datetime="2018-07-10T10:52:38+08:00">2018-07-10</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2023-01-11 12:34:15" itemprop="dateModified" datetime="2023-01-11T12:34:15+08:00">2023-01-11</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>15</p>
-<p>天气逐渐转凉</p>
-<p>心情日益焦躁</p>
-<p>思考没有结果的问题</p>
-<p>纠结难以接受的现实</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2018/07/10/16/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
     <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
@@ -1661,7 +1628,7 @@
 
   
 
-  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdn.jsdelivr.net/npm/mathjax@3.2.0/es5/tex-mml-chtml.js","integrity":"sha256-r+3itOMtGGjap0x+10hu6jW/gZCzxHsoKrOd7gyRSGY="}}</script>
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdn.jsdelivr.net/npm/mathjax@3.2.0/es5/tex-mml-chtml.js","integrity":"sha256-r+3itOMtGGjap0x+10hu6jW/gZCzxHsoKrOd7gyRSGY="}}</script>
 <script src="/js/third-party/math/mathjax.js"></script>
 
 
