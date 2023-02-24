@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 5.4.2">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" integrity="sha256-DfWjNxDkM94fVBWx1H5BMMp0Zq7luBlV8QRcSES7s+0=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.11.1","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+
+    <meta name="description" content="ECNU @ DATA0031121018 “算法基础”很不幸在下学期与我想上的”操作系统”时间冲突了。在与老师曲折地沟通后，终于商定好了下学期初期我去参加一个免听考试，如果考得好便批准免听。时间不多了，一月之内我要对这门课程的重点知识有一个全面深刻的认识，所幸我有前人们丰富的资料，就让我开始吧。 jcq正常上课的评分标准: •每周一次理论课，一次实践课 •期末分数 &#x3D; 平时分数* 0.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="算法基础免听学习大纲">
+<meta property="og:url" content="http://example.com/2023/01/22/algoswiftstudyplan/index.html">
+<meta property="og:site_name" content="tommy&#39;s blog">
+<meta property="og:description" content="ECNU @ DATA0031121018 “算法基础”很不幸在下学期与我想上的”操作系统”时间冲突了。在与老师曲折地沟通后，终于商定好了下学期初期我去参加一个免听考试，如果考得好便批准免听。时间不多了，一月之内我要对这门课程的重点知识有一个全面深刻的认识，所幸我有前人们丰富的资料，就让我开始吧。 jcq正常上课的评分标准: •每周一次理论课，一次实践课 •期末分数 &#x3D; 平时分数* 0.">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-01-22T02:22:50.000Z">
+<meta property="article:modified_time" content="2023-02-24T21:58:43.865Z">
+<meta property="article:author" content="tommy">
+<meta property="article:tag" content="algorithm">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://example.com/2023/01/22/algoswiftstudyplan/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2023/01/22/algoswiftstudyplan/","path":"2023/01/22/algoswiftstudyplan/","title":"算法基础免听学习大纲"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>算法基础免听学习大纲 | tommy's blog</title>
+  
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">tommy's blog</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%AF%BE%E7%A8%8B%E5%86%85%E5%AE%B9"><span class="nav-number">1.</span> <span class="nav-text">课程内容</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%97%E6%B3%95%E4%BB%8B%E7%BB%8D"><span class="nav-number">1.1.</span> <span class="nav-text">算法介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%BB%E5%AE%9A%E7%90%86"><span class="nav-number">1.2.</span> <span class="nav-text">主定理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%86%E6%B2%BB%E6%B3%95"><span class="nav-number">1.3.</span> <span class="nav-text">分治法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A0%86"><span class="nav-number">1.4.</span> <span class="nav-text">堆</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F"><span class="nav-number">1.5.</span> <span class="nav-text">快速排序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%80%E5%80%BC%E5%92%8C%E4%B8%AD%E4%BD%8D%E6%95%B0"><span class="nav-number">1.6.</span> <span class="nav-text">最值和中位数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BA%BF%E6%80%A7%E6%97%B6%E9%97%B4%E6%8E%92%E5%BA%8F"><span class="nav-number">1.7.</span> <span class="nav-text">线性时间排序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84"><span class="nav-number">1.8.</span> <span class="nav-text">基本数据结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%A3%E5%88%97"><span class="nav-number">1.9.</span> <span class="nav-text">散列</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91"><span class="nav-number">1.10.</span> <span class="nav-text">二叉搜索树</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92"><span class="nav-number">1.11.</span> <span class="nav-text">动态规划</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95"><span class="nav-number">1.12.</span> <span class="nav-text">贪心算法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%91%8A%E8%BF%98%E5%88%86%E6%9E%90"><span class="nav-number">1.13.</span> <span class="nav-text">摊还分析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%8D%E7%9B%B8%E4%BA%A4%E9%9B%86%E5%90%88%E7%9A%84%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84"><span class="nav-number">1.14.</span> <span class="nav-text">不相交集合的数据结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%BE%E7%AE%97%E6%B3%95"><span class="nav-number">1.15.</span> <span class="nav-text">图算法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#NP%E9%97%AE%E9%A2%98"><span class="nav-number">1.16.</span> <span class="nav-text">NP问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%91%E4%BC%BC%E7%AE%97%E6%B3%95"><span class="nav-number">1.17.</span> <span class="nav-text">近似算法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BA%BF%E6%80%A7%E8%A7%84%E5%88%92"><span class="nav-number">1.18.</span> <span class="nav-text">线性规划</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BD%9C%E4%B8%9A"><span class="nav-number">2.</span> <span class="nav-text">作业</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="tommy"
+      src="https://raw.githubusercontent.com/tom6m6/files_upload_blog/main/csman.jpg">
+  <p class="site-author-name" itemprop="name">tommy</p>
+  <div class="site-description" itemprop="description">知行合一</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">76</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">19</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/01/22/algoswiftstudyplan/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://raw.githubusercontent.com/tom6m6/files_upload_blog/main/csman.jpg">
+      <meta itemprop="name" content="tommy">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="tommy's blog">
+      <meta itemprop="description" content="知行合一">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="算法基础免听学习大纲 | tommy's blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          算法基础免听学习大纲
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2023-01-22 10:22:50" itemprop="dateCreated datePublished" datetime="2023-01-22T10:22:50+08:00">2023-01-22</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2023-02-25 05:58:43" itemprop="dateModified" datetime="2023-02-25T05:58:43+08:00">2023-02-25</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>ECNU @ DATA0031121018</p>
+<p>“算法基础”很不幸在下学期与我想上的”操作系统”时间冲突了。在与老师曲折地沟通后，终于商定好了下学期初期我去参加一个免听考试，如果考得好便批准免听。时间不多了，一月之内我要对这门课程的重点知识有一个全面深刻的认识，所幸我有前人们丰富的资料，就让我开始吧。</p>
+<p>jcq正常上课的评分标准:</p>
+<p>•每周一次理论课，一次实践课</p>
+<p>•期末分数 &#x3D; 平时分数* 0.4 + 期末分数 * 0.6</p>
+<p>•平时分数包括：出勤情况、课堂表现、作业情况、实践情况、期中考试等。</p>
+<p>以下根据21级的上课内容对课程内容做出梳理</p>
+<h1 id="课程内容"><a href="#课程内容" class="headerlink" title="课程内容"></a>课程内容</h1><h2 id="算法介绍"><a href="#算法介绍" class="headerlink" title="算法介绍"></a>算法介绍</h2><p>排序算法(插入排序,冒泡排序,归并排序)</p>
+<p>插入排序,归并排序的性能分析</p>
+<p>算法复杂度分析(渐进运行时间、O等符号定义)</p>
+<p>递归树(迭代递归法)证明某算法的复杂度</p>
+<h2 id="主定理"><a href="#主定理" class="headerlink" title="主定理"></a>主定理</h2><p>主定理介绍</p>
+<p>主定理证明和应用</p>
+<h2 id="分治法"><a href="#分治法" class="headerlink" title="分治法"></a>分治法</h2><p>归并排序举例</p>
+<p>矩阵乘积举例(Strassen算法)</p>
+<p>多项式乘法</p>
+<h2 id="堆"><a href="#堆" class="headerlink" title="堆"></a>堆</h2><p>堆的性质和方法</p>
+<p>堆排序、建堆</p>
+<p>优先队列</p>
+<h2 id="快速排序"><a href="#快速排序" class="headerlink" title="快速排序"></a>快速排序</h2><p>正确性证明(循环不变量)</p>
+<p>最佳情况和最差情况</p>
+<p>随机化的快速排序</p>
+<h2 id="最值和中位数"><a href="#最值和中位数" class="headerlink" title="最值和中位数"></a>最值和中位数</h2><p>中位数、顺序统计量、最大值、最小值</p>
+<p>期望为线性时间的算法</p>
+<p>最坏为线性时间的算法</p>
+<h2 id="线性时间排序"><a href="#线性时间排序" class="headerlink" title="线性时间排序"></a>线性时间排序</h2><p>排序算法的下界</p>
+<p>计数排序、基数排序</p>
+<h2 id="基本数据结构"><a href="#基本数据结构" class="headerlink" title="基本数据结构"></a>基本数据结构</h2><p>栈和队列</p>
+<p>链表</p>
+<p>指针和对象的实现</p>
+<p>有根树的表示</p>
+<h2 id="散列"><a href="#散列" class="headerlink" title="散列"></a>散列</h2><p>直接寻址表</p>
+<p>散列表</p>
+<p>散列函数</p>
+<p>开放寻址法</p>
+<h2 id="二叉搜索树"><a href="#二叉搜索树" class="headerlink" title="二叉搜索树"></a>二叉搜索树</h2><p>二叉搜索树的性质</p>
+<p>查询二叉搜索树及其常用的几个函数</p>
+<p>随即构建二叉搜索树</p>
+<p>红黑树的性质及各种操作（主要是插入）</p>
+<p>AVL树(选讲)</p>
+<h2 id="动态规划"><a href="#动态规划" class="headerlink" title="动态规划"></a>动态规划</h2><p>强调了memorize方法；例子：钢条切割,weighted interval schedule, 矩阵连乘，最长公共子序列(LCS)，带权重的最优二分查找树，多段线性回归，背包问题。</p>
+<h2 id="贪心算法"><a href="#贪心算法" class="headerlink" title="贪心算法"></a>贪心算法</h2><p>活动选择问题</p>
+<p>Huffman编码</p>
+<p>以单机任务调度、哈夫曼编码、最小生成树算法Prim和Kruskal为例。</p>
+<h2 id="摊还分析"><a href="#摊还分析" class="headerlink" title="摊还分析"></a>摊还分析</h2><p>聚合分析</p>
+<p>核算法 势能法 动态表</p>
+<h2 id="不相交集合的数据结构"><a href="#不相交集合的数据结构" class="headerlink" title="不相交集合的数据结构"></a>不相交集合的数据结构</h2><p>不相交集合的操作</p>
+<p>不相交集合的链表表示、森林</p>
+<h2 id="图算法"><a href="#图算法" class="headerlink" title="图算法"></a>图算法</h2><p>图的表示</p>
+<p>最小生成树</p>
+<p>最短路径搜索</p>
+<p>Bellman-Ford Dijkstra</p>
+<h2 id="NP问题"><a href="#NP问题" class="headerlink" title="NP问题"></a>NP问题</h2><p>NP完全性与可规约性</p>
+<p>NP完全问题</p>
+<h2 id="近似算法"><a href="#近似算法" class="headerlink" title="近似算法"></a>近似算法</h2><p>顶点覆盖问题</p>
+<p>旅行商问题</p>
+<p>集合覆盖问题</p>
+<h2 id="线性规划"><a href="#线性规划" class="headerlink" title="线性规划"></a>线性规划</h2><p>基本知识</p>
+<p>标准型和松弛型</p>
+<p>单纯形算法</p>
+<h1 id="作业"><a href="#作业" class="headerlink" title="作业"></a>作业</h1><p>21级作业</p>
+<p>12页，练习2.1-1。22页，练习2.3-1。30页，练习3.1-1。35页，第3-3，第3-4。第47页，练习4.2-6。</p>
+<p>【作业】一共十道题目。3月29号24:00 之前 发送电子版本给助教同学。第60页，4-1；第85页，6.1-6；第89页，6.3-1；第90页，6.4-1；第97页，7.1-1；第110页，8.2-1；第112页，8.3-1；第123页，9.2-4；第125页，9.3-8,9.3-9。</p>
+<p>【作业】5月4号晚上24:00前发给助教同学。 第136页，10.3-1；第138页，10.4-1；第139页，10-1；第146页，11.2-2；第155页，11.4-1；第162页，12.1-1， 12.1-2；第165页，12.2-1；第169页，12.3-3；第177页，13.2-3；第182页，13.3-2；第210页，15.1-3；第215页，15.2-1；第222页，15.3-2；第226页，15.4-1；第241页，16.1-1；第244页，16.2-2；补充题：求a:1, b:2, …, h:8所构成的赫夫曼树，写出abcdefgh对应的编码，写出1010111010101111000010对应的字符串（若后缀不完整可以舍去）。</p>
+<p>【作业】第260页，5月31号晚上24点前提交。17.1-1；第262页，17.2-2；第264页，17.3-2；17.3-4；第327页，21.2-1；第343页，22.1-2，22.1-3；第365页，23.1-1, 23.1-5；第381页，24.1-1；第386页，24.3-1。</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/algorithm/" rel="tag"># algorithm</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2023/01/17/quickstudySAalgo2023/" rel="prev" title="快速学习模拟退火算法">
+                  <i class="fa fa-chevron-left"></i> 快速学习模拟退火算法
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2023/02/25/math4dasefinal2023/" rel="next" title="数学基础期末试卷">
+                  数学基础期末试卷 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">tommy</span>
+</div>
+
+<!--
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>-->
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+<script src="https://cdn.jsdelivr.net/npm/hexo-generator-searchdb@1.4.0/dist/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdn.jsdelivr.net/npm/mathjax@3.2.0/es5/tex-mml-chtml.js","integrity":"sha256-r+3itOMtGGjap0x+10hu6jW/gZCzxHsoKrOd7gyRSGY="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+
+</body>
+</html>
