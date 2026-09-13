@@ -29,7 +29,7 @@ My citation record is available on <a href='{{ site.author.googlescholar }}'>Goo
 
 # 📝 Publications
 
-1. Mingyang Y<sup>&ast;</sup>, <strong>Xiahui G<sup>&ast;</sup></strong>, Peng C, et al. (2025). **Towards Measuring and Modeling Geometric Structures in Time Series Forecasting via Image Modality.** *ACM Multimedia 2025*.<br>
+1. Mingyang Y\*, **Xiahui G**\*, Peng C, et al. (2025). **Towards Measuring and Modeling Geometric Structures in Time Series Forecasting via Image Modality.** *ACM Multimedia 2025*.<br>
    Introduces a geometric-structure view of time-series forecasting, with an image-based metric for evaluating shape similarity and a plug-and-play loss for structure-aware training.
 
 2. Mingyang Y, Peng C, **Xiahui G**, et al. (2026). **Vision-Enhanced Time Series Forecasting by Decomposed Feature Extraction and Composed Reconstruction.** *ICASSP 2026*.<br>
@@ -44,10 +44,10 @@ My citation record is available on <a href='{{ site.author.googlescholar }}'>Goo
 5. Yicheng B, **Xiahui G**, Xuhong W, and Xin T. (2026). **SPARED: Reasoning-Based AI-Generated Image Detection via Adversarially Edited Data.** Submitted to *AAAI 2027*.<br>
    Trains a reasoning-based AI-generated-image detector in an attacker-defender loop, where an adaptive image editor generates paired hard negatives to overcome static-data and provenance shortcuts.
 
-6. Junwei H<sup>&ast;</sup>, <strong>Xiahui G<sup>&ast;</sup></strong>, and Mingyang Y. (2026). **ComMark: Synchronization-Aware Local Slot Communication for Robust Multi-Bit Audio Watermarking.** Submitted to *AAAI 2027*.<br>
+6. Junwei H\*, **Xiahui G**\*, and Mingyang Y. (2026). **ComMark: Synchronization-Aware Local Slot Communication for Robust Multi-Bit Audio Watermarking.** Submitted to *AAAI 2027*.<br>
    Reframes robust multi-bit audio watermarking as synchronization-aware local communication, distributing payload across overlapping spectrogram slots while identifying STFT magnitude as the dominant recoverable carrier.
 
-<sup>&ast;</sup> Equal contribution.
+\* Equal contribution.
 
 # 🔬 Research Experience
 
