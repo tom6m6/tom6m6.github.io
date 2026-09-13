@@ -29,25 +29,25 @@ My citation record is available on <a href='{{ site.author.googlescholar }}'>Goo
 
 # 📝 Publications
 
-1. Mingyang Y<sup>*</sup>, <strong>Xiahui G<sup>*</sup></strong>, Peng C, et al. (2025). **Towards Measuring and Modeling Geometric Structures in Time Series Forecasting via Image Modality.** *ACM Multimedia 2025*.
-   - Introduces a geometric-structure view of time-series forecasting, with an image-based metric for evaluating shape similarity and a plug-and-play loss for structure-aware training.
+1. Mingyang Y<sup>&ast;</sup>, <strong>Xiahui G<sup>&ast;</sup></strong>, Peng C, et al. (2025). **Towards Measuring and Modeling Geometric Structures in Time Series Forecasting via Image Modality.** *ACM Multimedia 2025*.<br>
+   Introduces a geometric-structure view of time-series forecasting, with an image-based metric for evaluating shape similarity and a plug-and-play loss for structure-aware training.
 
-2. Mingyang Y, Peng C, **Xiahui G**, et al. (2026). **Vision-Enhanced Time Series Forecasting by Decomposed Feature Extraction and Composed Reconstruction.** *ICASSP 2026*.
-   - Recasts time-series forecasting as image reconstruction, combining decomposed temporal features with the input sequence's shape prior to reconstruct future sequences in the visual domain.
+2. Mingyang Y, Peng C, **Xiahui G**, et al. (2026). **Vision-Enhanced Time Series Forecasting by Decomposed Feature Extraction and Composed Reconstruction.** *ICASSP 2026*.<br>
+   Recasts time-series forecasting as image reconstruction, combining decomposed temporal features with the input sequence's shape prior to reconstruct future sequences in the visual domain.
 
-3. Mingyang Y, Chenwei Y, Yanlei S, Zhenkai L, Peng C, and **Xiahui G**. (2026). **TCT-Loss: Shape-Aware Time-Series Forecasting with a Zero-Shot Time-Column Transformer Autoencoder.** *ICASSP 2026*.
-   - Builds a transferable shape-aware loss around a Time-Column Transformer autoencoder, supervising forecasts by comparing decoded time-series images across datasets and horizons.
+3. Mingyang Y, Chenwei Y, Yanlei S, Zhenkai L, Peng C, and **Xiahui G**. (2026). **TCT-Loss: Shape-Aware Time-Series Forecasting with a Zero-Shot Time-Column Transformer Autoencoder.** *ICASSP 2026*.<br>
+   Builds a transferable shape-aware loss around a Time-Column Transformer autoencoder, supervising forecasts by comparing decoded time-series images across datasets and horizons.
 
-4. Mingyang Y, Yukun W, Zhaoting C, Junwei H, and **Xiahui G**. (2026). **Triad: A Unified Sparse-Attention Offloading System for Long-Context LLM Inference.** Submitted to *NeurIPS 2026*.
-   - Enables high-throughput CPU-offloaded sparse attention by jointly optimizing which KV rows to retrieve, how they are fetched, and how KV storage is balanced across CPU and GPU.
+4. Mingyang Y, Yukun W, Zhaoting C, Junwei H, and **Xiahui G**. (2026). **Triad: A Unified Sparse-Attention Offloading System for Long-Context LLM Inference.** Submitted to *NeurIPS 2026*.<br>
+   Enables high-throughput CPU-offloaded sparse attention by jointly optimizing which KV rows to retrieve, how they are fetched, and how KV storage is balanced across CPU and GPU.
 
-5. Yicheng B, **Xiahui G**, Xuhong W, and Xin T. (2026). **SPARED: Reasoning-Based AI-Generated Image Detection via Adversarially Edited Data.** Submitted to *AAAI 2027*.
-   - Trains a reasoning-based AI-generated-image detector in an attacker-defender loop, where an adaptive image editor generates paired hard negatives to overcome static-data and provenance shortcuts.
+5. Yicheng B, **Xiahui G**, Xuhong W, and Xin T. (2026). **SPARED: Reasoning-Based AI-Generated Image Detection via Adversarially Edited Data.** Submitted to *AAAI 2027*.<br>
+   Trains a reasoning-based AI-generated-image detector in an attacker-defender loop, where an adaptive image editor generates paired hard negatives to overcome static-data and provenance shortcuts.
 
-6. Junwei H<sup>*</sup>, <strong>Xiahui G<sup>*</sup></strong>, and Mingyang Y. (2026). **ComMark: Synchronization-Aware Local Slot Communication for Robust Multi-Bit Audio Watermarking.** Submitted to *AAAI 2027*.
-   - Reframes robust multi-bit audio watermarking as synchronization-aware local communication, distributing payload across overlapping spectrogram slots while identifying STFT magnitude as the dominant recoverable carrier.
+6. Junwei H<sup>&ast;</sup>, <strong>Xiahui G<sup>&ast;</sup></strong>, and Mingyang Y. (2026). **ComMark: Synchronization-Aware Local Slot Communication for Robust Multi-Bit Audio Watermarking.** Submitted to *AAAI 2027*.<br>
+   Reframes robust multi-bit audio watermarking as synchronization-aware local communication, distributing payload across overlapping spectrogram slots while identifying STFT magnitude as the dominant recoverable carrier.
 
-<sup>*</sup> Equal contribution.
+<sup>&ast;</sup> Equal contribution.
 
 # 🔬 Research Experience
 
