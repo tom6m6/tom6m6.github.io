@@ -17,42 +17,76 @@ redirect_from:
 
 <span class='anchor' id='about-me'></span>
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ornare aliquet ipsum, ac tempus justo dapibus sit amet. Suspendisse condimentum, libero vel tempus mattis, risus risus vulputate libero, elementum fermentum mi neque vel nisl. Maecenas facilisis maximus dignissim. Curabitur mattis vulputate dui, tincidunt varius libero luctus eu. Mauris mauris nulla, scelerisque eget massa id, tincidunt congue felis. Sed convallis tempor ipsum rhoncus viverra. Pellentesque nulla orci, accumsan volutpat fringilla vitae, maximus sit amet tortor. Aliquam ultricies odio ut volutpat scelerisque. Donec nisl nisl, porttitor vitae pharetra quis, fringilla sed mi. Fusce pretium dolor ut aliquam consequat. Cras volutpat, tellus accumsan mattis molestie, nisl lacus tempus massa, nec malesuada tortor leo vel quam. Aliquam vel ex consectetur, vehicula leo nec, efficitur eros. Donec convallis non urna quis feugiat.
+I earned a Bachelor of Engineering in Data Science and Big Data Technology from East China Normal University (ECNU) in Shanghai, China. My research interests include **AI Infrastructure**, **ML/LLM Systems**, and **Data-Centric AI**.
 
-My research interest includes neural machine translation and computer vision. I have published more than 100 papers at the top international AI conferences with total <a href='https://scholar.google.com/citations?user=DhtAFkwAAAAJ'>google scholar citations <strong><span id='total_cit'>260000+</span></strong></a> (You can also use google scholar badge <a href='https://scholar.google.com/citations?user=DhtAFkwAAAAJ'><img src="https://img.shields.io/endpoint?url={{ url | url_encode }}&logo=Google%20Scholar&labelColor=f6f6f6&color=9cf&style=flat&label=citations"></a>).
+From September 2024 to September 2025, I worked as an Undergraduate Research Assistant in the Decision Intelligence Lab at ECNU under the supervision of Prof. Yang Shu. My research focused on visual modeling for time-series forecasting and led to three co-authored papers that explore time series beyond conventional sequence-based approaches.
 
+My citation record is available on <a href='{{ site.author.googlescholar }}'>Google Scholar</a> (<strong><span id='total_cit'>loading...</span></strong> citations).
 
+{% comment %}
 # 🔥 News
-- *2022.02*: &nbsp;🎉🎉 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ornare aliquet ipsum, ac tempus justo dapibus sit amet. 
-- *2022.02*: &nbsp;🎉🎉 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ornare aliquet ipsum, ac tempus justo dapibus sit amet. 
+{% endcomment %}
 
-# 📝 Publications 
+# 📝 Publications
 
-<div class='paper-box'><div class='paper-box-image'><div><div class="badge">CVPR 2016</div><img src='images/500x300.png' alt="sym" width="100%"></div></div>
-<div class='paper-box-text' markdown="1">
+1. Mingyang Y<sup>*</sup>, <strong>Xiahui G<sup>*</sup></strong>, Peng C, et al. (2025). **Towards Measuring and Modeling Geometric Structures in Time Series Forecasting via Image Modality.** *ACM Multimedia 2025*.
+   - Introduces a geometric-structure view of time-series forecasting, with an image-based metric for evaluating shape similarity and a plug-and-play loss for structure-aware training.
 
-[Deep Residual Learning for Image Recognition](https://openaccess.thecvf.com/content_cvpr_2016/papers/He_Deep_Residual_Learning_CVPR_2016_paper.pdf)
+2. Mingyang Y, Peng C, **Xiahui G**, et al. (2026). **Vision-Enhanced Time Series Forecasting by Decomposed Feature Extraction and Composed Reconstruction.** *ICASSP 2026*.
+   - Recasts time-series forecasting as image reconstruction, combining decomposed temporal features with the input sequence's shape prior to reconstruct future sequences in the visual domain.
 
-**Kaiming He**, Xiangyu Zhang, Shaoqing Ren, Jian Sun
+3. Mingyang Y, Chenwei Y, Yanlei S, Zhenkai L, Peng C, and **Xiahui G**. (2026). **TCT-Loss: Shape-Aware Time-Series Forecasting with a Zero-Shot Time-Column Transformer Autoencoder.** *ICASSP 2026*.
+   - Builds a transferable shape-aware loss around a Time-Column Transformer autoencoder, supervising forecasts by comparing decoded time-series images across datasets and horizons.
 
-[**Project**](https://scholar.google.com/citations?view_op=view_citation&hl=zh-CN&user=DhtAFkwAAAAJ&citation_for_view=DhtAFkwAAAAJ:ALROH1vI_8AC) <strong><span class='show_paper_citations' data='DhtAFkwAAAAJ:ALROH1vI_8AC'></span></strong>
-- Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ornare aliquet ipsum, ac tempus justo dapibus sit amet. 
-</div>
-</div>
+4. Mingyang Y, Yukun W, Zhaoting C, Junwei H, and **Xiahui G**. (2026). **Triad: A Unified Sparse-Attention Offloading System for Long-Context LLM Inference.** Submitted to *NeurIPS 2026*.
+   - Enables high-throughput CPU-offloaded sparse attention by jointly optimizing which KV rows to retrieve, how they are fetched, and how KV storage is balanced across CPU and GPU.
 
-- [Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ornare aliquet ipsum, ac tempus justo dapibus sit amet](https://github.com), A, B, C, **CVPR 2020**
+5. Yicheng B, **Xiahui G**, Xuhong W, and Xin T. (2026). **SPARED: Reasoning-Based AI-Generated Image Detection via Adversarially Edited Data.** Submitted to *AAAI 2027*.
+   - Trains a reasoning-based AI-generated-image detector in an attacker-defender loop, where an adaptive image editor generates paired hard negatives to overcome static-data and provenance shortcuts.
+
+6. Junwei H<sup>*</sup>, <strong>Xiahui G<sup>*</sup></strong>, and Mingyang Y. (2026). **ComMark: Synchronization-Aware Local Slot Communication for Robust Multi-Bit Audio Watermarking.** Submitted to *AAAI 2027*.
+   - Reframes robust multi-bit audio watermarking as synchronization-aware local communication, distributing payload across overlapping spectrogram slots while identifying STFT magnitude as the dominant recoverable carrier.
+
+<sup>*</sup> Equal contribution.
+
+# 🔬 Research Experience
+
+- ***09/2024 – 09/2025*** — **Undergraduate Research Assistant**, Decision Intelligence Lab, East China Normal University
+  - Conducted research under Prof. Yang Shu on visual modeling for time-series forecasting, co-authoring three papers that explore time series beyond conventional sequence-based approaches.
 
 # 🎖 Honors and Awards
-- *2021.10* Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ornare aliquet ipsum, ac tempus justo dapibus sit amet. 
-- *2021.09* Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ornare aliquet ipsum, ac tempus justo dapibus sit amet. 
 
-# 📖 Educations
-- *2019.06 - 2022.04 (now)*, Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ornare aliquet ipsum, ac tempus justo dapibus sit amet. 
-- *2015.09 - 2019.06*, Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ornare aliquet ipsum, ac tempus justo dapibus sit amet. 
+- ***2024*** — Special Class Scholarship (Rank 2%)
+- ***2024*** — COMAP's Mathematical Contest in Modeling (MCM), Meritorious Winner (Top 7%)
+- ***2023*** — First Class Scholarship (Rank 5%)
+- ***2023*** — China Undergraduate Mathematical Contest in Modeling, Second Prize
 
+<span class='anchor' id='educations'></span>
+
+# 📖 Education
+
+- ***09/2022 – 07/2026*** — **East China Normal University**, Shanghai, China<br>
+  Bachelor of Engineering in Data Science and Big Data Technology
+  - **Academic standing:** GPA 3.78/4.0; Major GPA 3.90/4.0; WAM 91/100; Top 10%
+  - **Relevant coursework:** Deep Learning (99), Artificial Intelligence (97), Statistical Methods and Machine Learning (A), Computer Vision (95), Computer Systems (97), Distributed Systems (95)
+
+{% comment %}
 # 💬 Invited Talks
-- *2021.06*, Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ornare aliquet ipsum, ac tempus justo dapibus sit amet. 
-- *2021.03*, Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ornare aliquet ipsum, ac tempus justo dapibus sit amet.  \| [\[video\]](https://github.com/)
+{% endcomment %}
 
-# 💻 Internships
-- *2019.05 - 2020.02*, [Lorem](https://github.com/), China.
+<span class='anchor' id='internships'></span>
+
+# 💻 Selected Engineering Experience
+
+- ***04/2026 – Present*** — **Full-Stack Engineer Intern**, M77, Shanghai, China
+  - Built an internal AI platform for employee training, discussion, design-case retrieval, and 3D-rendering-based quotation, with reusable LLM skills and similarity-based result reuse to reduce redundant model calls.
+
+- ***05/2024 – 04/2025*** — **Core Team Member**, Multi-Agent System in Power-Sector Cost Management
+  - Built a RAG-based multi-agent approval system over nearly one million historical documents, combining domain rules, structured extraction, dense retrieval, and reranking for automated cost review.
+
+# ⚙️ Skills
+
+- **Programming:** Python, C/C++, Java
+- **Framework:** PyTorch
+- **Tools:** Linux, Git, Docker, LaTeX
+- **Languages:** Chinese (Native), English (IELTS 6.5)
